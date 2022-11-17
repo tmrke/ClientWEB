@@ -2,17 +2,21 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>page 2</title>
+    <h1>Страница 2</h1>
 </head>
-
 <body>
-<h1>Картинка</h1>
+<p>Картинка</p>
 
-<img src="https://cats.ru/wp-content/uploads/2018/11/cat02.jpg" alt="котик"/><br>
+<img src="https://cats.ru/wp-content/uploads/2018/11/cat02.jpg" alt="котик"/>
 
-<h1>Таблица №1</h1>
+<hr/>
 
-<style>
+<p>Таблица №1</p>
+
+<table>
+    <thead>
+    <style>
     table {
         background: darkblue;
     }
@@ -21,13 +25,9 @@
         color: chartreuse;
         background: green;
     }
-</style>
+    </style>
 
-<table>
-    <thead>
-    <tr>
-        <td cosplan="2">Ячейка 0</td>
-    </tr>
+    <th colspan="2">header</th>
     </thead>
 
     <tbody>
@@ -48,11 +48,15 @@
     </tbody>
 </table>
 
-<br>
+<hr/>
 
-<h1>Таблица №2</h1>
+<p>Таблица №2</p>
 
 <table>
+    <thead>
+    <th colspan="3">header</th>
+    </thead>
+    <tbody>
     <td rowspan="3">Ячейка 0</td>
 
     <td>Ячейка 1.1</td>
@@ -67,17 +71,14 @@
         <td>Ячейка 3.1</td>
         <td>Ячейка 3.2</td>
     </tr>
+    </tbody>
 </table>
 
-<h1>Абзац</h1>
+<hr/>
 
-<p>Абзац</p>
+<p>Ссылка</p>
 
-<br>
-
-<h1>Ссылка</h1>
-
-<a href="http://localhost:63342/ClientWEB/HTML/page%201.html?_ijt=jq8ejirfhdebevktibvtj67o4b&_ij_reload=RELOAD_ON_SAVE">
+<a href="http://localhost:63342/ClientWEB/HTML/page%201.html">
     страница 1</a>
 </body>
 </html>

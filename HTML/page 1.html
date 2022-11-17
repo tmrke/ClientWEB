@@ -2,44 +2,46 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>page 1</title>
+    <h1>Страница 1</h1>
 </head>
 <body>
-<h1>Однострочное поле ввода</h1>
+<p>Однострочное поле ввода</p>
 
 <form>
     <label>
-        <input type="text" id="singleInputText" placeholder="введите текст">
+        <input type="text" placeholder="введите текст">
     </label>
 </form>
-<br>
+<hr/>
 
-<h1>Многострочное текстовое поле ввода</h1>
+<p>Многострочное текстовое поле ввода</p>
 
 <form>
-    <label for="multiStringsInputText">Название</label>
-    <textarea type="text" id="multiStringsInputText" placeholder="введите текст"></textarea>
+    <label for="multi_strings_input_text">Название</label>
+    <textarea type="text" id="multi_strings_input_text" placeholder="введите текст"></textarea>
 </form>
 
-<br>
-
-<h1>Чекбоксы</h1>
+<hr/>
+<p>Чекбоксы</p>
 
 <form>
     <label>
-        <input type="checkbox" id="checkBox1"/>
+        <input type="checkbox"/>#1
     </label>
 
     <label>
-        <input type="checkbox" id="checkBox2"/>
+        <input type="checkbox"/>#2
     </label>
 
     <label>
-        <input type="checkbox" id="checkBox3"/> <br>
+        <input type="checkbox"/> #3<br>
     </label>
 </form>
 
-<h1>Радио-баттоны</h1>
+<hr/>
+
+<p>Радио-баттоны</p>
 
 <form>
     <label>
@@ -55,9 +57,11 @@
     </label>
 </form>
 
-<h1>Выпадающий список с единичным выбором</h1>
+<hr/>
 
-<from>
+<p>Выпадающий список с единичным выбором</p>
+
+<form>
     <label>
         <select size="1">
             <option>элемент №1</option>
@@ -67,13 +71,13 @@
             <option>элемент №5</option>
         </select>
     </label>
-</from>
+</form>
 
-<br>
+<hr/>
 
-<h1>Выпадающий список со множественным выбором</h1>
+<p>Выпадающий список со множественным выбором</p>
 
-<from>
+<form>
     <label>
         <select size="5" multiple>
             <option>элемент №1</option>
@@ -83,10 +87,9 @@
             <option>элемент №5</option>
         </select>
     </label>
-</from>
+</form>
 
-<br>
-<br>
+<hr/>
 
 <form>
     <label>
