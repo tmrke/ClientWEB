@@ -1,23 +1,22 @@
 body {
     background-color: #feeed6;
     font-family: arial, serif;
+    color: #676565;
+    font-size: 125%;
 }
 
 h1 {
-    font-size: 175%;
-    font-family: arial, serif;
+    font-size: 170%;
     font-weight: normal;
 }
 
 p {
-    font-family: arial, serif;
-    text-indent: 30px;
+    text-indent: 15px;
     width: 750px;
 }
 
 [start], [price], [price-for-students], [course-conent] {
     color: #378DB2;
-    font-family: arial, serif;
     font-weight: bold;
 }
 
