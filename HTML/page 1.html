@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>page 1</title>
-    <h1>Страница 1</h1>
 </head>
 <body>
+<h1>Страница 1</h1>
+
 <p>Однострочное поле ввода</p>
 
 <form>
@@ -13,7 +14,7 @@
         <input type="text" placeholder="введите текст">
     </label>
 </form>
-<hr/>
+<hr>
 
 <p>Многострочное текстовое поле ввода</p>
 
@@ -22,42 +23,43 @@
     <textarea type="text" id="multi_strings_input_text" placeholder="введите текст"></textarea>
 </form>
 
-<hr/>
+<hr>
 <p>Чекбоксы</p>
 
 <form>
     <label>
-        <input type="checkbox"/>#1
+        <input type="checkbox">#1
     </label>
 
     <label>
-        <input type="checkbox"/>#2
+        <input type="checkbox">#2
     </label>
 
     <label>
-        <input type="checkbox"/> #3<br>
+        <input type="checkbox"> #3
+        <br>
     </label>
 </form>
 
-<hr/>
+<hr>
 
 <p>Радио-баттоны</p>
 
 <form>
     <label>
-        <input type="radio" name="radio" id="radio1" checked="checked"/> #1<br>
+        <input type="radio" value="1" name="radio" id="radio1" checked="checked"> #1<br>
     </label>
 
     <label>
-        <input type="radio" name="radio" id="radio2"/> #2 <br>
+        <input type="radio" value="2" name="radio" id="radio2"> #2 <br>
     </label>
 
     <label>
-        <input type="radio" name="radio" id="radio3"/> #3 <br>
+        <input type="radio" value="3" name="radio" id="radio3"> #3 <br>
     </label>
 </form>
 
-<hr/>
+<hr>
 
 <p>Выпадающий список с единичным выбором</p>
 
@@ -73,7 +75,7 @@
     </label>
 </form>
 
-<hr/>
+<hr>
 
 <p>Выпадающий список со множественным выбором</p>
 
@@ -89,11 +91,11 @@
     </label>
 </form>
 
-<hr/>
+<hr>
 
 <form>
     <label>
-        <a href="http://localhost:63342/ClientWEB/HTML/page%202.html">
+        <a href="page%202.html">
             страница 2</a>
         <input type="button"
                onclick="window.location.href = 'page 2.html'"
