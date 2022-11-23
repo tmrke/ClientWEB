@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body {
+            position: relative;
+            color: #6b6774;
+        }
+
+        .form {
+            margin: 0 auto;
+        }
+
+        .block {
+            background: #feeed6;
+            height: 300px;
+        }
+
+        .button {
+            background: #378db2;
+            border: none;
+            color: white;
+
+            width: 235px;
+            height: 50px;
+
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+
+        button:hover {                  /* не работает */
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>Отправить заявку</h1>
+
+<div class="block">
+    <form action="http://example.php" method="post">
+        <label class="form">
+            Ваше имя
+            <br>
+            <input type="text" placeholder="Ваше имя *">
+            <br>
+        </label>
+
+        <label class="form">
+            Ваш номер телефона
+            <br>
+            <input type="text" placeholder="Ваш номер телефона *">
+            <br>
+        </label>
+
+        <label class="form">
+            Ваш email или VK
+            <br>
+            <input type="text" placeholder="Ваш email или VK *">
+            <br>
+        </label>
+
+        <label class="form" for="comment">Комментарий</label><br>
+        <textarea type="text" id="comment" placeholder="Комментарий (не обязательно)"></textarea>
+        <br>
+
+        <text>
+            Заполните и отправьте форму, и мы перезвоним Вам по указанному номеру
+        </text>
+        <br>
+
+        <input class="button" type="button" value="Отправить заявку">
+    </form>
+
+</div>
+</body>
+</html>
