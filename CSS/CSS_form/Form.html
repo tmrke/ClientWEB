@@ -5,18 +5,53 @@
     <title>Title</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, serif;
+            font-size: 14px;
+        }
+
         body {
-            position: relative;
+            height: 100%;
             color: #6b6774;
         }
 
-        .form {
-            margin: 0 auto;
+        input {
+            padding: 0 20px;
+            margin: 5px 25% 20px 25%;
+            width: 50%;
+            height: 30px;
+            border: none;
+        }
+
+        h1{
+            margin: 5px 25% 5px 25%;
+
+            font-size: 29px;
+        }
+
+        textarea{
+            padding: 10px 20px;
+            margin: 10px 25% 10px 25%;
+            width: 50%;
+            height: 150px;
+            border: none;
+        }
+
+        text{
+            margin: 10px 25% 10px 25%;
+            width: 50%;
+        }
+
+        label {
+            margin-left: 25%;
+            width: 50%;
+            font-weight: bold;
         }
 
         .block {
             background: #feeed6;
-            height: 300px;
+            height: 80%;
         }
 
         .button {
@@ -24,57 +59,53 @@
             border: none;
             color: white;
 
-            width: 235px;
-            height: 50px;
+            width: 160px;
+            height: 40px;
 
-            position: absolute;
-            right: 20px;
-            bottom: 20px;
-        }
+            margin-left: 65%;
 
-        button:hover {                  /* не работает */
-            background-color: red;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-<h1>Отправить заявку</h1>
+<h1 class="h1">Отправить заявку</h1>
 
 <div class="block">
+    <br>
     <form action="http://example.php" method="post">
-        <label class="form">
+        <label>
             Ваше имя
             <br>
             <input type="text" placeholder="Ваше имя *">
             <br>
         </label>
 
-        <label class="form">
+        <label>
             Ваш номер телефона
             <br>
             <input type="text" placeholder="Ваш номер телефона *">
             <br>
         </label>
 
-        <label class="form">
+        <label>
             Ваш email или VK
             <br>
             <input type="text" placeholder="Ваш email или VK *">
             <br>
         </label>
 
-        <label class="form" for="comment">Комментарий</label><br>
+        <label for="comment">Комментарий</label><br>
         <textarea type="text" id="comment" placeholder="Комментарий (не обязательно)"></textarea>
         <br>
 
         <text>
             Заполните и отправьте форму, и мы перезвоним Вам по указанному номеру
         </text>
-        <br>
 
         <input class="button" type="button" value="Отправить заявку">
     </form>
-
 </div>
+
 </body>
 </html>
