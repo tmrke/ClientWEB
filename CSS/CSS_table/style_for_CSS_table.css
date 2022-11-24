@@ -1,0 +1,32 @@
+table {
+    font-family: Calibri, sans-serif;
+    font-size: 1.5em;
+    background: #cccccc;
+}
+
+td {
+    width: 180px;
+    height: 53px;
+    padding-left: 10px;
+}
+
+.col-wight-3 {
+    width: 320px;
+}
+
+.col-wight-4 {
+    width: 210px;
+}
+
+thead {
+    color: white;
+    background: #3498db;
+}
+
+tbody {
+    background: #eeeeee;
+}
+
+.even-row {
+    background: #ffffff;
+}
