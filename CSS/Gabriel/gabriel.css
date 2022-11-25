@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+}
+
+.background {
+    background-color: #f5f6f6;
+}
+
+.header{
+    display: inline-block;
+
+    background-color: #fed720;
+
+    height:30%;
+    width: 100%;
+
+    font-family: Calibri, serif;
+    font-size: 36px;
+
+    text-align: center;
+    border: none;
+}
+
+a{
+    padding: 20px;
+    vertical-align: middle;
+}
+
+text{
+    font-weight: lighter;
+}
