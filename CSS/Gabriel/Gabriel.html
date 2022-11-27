@@ -23,43 +23,20 @@
         <a href="Gabriel.html">Бумажные</a>
     </div>
 
-    <table>
+    <table class="table">
         <thead>
-        <tr>
-            <td class="col1">Валидатор</td>
-            <td class="col2">Буква</td>
-            <td class="col3">Адрес</td>
-            <td class="col4">Остаток ЕТ</td>
-            <td class="col5">Сколько необходимо еще ЕТ</td>
-            <td></td>
-            <td class="col7">Комментарий</td>
+        <tr class="thead">
+            <td class="validator">Валидатор</td>
+            <td class="letter">Буква</td>
+            <td class="address">Адрес</td>
+            <td class="remainder-ET">Остаток ЕТ</td>
+            <td class="need-ET">Сколько необходимо еще ЕТ</td>
+            <td class="empty"></td>
+            <td class="comment">Комментарий</td>
         </tr>
         </thead>
 
-        <tbody>
-        <tr>
-            <td class="col1">421-7176-1</td>
-            <td class="col2">A</td>
-            <td class="col3">РФ, г. Москва, ул. Усиевича, д.22, корп. 1</td>
-            <td class="col4">10</td>
-            <td class="col5">
-                <label>
-                    <input type="range" min="0" max="100" step="1" value="50">
-                </label>
-            </td>
-            <td class="col6">
-                <label>
-                    <input type="text" disabled value="20">
-                </label>
-            </td>
-            <td class="col7">
-                <label>
-                    <input type="text" placeholder="Какой-то комментарий">
-                </label>
-            </td>
-        </tr>
-
-
+        <tbody class="tbody">
         <tr>
             <td class="col1">421-7176-1</td>
             <td class="col2">A</td>
@@ -148,9 +125,27 @@
             </td>
         </tr>
 
-
-        /* ======================================================================*/
-
+        <tr>
+            <td class="col1">421-7176-1</td>
+            <td class="col2">A</td>
+            <td class="col3">РФ, г. Москва, ул. Усиевича, д.22, корп. 1</td>
+            <td class="col4">10</td>
+            <td class="col5">
+                <label>
+                    <input type="range" min="0" max="100" step="1" value="50">
+                </label>
+            </td>
+            <td class="col6">
+                <label>
+                    <input type="text" disabled value="20">
+                </label>
+            </td>
+            <td class="col7">
+                <label>
+                    <input type="text" placeholder="Какой-то комментарий">
+                </label>
+            </td>
+        </tr>
 
         <tr>
             <td class="col1">421-7176-1</td>
@@ -173,6 +168,11 @@
                 </label>
             </td>
         </tr>
+
+
+        <!-- ====================================================================== -->
+
+
         <tr>
             <td class="col1">421-7176-1</td>
             <td class="col2">A</td>

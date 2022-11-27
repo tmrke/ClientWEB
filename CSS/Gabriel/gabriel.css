@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+body {
+    max-width: 910px;
+    margin: 0 auto;
+}
+
 .background {
     background-color: #f5f6f6;
 }
@@ -12,7 +17,7 @@
     height: 30%;
 
     font-family: Calibri, serif;
-    font-size: 36px;
+    font-size: 20px;
 
     text-align: center;
     border: none;
@@ -27,58 +32,129 @@ text {
     font-weight: lighter;
 }
 
+.thead {
+    height: 100px;
+    display: table-header-group;
+    position: relative;
+}
+
+.validator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 70px;
+    max-width: 100px;
+}
+
+.letter {
+    min-width: 15px;
+    max-width: 20px;
+    position: absolute;
+    left: 100px;
+    top: 0;
+}
+
+.address {
+    min-width: 120px;
+    max-width: 150px;
+
+    position: absolute;
+    left: 180px;
+    top: 0;
+}
+
+.remainder-ET {
+    min-width: 15px;
+    max-width: 20px;
+
+    position: absolute;
+    left: 320px;
+    top: 0;
+}
+
+.need-ET {
+    min-width: 200px;
+    max-width: 150px;
+
+    position: absolute;
+    width: 200px;
+    left: 370px;
+    top: 0;
+}
+
+.empty {
+    min-width: 10px;
+    max-width: 10px;
+
+    position: absolute;
+    left: 570px;
+    top: 0;
+}
+
+.comment {
+    position: absolute;
+    left: 700px;
+    top: 0;
+}
+
+table {
+    max-width: 910px;
+    display: table;
+}
+
 tbody {
     height: 200px;
     overflow-y: scroll;
-    display: block;
+
+    position: absolute;
+    top: 15%;
+    display: table-footer-group;
 }
 
-table, thead {
-    width: 100%;
-    display: block;
+.row {
+    display: table-header-group;
 }
 
 .col1 {
+    min-width: 70px;
+    max-width: 100px;
     padding: 10px 10px;
-    margin: 10px 10px;
 }
 
 .col2 {
+    max-width: 30px;
     padding: 10px 10px;
-    margin: 10px 10px;
-
-
 }
 
 .col3 {
+    max-width: 190px;
+    font-size: 12px;
     padding: 10px 10px;
-    margin: 10px 10px;
-
-
 }
 
 .col4 {
+    min-width: 15px;
+    max-width: 40px;
+
     padding: 10px 10px;
-    margin: 10px 10px;
-
-
 }
 
 .col5 {
+    min-width: 200px;
+    max-width: 150px;
     padding: 10px 10px;
-    margin: 10px 10px;
-
 
 }
 
 .col6 {
+    min-width: 20px;
+    max-width: 30px;
     padding: 10px 10px;
-    margin: 10px 10px;
-
-
 }
 
 .col7 {
+    min-width: 200px;
+    max-width: 300px;
     padding: 10px 10px;
-    margin: 10px 10px;
+
 }
