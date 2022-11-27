@@ -1,0 +1,92 @@
+/* reset start */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: normal;
+    letter-spacing: 0.01em;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*  reset end */
+
+body {
+    background-color: #feeed6;
+    font-family: arial, sans-serif;
+    color: #676565;
+    font-size: 17px;
+
+    max-width: 825px;
+    margin: 0 auto;
+}
+
+.h1 {
+    letter-spacing: 0.04em;
+    font-size: 30px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+[data-bold-blue-text] {
+    color: #378DB2;
+    font-weight: bold;
+}
+
+[data-line-through] {
+    text-decoration-line: line-through;
+}
+
+.div {
+    font-size: 19px;
+    margin: 10px 0;
+}
+
+.course_content {
+    font-size: 19px;
+    padding-top: 5px;
+    padding-bottom: -5px;
+}
+
+.p {
+    text-indent: 17px;
+    margin: 10px 0;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+}

@@ -1,50 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>КЛИЕНТСКАЯ ВЕБ-РАЗРАБОТКА</title>
 
-    <link rel="stylesheet" href="style_for_CSS_text.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>КЛИЕНТСКАЯ ВЕБ-РАЗРАБОТКА (HTML, CSS, JAVASCRIPT)</h1>
+<h1 class="h1">КЛИЕНТСКАЯ ВЕБ-РАЗРАБОТКА (HTML, CSS, JAVASCRIPT)</h1>
 
-<text start>Старт:</text>
-<text>идет набор</text>
+<div class="div">
+    <span data-bold-blue-text>Старт:</span>
+    <span class="br">идет набор</span>
+</div>
 
-<br>
+<div class="div">
+    <span data-bold-blue-text="price">Цена:</span>
+    <span>12000 руб.</span>
+    <span data-line-through="line-through">13000 руб.</span>
+    <span>(возможна оплата по частям)</span>
+</div>
 
-<text price="price">Цена:</text>
-<text>12000 руб.</text>
-<text line-through="line-through">13000 руб.</text>
-<text>(возможна оплата по частям)</text>
+<div class="div">
+    <span data-bold-blue-text>Цена для студентов:</span>
+    <span>9000 руб.</span>
+</div>
 
-<br>
+<div class="course_content">
+    <span data-bold-blue-text>Содержание курса:</span>
+</div>
 
-<text price-for-students>Цена для студентов:</text>
-<text>9000 руб.</text>
-
-<br>
-
-<text course-conent>Содержание курса:</text>
-
-<p>
+<p class="p">
     В курсе веб-разработки мы познакомим вас с клиентской веб-разработкой,
     которая включает в себя верстку - обучение HTML и CSS, и написание кода на JavaScript.
     На курсе JavaScript будут рассмотрены синтаксис, типы данных, работа с DOM и событиями,
     стандартная библиотека языка.
 </p>
 
-<p>
+<p class="p">
     В курсе JavaScript также рассматривается большое количество библиотек и средств разработки
     - jQuery, jQuery UI, Underscore, Vue.js, Bootstrap, npm, Webpack, Less/Sass, Babel.
     Также обзорно рассматриваем Grunt, RequireJS, TypeScript. В качестве серверной части используем Express.js.
     Обучение веб-разработке закрепляется на практике.
 </p>
 
-<p>
+<p class="p">
     Вы научитесь создавать клиентскую часть сайта и получите большой кругозор по клиентским технологиям.
 </p>
-
 </body>
 </html>
