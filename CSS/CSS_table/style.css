@@ -42,33 +42,32 @@ blockquote:before, blockquote:after, q:before, q:after {
     content: none;
 }
 
-/*  reset end */
+/* reset end */
 
-.table {
+table {
     font-family: Calibri, sans-serif;
     font-size: 1.5em;
     background: #ccc;
+    width: 1070px;
 }
 
 .th {
-    width: 180px;
-    padding: 10px;
     text-align: left;
+    padding: 10px;
 }
 
 .td {
-    width: 180px;
     padding: 10px;
 }
 
-.job-title-column {
+.job-title-column{
     padding: 10px;
     width: 385px;
 }
 
-.twitter-column {
-    width: 210px;
+.twitter-column{
     padding: 10px;
+    width: 250px;
 }
 
 .thead {
