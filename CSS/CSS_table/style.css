@@ -75,7 +75,7 @@ blockquote:before, blockquote:after, q:before, q:after {
 }
 
 .tbody {
-    background: #eee;
+    background: #ccc;
 }
 
 tr:nth-child(even) {
