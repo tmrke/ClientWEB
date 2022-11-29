@@ -26,7 +26,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-    line-height: normal;
+    font-family: Calibri, sans-serif;
     letter-spacing: 0.01em;
 }
 
@@ -42,7 +42,7 @@ blockquote:before, blockquote:after, q:before, q:after {
     content: none;
 }
 
-/*  reset end */
+/* reset end */
 
 .table {
     font-family: Calibri, sans-serif;
@@ -51,23 +51,21 @@ blockquote:before, blockquote:after, q:before, q:after {
 }
 
 .th {
-    width: 180px;
-    padding: 10px;
     text-align: left;
 }
 
 .td {
-    width: 180px;
     padding: 10px;
+    width: 220px;
 }
 
 .job-title-column {
     padding: 10px;
-    width: 385px;
+    width: 380px;
 }
 
 .twitter-column {
-    width: 210px;
+    width: 250px;
     padding: 10px;
 }
 
