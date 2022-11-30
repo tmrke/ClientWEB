@@ -5,7 +5,7 @@
 .header {
     margin: 0 auto;
     text-align: center;
-    background: #fff72d;
+    background: #fed720;
 }
 
 a {
@@ -22,9 +22,9 @@ body {
 
 table {
     margin: 0 auto;
-    /*width: 100%;
-    padding: 0 0 0 0;*/
+    padding: 0 20% 0 20%;
     border-collapse: collapse;
+    position: relative;
 }
 
 
@@ -107,8 +107,79 @@ table tbody {
     height: 300px;
 }
 
-.button {
-    padding: 0 0 0 10%;
-    top: 400px;
-    left: 150px;
+tfoot {
+    display: block;
+}
+
+.archive-button-cell {
+    padding: 0 10% 0 0;
+}
+
+.cancel-button-cell {
+    padding: 0 0 0 50%;
+}
+
+.send-button-cell {
+    padding: 0 0 0 45%;
+}
+
+.archive-button {
+    background: #85b235;
+    color: #fff;
+    border-color: #628428;
+
+    border-width: 1px;
+    width: 173px;
+    height: 42px;
+}
+
+.send-button {
+    background: #f0f0f0;
+    color: #979797;
+    border-color: #afb0b0;
+
+    border-width: 1px;
+    width: 173px;
+    height: 42px;
+}
+
+.bottom-table {
+    margin-top: 50px;
+    padding: 0 20% 0 20%;
+    border-collapse: collapse;
+    position: relative;
+}
+
+.bottom-table-head {
+    padding: 0 0 0 0;
+    background:#fed720;
+    display: block;
+    position: relative;
+}
+
+.bottom-table-tr{
+    height: 40px;
+}
+
+/*      приоритет отдается для столбцов с подклассами */
+
+.bottom-table-col1{
+    width: 155px;
+}
+
+.bottom-table-col2{
+    width: 128px;
+}
+
+.bottom-table-col3{
+    width: 128px;
+}
+
+.bottom-table-col4{
+    width: 160px;
+    padding: 0 0 0 0;
+}
+
+.bottom-table-col5{
+
 }
