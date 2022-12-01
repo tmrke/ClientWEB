@@ -1,4 +1,4 @@
-/* reset start */
+/* reset start
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -45,20 +45,27 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-/*  reset end */
+
+ reset end */
 
 * {
     box-sizing: border-box;
-    font-family: Arial, serif;
-    font-size: 14px;
 }
 
 body {
-    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     color: #6b6774;
+
+    font-family: Arial, serif;
+    font-size: 14px;
+
+    overflow-x: hidden
+
 }
 
-input {
+.input {
     padding: 0 20px;
     margin: 5px 25% 20px 25%;
     width: 50%;
@@ -66,25 +73,27 @@ input {
     border: none;
 }
 
-h1{
+.header {
     margin: 5px 25% 5px 25%;
     font-size: 29px;
 }
 
-textarea{
+.textarea {
     padding: 10px 20px;
     margin: 10px 25% 10px 25%;
     width: 50%;
     height: 150px;
     border: none;
+    resize: vertical;
 }
 
-text{
+.span {
     margin: 10px 25% 10px 25%;
+    padding: 10px 0;
     width: 50%;
 }
 
-label {
+.label {
     margin-left: 25%;
     width: 50%;
     font-weight: bold;
@@ -92,18 +101,21 @@ label {
 
 .block {
     background: #feeed6;
-    height: 80%;
+    padding: 20px 10px;
+}
+
+.button:hover {
+    background-color: #3498db;
+    cursor: pointer;
 }
 
 .button {
     background: #378db2;
     border: none;
-    color: white;
+    color: #ffffff;
 
-    width: 160px;
-    height: 40px;
-
-    margin-left: 65%;
+    padding: 12px 25px;
+    margin: 10px 0 0 65%;
 
     font-weight: bold;
 }
