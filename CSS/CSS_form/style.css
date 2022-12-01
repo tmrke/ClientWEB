@@ -53,23 +53,24 @@ table {
 }
 
 body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
     color: #6b6774;
+    background: #feeed6;
 
     font-family: Arial, serif;
     font-size: 14px;
 
-    overflow-x: hidden
+    margin: 0 auto;
+    max-width: 1600px;
+}
+
+.form{
+    margin: 0 auto;
 
 }
 
 .input {
-    padding: 0 20px;
-    margin: 5px 25% 20px 25%;
-    width: 50%;
-    height: 30px;
+    padding: 10px;
+    margin: 0 auto;
     border: none;
 }
 
@@ -81,27 +82,31 @@ body {
 .textarea {
     padding: 10px 20px;
     margin: 10px 25% 10px 25%;
-    width: 50%;
     height: 150px;
     border: none;
     resize: vertical;
 }
 
 .span {
-    margin: 10px 25% 10px 25%;
+    margin: 10px 25%;
     padding: 10px 0;
-    width: 50%;
 }
 
-.label {
-    margin-left: 25%;
-    width: 50%;
+.div {
+    margin: auto;
     font-weight: bold;
 }
 
+.label {
+    margin: 0 0 0 0;
+    padding: 10px 0 10px 25%;
+}
+
 .block {
-    background: #feeed6;
     padding: 20px 10px;
+
+    margin: 0 auto;
+    max-width: 1600px;
 }
 
 .button:hover {
@@ -115,7 +120,10 @@ body {
     color: #ffffff;
 
     padding: 12px 25px;
-    margin: 10px 0 0 65%;
+  /*  margin: 0 0 0 60%; */
+    margin-right: auto;
 
     font-weight: bold;
+
+    /*  попробовать left: auto */
 }
