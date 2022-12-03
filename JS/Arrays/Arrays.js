@@ -5,7 +5,7 @@
         return e2 - e1;
     });
 
-    console.log(array)
+    console.log(array);
     console.log(array.slice(0, 5));
     console.log(array.slice(array.length - 5));
 
@@ -25,13 +25,15 @@
         array.push(i);
     }
 
-    console.log(array)
+    console.log(array);
 
-    var squaresEvenNumbersArray = array.filter(function (currentValue) {
-        if (currentValue % 2 === 0) {
-            return currentValue;
+    var squaresEvenNumbersArray = array.filter(function (value) {
+        if (value % 2 === 0) {
+            return value;
         }
-    }).map(value => value * value);
+    }).map(function (value) {
+        return value * value;
+    });
 
     /* var squaresEvenNumbersArray = array.filter(function (currentValue) {
         if (currentValue % 2 === 0) {
@@ -42,5 +44,5 @@
     Почему не получается вот так?
     */
 
-    console.log(squaresEvenNumbersArray)
+    console.log(squaresEvenNumbersArray);
 })();
