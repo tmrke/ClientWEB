@@ -9,11 +9,11 @@
     console.log(array.slice(0, 5));
     console.log(array.slice(array.length - 5));
 
-    console.log(array.reduce(function (accumulator, currentValue) {
+    console.log(array.reduce(function (evenNumbersSum, currentValue) {
         if (currentValue % 2 === 0) {
-            return accumulator + currentValue;
+            return evenNumbersSum + currentValue;
         } else {
-            return accumulator;
+            return evenNumbersSum;
         }
     }, 0));
 }());

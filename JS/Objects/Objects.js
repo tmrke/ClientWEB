@@ -18,8 +18,13 @@
         population: 466078
     };
 
+    var novosibirskCity = {
+        name: "Novosibirsk",
+        population: 1633595
+    };
+
     russiaCountry.name = "Russia";
-    russiaCountry.cities = [moscowCity, vladivostokCity, sochiCity];
+    russiaCountry.cities = [moscowCity, vladivostokCity, sochiCity, novosibirskCity];
 
     var newYorkCity = {
         name: "New York",
@@ -51,6 +56,35 @@
 
     mexicoCountry.name = "Mexico";
     mexicoCountry.cities = [mexicoCity, tijuanaCity];
-    
-    console.log(russiaCountry)
+
+    var countries = [russiaCountry, usaCountry, mexicoCountry];
+
+    countries.sort(function (country1, country2) {
+        return country2.cities.length - country1.cities.length;
+    });
+
+    var maxCountCitiesCountry = countries.filter(function (country) {
+        return country.cities.length === countries[0].cities.length;
+    });
+
+    console.log(maxCountCitiesCountry);
+
+    var populationsByCountry = new Map();
+
+    populationsByCountry.set(russiaCountry, russiaCountry.cities.reduce(function (sumPopulation, city) {
+        var currentPopulation = city.population;
+        return sumPopulation + currentPopulation;
+    }, 0));
+
+    populationsByCountry.set(usaCountry, usaCountry.cities.reduce(function (sumPopulation, city) {
+        var currentPopulation = city.population;
+        return sumPopulation + currentPopulation;
+    }, 0));
+
+    populationsByCountry.set(mexicoCountry, mexicoCountry.cities.reduce(function (sumPopulation, city) {
+        var currentPopulation = city.population;
+        return sumPopulation + currentPopulation;
+    }, 0));
+
+    console.log(populationsByCountry);
 })();
