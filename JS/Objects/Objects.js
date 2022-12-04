@@ -71,20 +71,27 @@
 
     var populationsByCountry = new Map();
 
-    populationsByCountry.set(russiaCountry, russiaCountry.cities.reduce(function (sumPopulation, city) {
+    populationsByCountry.set(russiaCountry.name, russiaCountry.cities.reduce(function (sumPopulation, city) {
         var currentPopulation = city.population;
         return sumPopulation + currentPopulation;
     }, 0));
 
-    populationsByCountry.set(usaCountry, usaCountry.cities.reduce(function (sumPopulation, city) {
+    populationsByCountry.set(usaCountry.name, usaCountry.cities.reduce(function (sumPopulation, city) {
         var currentPopulation = city.population;
         return sumPopulation + currentPopulation;
     }, 0));
 
-    populationsByCountry.set(mexicoCountry, mexicoCountry.cities.reduce(function (sumPopulation, city) {
+    populationsByCountry.set(mexicoCountry.name, mexicoCountry.cities.reduce(function (sumPopulation, city) {
         var currentPopulation = city.population;
         return sumPopulation + currentPopulation;
     }, 0));
+
+
+    /* похожий вопрос: почему нельзя сделать вот так?:
+     populationsByCountry.set(mexicoCountry.name, mexicoCountry.cities.population.reduce(function (sumPopulation, currentPopulation) {
+         return sumPopulation + currentPopulation;
+     }, 0));
+      */
 
     console.log(populationsByCountry);
 })();
