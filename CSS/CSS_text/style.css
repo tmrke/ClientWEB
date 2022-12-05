@@ -45,35 +45,39 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 /*  reset end */
 
 body {
     background-color: #feeed6;
+    font-size: 17px;
     font-family: arial, sans-serif;
     color: #676565;
-    font-size: 17px;
-
-    max-width: 825px;
-    margin: 0 auto;
 }
 
-.h1 {
-    letter-spacing: 0.04em;
+.block {
+    max-width: 825px;
+    margin: 0 auto;
+    padding: 0 30px 0 30px;
+}
+
+.header {
     font-size: 30px;
     font-weight: normal;
     margin-bottom: 15px;
+    padding-top: 5%;
 }
 
-[data-bold-blue-text] {
+.subheader {
     color: #378DB2;
     font-weight: bold;
 }
 
-[data-line-through] {
+.line-through {
     text-decoration-line: line-through;
 }
 
-.div {
+.description {
     font-size: 19px;
     margin: 10px 0;
 }
@@ -81,12 +85,11 @@ body {
 .course_content {
     font-size: 19px;
     padding-top: 5px;
-    padding-bottom: -5px;
 }
 
-.p {
+.text-block {
     text-indent: 17px;
     margin: 10px 0;
     line-height: 24px;
-    letter-spacing: 0.02em;
+    text-align: justify;
 }
