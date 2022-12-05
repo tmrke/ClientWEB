@@ -43,10 +43,11 @@ blockquote:before, blockquote:after, q:before, q:after {
 }
 
 /*  reset end */
+.block{
+    padding: 20px;
+}
 
 .table {
-    font-family: Calibri, sans-serif;
-    font-size: 1.5em;
     background: #ccc;
 }
 
