@@ -4,15 +4,13 @@
 
 body {
     color: #6b6774;
-
-    font-family: Arial, serif;
+    font-family: Arial, sans-serif;
     font-size: 14px;
 }
 
 .header {
-    margin-left: 20px;
+    margin: 0 0 10px 20px;
     font-size: 29px;
-    margin-bottom: 10px;
 }
 
 .block {
@@ -21,7 +19,6 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding: 20px 20px 60px 20px;
-
     display: block;
 }
 
@@ -35,42 +32,38 @@ body {
     padding: 10px;
     margin: 10px 0 20px 0;
     border: none;
-    font-family: Arial, serif;
     font-size: 14px;
 }
 
-.textarea {
+.comment {
     width: 100%;
     margin: 10px 0 10px 0;
     height: 130px;
     border: none;
     resize: vertical;
     padding: 10px 0 0 10px;
-    font-family: Arial, serif;
     font-size: 14px;
 }
 
-.span {
+.bottom-text {
     margin-bottom: 10px;
 }
 
-.discription {
+.description {
     font-weight: bold;
 }
 
 .button:hover {
     background-color: #3498db;
-    cursor: pointer;
 }
 
 .button {
     background: #378db2;
     border: none;
     color: #fff;
-
     padding: 10px 15px;
     font-weight: bold;
     font-size: 16px;
-
     float: right;
+    cursor: pointer;
 }
