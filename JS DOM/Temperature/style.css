@@ -1,0 +1,35 @@
+.header {
+    width: 500px;
+    margin: 30px auto;
+    display: block;
+    color:  #123b3b;
+}
+
+.form {
+    display: block;
+    width: 900px;
+    margin: 50px auto;
+}
+
+.fahrenheit-label {
+    margin-left: 50px;
+}
+
+.fahrenheit-input {
+    margin-right: 50px;
+}
+
+.button {
+    display: block;
+    width: 200px;
+    margin: 50px 0 50px 33%;
+    padding: 10px 20px;
+    background: #008b8b;
+    border: #123b3b;
+    cursor: pointer;
+    color: #eeeeee;
+}
+
+.button:hover{
+    background: #3498db;
+}
