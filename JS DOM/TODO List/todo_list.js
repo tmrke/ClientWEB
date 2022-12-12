@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
         function setViewMode() {
             newTodoListNote.innerHTML = "<span></span>\<" +
                 "button class='edit-button' id='edit-button'>\<" +
-                "img src='/JS DOM/TODO List/edit.png' alt='edit'>\<" +
+                "img src='/JS%20DOM/TODO%20List/resources/edit.png' alt='edit'>\<" +
                 "button class='delete-button' id='delete-button'>\<" +
-                "img src='/JS DOM/TODO List/delete.png' alt='edit'>";
+                "img src='/JS%20DOM/TODO%20List/resources/delete.png' alt='edit'>";
 
             newTodoListNote.firstChild.textContent = newTodoListNoteText;
 
@@ -43,9 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
         function setEditMode() {
             newTodoListNote.innerHTML = "<input type='text' class='edit-input'>\
             <button class='save-button' id='save-button'>\
-                <img src='/JS DOM/TODO List/save.png' alt='save'>\
+                <img src='/JS%20DOM/TODO%20List/resources/save.png' alt='save'>\
             <button class='cancel-button' id='cancel-button'>\
-                <img src='/JS DOM/TODO List/cancel.png' alt='cancel'>";
+                <img src='/JS%20DOM/TODO%20List/resources/cancel.png' alt='cancel'>";
 
             var editInput = newTodoListNote.querySelector(".edit-input");
             editInput.value = newTodoListNoteText;
@@ -58,6 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             saveButton.addEventListener("click", function () {
+                if (editInput.value.length === 0) {
+                    return;
+                }
+
                 newTodoListNoteText = editInput.value;
                 setViewMode();
             })
