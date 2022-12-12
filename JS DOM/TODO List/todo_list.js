@@ -15,35 +15,52 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        function setViewMode(){
-
-        }
-
         var newTodoListNote = document.createElement("li");
         todoList.appendChild(newTodoListNote);
 
-        newTodoListNote.innerHTML = "<span></span>\<" +
-            "button class='edit-button' id='edit-button'>\<" +
-            "img src='/JS DOM/TODO List/edit.png' alt='edit'>\<" +
-            "button class='delete-button' id='delete-button'>\<" +
-            "img src='/JS DOM/TODO List/delete.png' alt='edit'>";
+        setViewMode();
 
-        newTodoListNote.firstChild.textContent = newTodoListNoteText;
+        function setViewMode() {
+            newTodoListNote.innerHTML = "<span></span>\<" +
+                "button class='edit-button' id='edit-button'>\<" +
+                "img src='/JS DOM/TODO List/edit.png' alt='edit'>\<" +
+                "button class='delete-button' id='delete-button'>\<" +
+                "img src='/JS DOM/TODO List/delete.png' alt='edit'>";
 
-        textInput.value = "";
+            newTodoListNote.firstChild.textContent = newTodoListNoteText;
 
-        newTodoListNote.querySelector(".delete-button").addEventListener("click", function () {
-            newTodoListNote.remove();
-        });
+            textInput.value = "";
 
-        newTodoListNote.querySelector(".edit-button").addEventListener("click", function () {
+            newTodoListNote.querySelector(".delete-button").addEventListener("click", function () {
+                newTodoListNote.remove();
+            });
+
+            newTodoListNote.querySelector(".edit-button").addEventListener("click", function () {
+                setEditMode();
+            })
+        }
+
+        function setEditMode() {
             newTodoListNote.innerHTML = "<input type='text' class='edit-input'>\
             <button class='save-button' id='save-button'>\
                 <img src='/JS DOM/TODO List/save.png' alt='save'>\
-            <button class='save-button' id='save-button'>\
+            <button class='cancel-button' id='cancel-button'>\
                 <img src='/JS DOM/TODO List/cancel.png' alt='cancel'>";
 
-            newTodoListNote.querySelector(".edit-input").value = newTodoListNoteText;
-        });
+            var editInput = newTodoListNote.querySelector(".edit-input");
+            editInput.value = newTodoListNoteText;
+
+            var saveButton = newTodoListNote.querySelector(".save-button");
+            var cancelButton = newTodoListNote.querySelector(".cancel-button");
+
+            cancelButton.addEventListener("click", function () {
+                setViewMode();
+            });
+
+            saveButton.addEventListener("click", function () {
+                newTodoListNoteText = editInput.value;
+                setViewMode();
+            })
+        }
     });
 });
