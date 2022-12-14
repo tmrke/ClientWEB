@@ -1,7 +1,7 @@
 .block {
     padding: 20px;
     max-width: 900px;
-    font-family: Calibri, serif;
+    font-family: Calibri, sans-serif;
     font-size: 24px;
 }
 
@@ -10,18 +10,17 @@
     text-align: left;
 }
 
-.table_cell {
-    padding: 17px 12px;
+.td {
+    padding: 12px 12px;
     border: 2px solid #ccc;
 }
 
-.even_table_row {
+.tr:nth-child(odd) {
     background: #eee;
 }
 
-.table_head {
+.th {
     color: #fff;
     background: #3498db;
-    padding: 18px 0;
     font-weight: bold;
 }
