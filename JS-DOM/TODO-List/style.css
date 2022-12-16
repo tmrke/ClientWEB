@@ -1,0 +1,31 @@
+.form {
+    display: block;
+    width: 400px;
+    margin: 20px 0 0 50px;
+}
+
+.delete-button {
+    margin: 5px 5px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    border-color: #f00;
+}
+
+.edit-button:hover {
+    border-color: #00f;
+}
+
+.edit-button {
+    margin: 5px 0 5px 10px;
+    cursor: pointer;
+}
+
+.add-button {
+    padding: 3px 20px;
+    text-align: center;
+    background: #85b235;
+    color: #eeeeee;
+    border: none;
+}
