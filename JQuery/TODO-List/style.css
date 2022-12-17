@@ -4,7 +4,7 @@ body {
 }
 
 .form {
-    width: 80%;
+    width: 60%;
     display: block;
     margin: 20px auto 5px;
     position: relative;
@@ -91,11 +91,13 @@ li {
 
 .add-button {
     display: block;
-    padding: 5px 20px;
+    padding: 10px 20px;
     text-align: center;
     background: #85b235;
     color: #eee;
     border: none;
     border-radius: 20px;
-    width: 100%;
+    width: 50%;
+    margin: auto;
+    cursor: pointer;
 }
