@@ -1,12 +1,48 @@
-.form {
-    display: block;
-    width: 400px;
-    margin: 20px 0 0 50px;
+body {
+    margin: 30px auto;
+    min-width: 50px;
 }
 
-.delete-button {
-    margin: 5px 5px;
-    cursor: pointer;
+.form {
+    width: 80%;
+    display: block;
+    margin: 20px auto 5px;
+    position: relative;
+}
+
+li {
+    margin: 20px 0;
+}
+
+.list {
+    padding: 0;
+    list-style-type: none;
+}
+
+.header {
+    text-align: center;
+    width: 300px;
+    margin: auto;
+    color: #3498db;
+}
+
+.text-input {
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+.error-message-hidden {
+    visibility: hidden;
+}
+
+.error-message-visible {
+    color: #f00;
+    visibility: visible;
+}
+
+.invalid {
+    border-color: #f00;
 }
 
 .delete-button:hover {
@@ -18,14 +54,48 @@
 }
 
 .edit-button {
+    position: absolute;
+    right: 0;
     margin: 5px 0 5px 10px;
     cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-button {
+    position: absolute;
+    right: 40px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.save-button {
+    margin: 5px 0 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cancel-button {
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cancel-button:hover {
+    border-color: #f00;
+}
+
+.save-button:hover {
+    border-color: #85b235;
 }
 
 .add-button {
-    padding: 3px 20px;
+    display: block;
+    padding: 5px 20px;
     text-align: center;
     background: #85b235;
-    color: #eeeeee;
+    color: #eee;
     border: none;
+    border-radius: 20px;
+    width: 100%;
 }
