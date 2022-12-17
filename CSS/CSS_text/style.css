@@ -1,21 +1,21 @@
 body {
-    background-color: #feeed6;
     font-size: 17px;
     font-family: arial, sans-serif;
     color: #676565;
 }
 
 .block {
-    max-width: 825px;
-    margin: 0 auto;
-    padding: 0 30px 0 30px;
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 5px 15px 0 12px;
+    background-color: #feeed6;
 }
 
 .header {
     font-size: 30px;
     font-weight: normal;
     margin-bottom: 15px;
-    padding-top: 5%;
+    padding: 5px 0;
 }
 
 .subheader {
