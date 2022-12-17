@@ -2,6 +2,7 @@ body {
     font-size: 17px;
     font-family: arial, sans-serif;
     color: #676565;
+    box-sizing: border-box;
 }
 
 .block {
