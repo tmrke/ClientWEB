@@ -10,16 +10,18 @@
     text-align: left;
 }
 
-.td {
-    padding: 12px 12px;
+.table td {
+    padding: 12px;
     border: 2px solid #ccc;
 }
 
-.tr:nth-child(odd) {
+.table tr:nth-child(odd) {
     background: #eee;
 }
 
-.th {
+.table th {
+    border: 2px solid #ccc;
+    padding: 12px;
     color: #fff;
     background: #3498db;
     font-weight: bold;
