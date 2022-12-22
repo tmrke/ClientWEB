@@ -9,23 +9,27 @@
     <script defer src="temperature.js"></script>
 </head>
 <body>
-<h1 class="header">Temperature convertor</h1>
+<h1 class="header">Temperature converter</h1>
 
 <form class="form" id="form">
-    <div>
-        <label for="celsius-input">°C</label>
-        <input type="text" id="celsius-input" placeholder="25">
+    <div class="block">
+        <label class="label">°C
+            <input class="input" type="text" id="celsius-input">
+        </label>
 
-        <label class="fahrenheit-label" for="fahrenheit-input">°F</label>
-        <input class="fahrenheit-input" disabled type="text" id="fahrenheit-input">
+        <label class="label">°F
+            <input class="input" disabled type="text" id="fahrenheit-input">
+        </label>
 
-        <label for="kelvin-input">°K</label>
-        <input type="text" disabled id="kelvin-input">
-
-        <div>
-            <input class="button" type="submit" value="convert" id="button">
-        </div>
+        <label class="label">K
+            <input class="input" type="text" disabled id="kelvin-input">
+        </label>
     </div>
+
+    <div>
+        <input class="button" type="submit" value="convert" id="button">
+    </div>
+
 </form>
 </body>
 </html>

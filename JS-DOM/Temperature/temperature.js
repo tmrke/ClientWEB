@@ -8,19 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     button.addEventListener("click", function () {
         var celsiusValue = Number(celsiusInput.value);
-        var fahrenheitValue = 1.8 * celsiusValue + 32;
-        var kelvinValue = +celsiusValue + +273.15;
 
-        if (!isFinite(celsiusValue)) {
-            alert("Ввденое значение должно быть числом");
+        if (!isFinite(celsiusValue) || celsiusInput.value.trim() === "") {
+            alert("Введенное значение должно быть числом");
         } else {
-            fahrenheitInput.value = fahrenheitValue;
-            kelvinInput.value = kelvinValue;
+            fahrenheitInput.value = 1.8 * celsiusValue + 32;
+            kelvinInput.value = celsiusValue + 273.15;
         }
     });
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
     });
-})
+});
 
