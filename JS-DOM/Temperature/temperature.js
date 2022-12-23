@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var fahrenheitInput = document.getElementById("fahrenheit-input");
     var kelvinInput = document.getElementById("kelvin-input");
     var button = document.getElementById("button");
-    console.log(button);
     var form = document.getElementById("form");
 
     button.addEventListener("click", function () {

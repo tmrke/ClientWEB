@@ -1,13 +1,13 @@
 .header {
-    max-width: 400px;
     margin: 30px auto;
-    display: block;
     color: #123b3b;
+    text-align: center;
 }
 
 .form {
     max-width: 800px;
     margin: auto;
+    text-align: center;
 }
 
 .label {
@@ -19,9 +19,8 @@
     margin: 0 5px
 }
 
-.block{
-    width: 100%;
-    display: block;
+.block {
+    min-width: 250px;
     margin: auto;
     padding: 10px;
 }
