@@ -22,10 +22,10 @@
             №
         </th>
         <th>
-            Фамилия
+            Имя
         </th>
         <th>
-            Имя
+            Фамилия
         </th>
         <th>
             Номер телефона
@@ -40,22 +40,26 @@
 
 <form class="form" id="form">
     <label> Имя:
-        <input class="nameInput" id="nameInput" type="text">
+        <input class="input" id="nameInput" type="text">
     </label>
+
+    <div class="inputErrorMessageHidden" id="nameErrorMessage">Введите имя</div>
 
     <label> Фамилия:
-        <input class="lastNameInput" id="lastNameInput" type="text">
+        <input class="input" id="lastNameInput" type="text">
     </label>
 
+    <div class="inputErrorMessageHidden" id="lastNameErrorMessage">Введите фамилию</div>
+
     <label> Номер телефона:
-        <input class="phoneNumberInput" id=phoneNumberInput type="text">
+        <input class="input" id=phoneNumberInput type="number" placeholder="81234567890">
     </label>
+
+    <div class="inputErrorMessageHidden" id="phoneErrorMessage">Номер должен состоять из 11 цифр</div>
 
     <label>
         <input type="submit" class="addButton" id="addButton" value="Добавить">
     </label>
 </form>
-
-
 </body>
 </html>

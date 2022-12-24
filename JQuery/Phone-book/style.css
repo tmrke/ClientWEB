@@ -25,22 +25,51 @@
     text-align: center;
 }
 
-.nameInput {
+.input {
+    display: block;
     padding: 5px 10px;
-    margin: 10px 20px 10px 0;
+    margin: 10px auto;
+    -moz-appearance: textfield;
 }
 
-.lastNameInput {
-    padding: 5px 10px;
-    margin: 10px 20px 10px 0;
-}
-
-.phoneNumberInput {
-    padding: 5px 10px;
-    margin: 10px 20px 10px 0;
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .addButton {
     padding: 5px 10px;
     margin: 10px;
+    background: #3498db;
+    border: none;
 }
+
+.addButton:hover {
+    background: #008b8b;
+}
+
+.deleteButton {
+    padding: 5px 0;
+    min-width: 100%;
+}
+
+.deleteButton:hover {
+    background-color: #f50;
+}
+
+.inputErrorMessageVisible {
+    margin-bottom: 20px;
+    color: #f00;
+}
+
+.inputErrorMessageHidden {
+    visibility: hidden;
+}
+
+.invalid {
+    border-color: #f00;
+}
+
+
+
