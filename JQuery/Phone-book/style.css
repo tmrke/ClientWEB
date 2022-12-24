@@ -1,0 +1,46 @@
+.table {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+}
+
+.table th {
+    background: #3498db;
+    height: 50px;
+}
+
+.table tr {
+    background: #ccc;
+    height: 30px;
+}
+
+.header {
+    width: 200px;
+    margin: 20px auto;
+}
+
+.form {
+    margin: 20px auto;
+    width: 90%;
+    text-align: center;
+}
+
+.nameInput {
+    padding: 5px 10px;
+    margin: 10px 20px 10px 0;
+}
+
+.lastNameInput {
+    padding: 5px 10px;
+    margin: 10px 20px 10px 0;
+}
+
+.phoneNumberInput {
+    padding: 5px 10px;
+    margin: 10px 20px 10px 0;
+}
+
+.addButton {
+    padding: 5px 10px;
+    margin: 10px;
+}
