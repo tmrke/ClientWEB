@@ -75,5 +75,9 @@ $(function () {
                 }
             });
         });
+
+        nameInput.val("");
+        lastNameInput.val("");
+        phoneNumberInput.val("");
     });
 });
