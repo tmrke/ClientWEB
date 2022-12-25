@@ -32,11 +32,11 @@ li {
     width: 100%;
 }
 
-.error-message-hidden {
+.is-error-message-hidden {
     visibility: hidden;
 }
 
-.error-message-visible {
+.is-error-message-is-visible {
     color: #f00;
     visibility: visible;
 }
