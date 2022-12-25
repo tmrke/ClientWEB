@@ -1,10 +1,15 @@
 body {
     margin: 30px auto;
-    min-width: 50px;
+    box-sizing: border-box;
+    min-width: 500px;
+}
+
+.input-label {
+    margin: 5px
 }
 
 .form {
-    width: 80%;
+    width: 60%;
     display: block;
     margin: 20px auto 5px;
     position: relative;
@@ -12,10 +17,10 @@ body {
 
 li {
     margin: 20px 0;
+    min-height: 20px;
 }
 
 .list {
-    padding: 0;
     list-style-type: none;
 }
 
@@ -27,18 +32,19 @@ li {
 }
 
 .text-input {
-    margin: auto;
+    margin: 5px auto -20px;
     display: block;
-    width: 100%;
+    width: 98%;
 }
 
 .is-error-message-hidden {
     visibility: hidden;
+    color: #f00;
 }
 
-.is-error-message-is-visible {
+.error-message {
+    padding: 5px 10px;
     color: #f00;
-    visibility: visible;
 }
 
 .invalid {
@@ -54,31 +60,32 @@ li {
 }
 
 .edit-button {
-    position: absolute;
     right: 0;
     margin: 5px 0 5px 10px;
     cursor: pointer;
     border-radius: 5px;
+    padding: 4px;
 }
 
 .delete-button {
-    position: absolute;
-    right: 40px;
     margin: 5px;
     cursor: pointer;
     border-radius: 5px;
+    padding: 4px;
 }
 
 .save-button {
     margin: 5px 0 5px 10px;
     cursor: pointer;
     border-radius: 5px;
+    padding: 4px;
 }
 
 .cancel-button {
     margin: 5px;
     cursor: pointer;
     border-radius: 5px;
+    padding: 4px;
 }
 
 .cancel-button:hover {
@@ -91,11 +98,31 @@ li {
 
 .add-button {
     display: block;
-    padding: 5px 20px;
+    padding: 10px 20px;
     text-align: center;
     background: #85b235;
     color: #eee;
     border: none;
     border-radius: 20px;
+    width: 50%;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+.note-text {
+    display: inline-block;
+    width: 84%;
+}
+
+.edit-input {
+    width: 83%;
+}
+
+.note {
     width: 100%;
+}
+
+.buttons {
+    display: inline-block;
+    text-align: right;
 }

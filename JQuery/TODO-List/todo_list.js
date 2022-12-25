@@ -28,8 +28,10 @@ $(function () {
 
         function setViewMode() {
             newTodoListNote.html("<span class='note-text'></span>\
-                <label class='buttons'><button class='edit-button' title='edit'><img src='/JS-DOM/TODO-List/resources/edit.png' alt='edit'></button>\
-                <button class='delete-button' title='delete'><img src='/JS-DOM/TODO-List/resources/delete.png' alt='delete'></button></label>");
+                <label class='buttons'>\
+                <button class='edit-button' title='edit'><img src='/JS-DOM/TODO-List/resources/edit.png' alt='edit'></button>\
+                <button class='delete-button' title='delete'><img src='/JS-DOM/TODO-List/resources/delete.png' alt='delete'></button>\
+                </label>");
 
             newTodoListNote.find(".note-text").text(newTodoListNoteText);
             textInput.val("");

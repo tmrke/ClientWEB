@@ -78,12 +78,14 @@ li {
     margin: 5px 0 5px 10px;
     cursor: pointer;
     border-radius: 5px;
+    padding: 4px;
 }
 
 .cancel-button {
     margin: 5px;
     cursor: pointer;
     border-radius: 5px;
+    padding: 4px;
 }
 
 .cancel-button:hover {
@@ -113,8 +115,7 @@ li {
 }
 
 .edit-input {
-    width: 84%;
-    margin-right: 5px;
+    width: 83%;
 }
 
 .note {

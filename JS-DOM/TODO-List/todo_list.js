@@ -10,81 +10,86 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     addButton.addEventListener("click", function () {
-        var newTodoListNoteText = textInput.value.trim();
-        errorMessageVisible(false);
+            var newTodoListNoteText = textInput.value.trim();
 
-        if (newTodoListNoteText.length === 0) {
-            errorMessageVisible(true);
+            isErrorMessageVisible(false);
 
-            return;
-        }
+            if (newTodoListNoteText.length === 0) {
+                isErrorMessageVisible(true);
 
-        var newTodoListNote = document.createElement("li");
-        todoList.appendChild(newTodoListNote);
+                return;
+            }
 
-        setViewMode();
+            var newTodoListNote = document.createElement("li");
+            newTodoListNote.classList.add("new-todo-list-note");
+            todoList.appendChild(newTodoListNote);
 
-        function errorMessageVisible(visible) {
-            if (visible === true) {
-                textInput.classList.add("invalid");
-                errorMessage.classList.remove("error-message-hidden");
-                errorMessage.classList.add("error-message-visible");
-            } else {
-                errorMessage.classList.remove("error-message-visible");
-                errorMessage.classList.add("error-message-hidden");
-                textInput.classList.remove("invalid");
+            setViewMode();
+
+            function isErrorMessageVisible(isVisible) {
+                if (isVisible === true) {
+                    textInput.classList.add("invalid");
+                    errorMessage.classList.remove("is-error-message-hidden");
+                } else {
+                    errorMessage.classList.add("is-error-message-hidden");
+                    textInput.classList.remove("invalid");
+                }
+            }
+
+            function setViewMode() {
+                newTodoListNote.innerHTML = "<span class='note-text'></span>\
+                <label class='buttons'>\
+                <button class='edit-button' title='edit'><img src='/JS-DOM/TODO-List/resources/edit.png' alt='edit'></button>\
+                <button class='delete-button' title='delete'><img src='/JS-DOM/TODO-List/resources/delete.png' alt='delete'></button>\
+                </label>";
+
+                newTodoListNote.querySelector(".note-text").textContent = newTodoListNoteText;
+                textInput.value = "";
+
+                newTodoListNote.querySelector(".delete-button").addEventListener("click", function () {
+                    newTodoListNote.remove();
+                });
+
+                newTodoListNote.querySelector(".edit-button").addEventListener("click", function () {
+                    setEditMode();
+                });
+            }
+
+            function setEditMode() {
+                newTodoListNote.innerHTML = "<div class='note'><input type='text' class='edit-input'>\
+                <button class='save-button' title='save'>\
+                <img src='/JS-DOM/TODO-List/resources/save.png' alt='save'></button>\
+                <button class='cancel-button' title='cancel'>\
+                <img src='/JS-DOM/TODO-List/resources/cancel.png' alt='cancel'></button></div>\
+                <div class='is-error-message-hidden error-message'>Note can't be empty</div>";
+
+                var editInput = newTodoListNote.querySelector(".edit-input");
+                editInput.value = newTodoListNoteText;
+
+                var saveButton = newTodoListNote.querySelector(".save-button");
+                var cancelButton = newTodoListNote.querySelector(".cancel-button");
+
+                cancelButton.addEventListener("click", function () {
+                    setViewMode();
+                });
+
+                saveButton.addEventListener("click", function () {
+                    var editErrorMessage = newTodoListNote.querySelector(".is-error-message-hidden");
+
+                    if (editInput.value.length === 0) {
+                        editInput.classList.add("invalid");
+                        editErrorMessage.classList.remove("is-error-message-hidden");
+
+                        return;
+                    }
+
+                    newTodoListNoteText = editInput.value;
+                    setViewMode();
+                });
             }
         }
-
-        function setViewMode() {
-            newTodoListNote.innerHTML = "<span></span>" +
-                "<button class='edit-button' id='edit-button' title='edit'><img src='/JS-DOM/TODO-List/resources/edit.png' alt='edit'>" +
-                "<button class='delete-button' id='delete-button' title='delete'><img src='/JS-DOM/TODO-List/resources/delete.png' alt='delete'>";
-
-            newTodoListNote.firstChild.textContent = newTodoListNoteText;
-            textInput.value = "";
-
-            newTodoListNote.querySelector(".delete-button").addEventListener("click", function () {
-                newTodoListNote.remove();
-            });
-
-            newTodoListNote.querySelector(".edit-button").addEventListener("click", function () {
-                setEditMode();
-            })
-        }
-
-        function setEditMode() {
-            newTodoListNote.innerHTML = "<div><input type='text' class='edit-input'>\
-                <button class='save-button' id='save-button' title='save'>\
-                <img src='/JS-DOM/TODO-List/resources/save.png' alt='save'>\
-                <button class='cancel-button' id='cancel-button' title='cancel'>\
-                <img src='/JS-DOM/TODO-List/resources/cancel.png' alt='cancel'></div>" +
-                "<div id='edit-error-message' class='is-error-message-hidden'>Note can't be empty</div>";
-
-            var editInput = newTodoListNote.querySelector(".edit-input");
-            editInput.value = newTodoListNoteText;
-
-            var saveButton = newTodoListNote.querySelector(".save-button");
-            var cancelButton = newTodoListNote.querySelector(".cancel-button");
-
-            cancelButton.addEventListener("click", function () {
-                setViewMode();
-            });
-
-            saveButton.addEventListener("click", function () {
-                var editErrorMessage = document.getElementById("edit-error-message");
-
-                if (editInput.value.length === 0) {
-                    editErrorMessage.classList.remove("error-message-hidden");
-                    editErrorMessage.classList.add("error-message-visible");
-                    editInput.classList.add("invalid");
-
-                    return;
-                }
-
-                newTodoListNoteText = editInput.value;
-                setViewMode();
-            });
-        }
-    });
+    );
 });
+
+
+
