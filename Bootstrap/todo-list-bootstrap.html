@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="todo_list.js"></script>
+    <title>TODO list</title>
+
+</head>
+<body>
+<h1 class="header col-12">TODO list</h1>
+
+<form class="form" id="form">
+    <div class="input-block row">
+        <label for="text-input" class="input-label col-10 col-sm-2">Enter your note: </label>
+        <input class="text-input is-error-message-hidden col-10 col-sm-7" type="text" id="text-input"
+               placeholder="Note can't be empty">
+        <input class="add-button col-10 col-sm-2" type="submit" id="add-button" value="Add">
+    </div>
+    <ul id="list" class="list row"></ul>
+</form>
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
