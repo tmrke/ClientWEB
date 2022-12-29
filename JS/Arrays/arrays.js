@@ -3,7 +3,7 @@
 
     console.log("Array1 до сортировки: {" + array1.join(", ") + "}");
 
-    array1 = array1.sort(function (e1, e2) {
+    array1.sort(function (e1, e2) {
         return e2 - e1;
     });
 
@@ -17,7 +17,7 @@
     console.log("Первые пять элементов массива: {" + first5ElementsArray.join(", ") + "}");
 
     function getLast5ElementsArray(array) {
-        return array.slice(array.length - 5);
+        return array.slice(-5);
     }
 
     var last5ElementsArray = getLast5ElementsArray(array1);
@@ -47,7 +47,7 @@
     function getEvenNumbersSquaresArray(array) {
         return array
             .filter(function (value) {
-                return value % 2 === 0
+                return value % 2 === 0;
             })
             .map(function (value) {
                 return value * value;
