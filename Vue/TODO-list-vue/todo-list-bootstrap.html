@@ -13,13 +13,14 @@
 
 </head>
 <body>
-<h1 class="header">TODO list</h1>
+<h1 class="header col-12">TODO list</h1>
+
 <form class="form" id="form">
     <div class="input-block row">
-        <label for="text-input" class="input-label col-11 col-md-2">Enter your note: </label>
-        <input class="text-input is-error-message-hidden col-10 col-md-7" id="text-input"
+        <label for="text-input" class="input-label col-10 col-sm-2">Enter your note: </label>
+        <input class="text-input is-error-message-hidden col-10 col-sm-7" type="text" id="text-input"
                placeholder="Note can't be empty">
-        <input class="btn btn-success add-button col-10 col-md-2" type="submit" id="add-button" value="Add">
+        <input class="add-button col-10 col-sm-2" type="submit" id="add-button" value="Add">
     </div>
     <ul id="list" class="list row"></ul>
 </form>

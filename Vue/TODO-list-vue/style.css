@@ -36,26 +36,59 @@ body {
     border-color: #f00;
 }
 
-.add-button {
-    margin-bottom: 10px;
+.delete-button:hover {
+    border-color: #f00;
+}
+
+.edit-button:hover {
+    border-color: #00f;
 }
 
 .edit-button {
-    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 10px 5px;
 }
 
 .delete-button {
-    margin-left: 5px;
-    margin-right: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 10px 5px;
 }
 
 .save-button {
-    margin-left: 25px;
-    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 10px 5px;
 }
 
 .cancel-button {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 4px;
     margin: 10px 5px;
+}
+
+.cancel-button:hover {
+    border-color: #f00;
+}
+
+.save-button:hover {
+    border-color: #85b235;
+}
+
+.add-button {
+    padding: 10px 20px;
+    background: #85b235;
+    color: #eee;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    justify-content: center;
+    margin: 10px;
 }
 
 .note-text {
@@ -71,6 +104,7 @@ body {
 }
 
 .new-todo-list-note {
+    width: 99%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -82,10 +116,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin: 20px 0;
+    margin: 20px 10px;
 }
 
 .is-error-message-hidden::placeholder {
     visibility: hidden;
 }
-
