@@ -1,5 +1,7 @@
 body {
     box-sizing: border-box;
+    position: relative;
+    min-width: 320px;
 }
 
 .contacts-table {
@@ -74,5 +76,38 @@ input[type="number"]::-webkit-inner-spin-button {
     color: #f00;
 }
 
+.modal-dialog {
+    width: 300px;
+    height: 120px;
+    display: block;
+    margin: auto;
+    background: #ccb;
+}
+
+.modal-dialog-hidden {
+    display: none;
+}
+
+.modal-dialog-head {
+    color: #eee;
+    height: 30px;
+    background: #00995b;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.yes-button {
+    margin-top: 20px;
+    margin-left: 40px;
+    background: #00995b;
+    padding: 5px 20px;
+}
+
+.no-button {
+    margin-top: 20px;
+    margin-left: 90px;
+    background: #f00;
+    padding: 5px 20px;
+}
 
 

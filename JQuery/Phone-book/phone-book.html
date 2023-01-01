@@ -38,20 +38,26 @@
         <input type="submit" class="add-button" id="add-button" value="Добавить">
     </label>
 </form>
-<div class="block">
-    <table class="contacts-table" id="contacts-table">
-        <thead>
-        <tr>
-            <th>№</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Номер телефона</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody id="tbody">
-        </tbody>
-    </table>
+<table class="contacts-table" id="contacts-table">
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Номер телефона</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    </tbody>
+</table>
+
+<div class="modal-dialog modal-dialog-hidden" id="modal-dialog">
+    <div class="modal-dialog-head">Вы уверены?</div>
+    <div class="content">
+        <button class="yes-button" id="yes-button">Да</button>
+        <button class="no-button" id="no-button">Нет</button>
+    </div>
 </div>
 </body>
 </html>

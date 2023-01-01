@@ -8,7 +8,7 @@ $(function () {
     var nameErrorMessage = $("#name-error-message")
     var lastNameErrorMessage = $("#last-name-error-message")
     var phoneErrorMessage = $("#phone-error-message")
-    var phoneNumbers = [];
+    var phonesNumbers = [];
 
     form.submit(function (e) {
         e.preventDefault();
@@ -51,7 +51,7 @@ $(function () {
             return;
         }
 
-        if (phoneNumbers.indexOf(phoneNumber) !== -1) {
+        if (phonesNumbers.indexOf(phoneNumber) !== -1) {
             phoneErrorMessage.text("Контакт с таким номером уже существует");
             phoneNumberInput.toggleClass("invalid", true);
             phoneErrorMessage.toggleClass("invalid", true);
@@ -63,7 +63,7 @@ $(function () {
         phoneErrorMessage.toggleClass("invalid", false);
         phoneErrorMessage.text("Номер введен некорректно");
 
-        phoneNumbers.push(phoneNumber);
+        phonesNumbers.push(phoneNumber);
 
         var deleteButton = $("<button class='delete-button'>Удалить</button>");
         var rowsCount = $("#contacts-table tr").length;
@@ -77,23 +77,32 @@ $(function () {
         newRow.appendTo(table);
 
         deleteButton.click(function () {
-            //-----------
+            var modalDialog = $("#modal-dialog");
 
-            //---------------
+            modalDialog.toggleClass("modal-dialog-hidden", false);
 
+            $("#yes-button").click(function () {
+                newRow.remove();
 
-            newRow.remove();
-
-            function updateTableNumeration() {
-                $(".contacts-table tr").each(function (positionNumber) {
-                    $(this).find("td:first").text(positionNumber);
-                });
-            }
-
-            $.ajax({
-                success: function () {
-                    updateTableNumeration();
+                function updateTableNumeration() {
+                    $(".contacts-table tr").each(function (positionNumber) {
+                        $(this).find("td:first").text(positionNumber);
+                    });
                 }
+
+                $.ajax({
+                    success: function () {
+                        updateTableNumeration();
+                    }
+                });
+
+                phonesNumbers.splice(phonesNumbers.indexOf(phoneNumber));
+
+                modalDialog.toggleClass("modal-dialog-hidden", true);
+            });
+
+            $("#no-button").click(function () {
+                modalDialog.toggleClass("modal-dialog-hidden", true);
             });
         });
 
