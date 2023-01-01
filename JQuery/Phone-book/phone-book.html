@@ -15,51 +15,43 @@
     Phone book
 </h1>
 
-<table class="table" id="table">
+<form class="form" id="form">
+    <label> Имя:
+        <input class="input" id="name-input" type="text">
+    </label>
+
+    <div class="input-error-message-hidden" id="name-error-message">Введите имя</div>
+
+    <label> Фамилия:
+        <input class="input" id="last-name-input" type="text">
+    </label>
+
+    <div class="input-error-message-hidden" id="last-name-error-message">Введите фамилию</div>
+
+    <label> Номер телефона:
+        <input class="input" id="phone-number-input" placeholder="81234567890">
+    </label>
+
+    <div class="input-error-message-hidden" id="phone-error-message">Введите номер</div>
+
+    <label>
+        <input type="submit" class="add-button" id="add-button" value="Добавить">
+    </label>
+</form>
+
+<table class="contacts-table" id="contacts-table">
     <thead>
     <tr>
-        <th>
-            №
-        </th>
-        <th>
-            Имя
-        </th>
-        <th>
-            Фамилия
-        </th>
-        <th>
-            Номер телефона
-        </th>
+        <th>№</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Номер телефона</th>
         <th></th>
     </tr>
     </thead>
-    <tbody id="tbody" class="tbody">
+    <tbody id="tbody">
 
     </tbody>
 </table>
-
-<form class="form" id="form">
-    <label> Имя:
-        <input class="input" id="nameInput" type="text">
-    </label>
-
-    <div class="inputErrorMessageHidden" id="nameErrorMessage">Введите имя</div>
-
-    <label> Фамилия:
-        <input class="input" id="lastNameInput" type="text">
-    </label>
-
-    <div class="inputErrorMessageHidden" id="lastNameErrorMessage">Введите фамилию</div>
-
-    <label> Номер телефона:
-        <input class="input" id=phoneNumberInput type="number" placeholder="81234567890">
-    </label>
-
-    <div class="inputErrorMessageHidden" id="phoneErrorMessage">Номер должен состоять из 11 цифр</div>
-
-    <label>
-        <input type="submit" class="addButton" id="addButton" value="Добавить">
-    </label>
-</form>
 </body>
 </html>

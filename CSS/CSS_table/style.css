@@ -5,21 +5,21 @@
     font-size: 24px;
 }
 
-.table {
+.contacts-table {
     width: 100%;
     text-align: left;
 }
 
-.table td {
+.contacts-table td {
     padding: 12px;
     border: 1px solid #ccc;
 }
 
-.table tr:nth-child(odd) {
+.contacts-table tr:nth-child(odd) {
     background: #eee;
 }
 
-.table th {
+.contacts-table th {
     border: 2px solid #ccc;
     padding: 12px;
     color: #fff;

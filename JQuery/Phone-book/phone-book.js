@@ -1,13 +1,13 @@
 $(function () {
-    var table = $("#table");
-    var nameInput = $("#nameInput");
-    var lastNameInput = $("#lastNameInput");
-    var phoneNumberInput = $("#phoneNumberInput");
-    var addButton = $("#addButton");
+    var table = $("#contacts-table");
+    var nameInput = $("#name-input");
+    var lastNameInput = $("#last-name-input");
+    var phoneNumberInput = $("#phone-number-input");
+    var addButton = $("#add-button");
     var form = $("#form");
-    var nameErrorMessage = $("#nameErrorMessage")
-    var lastNameErrorMessage = $("#lastNameErrorMessage")
-    var phoneErrorMessage = $("#phoneErrorMessage")
+    var nameErrorMessage = $("#name-error-message")
+    var lastNameErrorMessage = $("#last-name-error-message")
+    var phoneErrorMessage = $("#phone-error-message")
 
     form.submit(function (e) {
         e.preventDefault();
@@ -15,44 +15,47 @@ $(function () {
 
     addButton.click(function () {
         var nameInputText = nameInput.val().trim();
-        var lastNameInputText = lastNameInput.val().trim();
-        var phoneNumber = phoneNumberInput.val().trim();
-        var rowsCount = $("table tr").length;
-        var rowsCountText = rowsCount.valueOf();
 
         if (nameInputText.length === 0) {
             nameInput.toggleClass("invalid", true);
-            nameErrorMessage.toggleClass("inputErrorMessageHidden", false).toggleClass("inputErrorMessageVisible", true);
+            nameErrorMessage.toggleClass("input-error-message-hidden", false).toggleClass("input-error-message-visible", true);
 
             return;
         }
 
         nameInput.toggleClass("invalid", false);
-        nameErrorMessage.toggleClass("inputErrorMessageHidden", true).toggleClass("inputErrorMessageVisible", false);
+        nameErrorMessage.toggleClass("input-error-message-hidden", true).toggleClass("input-error-message-visible", false);
+
+        var lastNameInputText = lastNameInput.val().trim();
 
         if (lastNameInputText.length === 0) {
             lastNameInput.toggleClass("invalid", true);
-            lastNameErrorMessage.toggleClass("inputErrorMessageHidden", false).toggleClass("inputErrorMessageVisible", true);
+            lastNameErrorMessage.toggleClass("input-error-message-hidden", false).toggleClass("input-error-message-visible", true);
 
             return;
         }
 
         lastNameInput.toggleClass("invalid", false);
-        lastNameErrorMessage.toggleClass("inputErrorMessageHidden", true).toggleClass("inputErrorMessageVisible", false);
+        lastNameErrorMessage.toggleClass("input-error-message-hidden", true).toggleClass("input-error-message-visible", false);
 
-        if (phoneNumber.length !== 11) {
+        var regularExpression = /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+        var phoneNumber = phoneNumberInput.val().trim();
+        var isValid = regularExpression.test(phoneNumber);
+
+        if (phoneNumber.length === 0 || !isValid) {
             phoneNumberInput.toggleClass("invalid", true);
-            phoneErrorMessage.toggleClass("inputErrorMessageHidden", false).toggleClass("inputErrorMessageVisible", true);
+            phoneErrorMessage.toggleClass("input-error-message-hidden", false).toggleClass("input-error-message-visible", true);
 
             return;
         }
 
         phoneNumberInput.toggleClass("invalid", false);
-        phoneErrorMessage.toggleClass("inputErrorMessageHidden", true).toggleClass("inputErrorMessageVisible", false);
+        phoneErrorMessage.toggleClass("input-error-message-hidden", true).toggleClass("input-error-message-visible", false);
 
-        var deleteButton = $(("<button class='deleteButton'>Удалить</button>"));
+        var deleteButton = $("<button class='delete-button'>Удалить</button>");
+        var rowsCount = $("#contacts-table tr").length;
         var newRow = $("<tr></tr>")
-            .append($("<td></td>").text(rowsCountText))
+            .append($("<td></td>").text(rowsCount))
             .append($("<td></td>").text(nameInputText))
             .append($("<td></td>").text(lastNameInputText))
             .append($("<td></td>").text(phoneNumber))
@@ -61,10 +64,15 @@ $(function () {
         newRow.appendTo(table);
 
         deleteButton.click(function () {
+            //-----------
+
+            //---------------
+
+
             newRow.remove();
 
             function updateTableNumeration() {
-                $(".table tr").each(function (positionNumber) {
+                $(".contacts-table tr").each(function (positionNumber) {
                     $(this).find("td:first").text(positionNumber);
                 });
             }

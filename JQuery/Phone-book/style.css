@@ -1,19 +1,19 @@
-body{
+body {
     box-sizing: border-box;
 }
 
-.table {
+.contacts-table {
     margin: auto;
     width: 90%;
     text-align: center;
 }
 
-.table th {
+.contacts-table th {
     background: #3498db;
     height: 50px;
 }
 
-.table tr {
+.contacts-table tr {
     background: #ccc;
     height: 30px;
 }
@@ -42,7 +42,7 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.addButton {
+.add-button {
     padding: 15px 80px;
     margin: 10px;
     background: #3498db;
@@ -50,25 +50,25 @@ input[type="number"]::-webkit-inner-spin-button {
     border-radius: 10px;
 }
 
-.addButton:hover {
+.add-button:hover {
     background: #008b8b;
 }
 
-.deleteButton {
+.delete-button {
     padding: 5px 0;
     min-width: 100%;
 }
 
-.deleteButton:hover {
+.delete-button:hover {
     background-color: #f50;
 }
 
-.inputErrorMessageVisible {
+.input-error-message-visible {
     margin-bottom: 20px;
     color: #f00;
 }
 
-.inputErrorMessageHidden {
+.input-error-message-hidden {
     visibility: hidden;
 }
 
