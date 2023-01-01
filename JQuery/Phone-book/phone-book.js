@@ -8,6 +8,7 @@ $(function () {
     var nameErrorMessage = $("#name-error-message")
     var lastNameErrorMessage = $("#last-name-error-message")
     var phoneErrorMessage = $("#phone-error-message")
+    var phoneNumbers = [];
 
     form.submit(function (e) {
         e.preventDefault();
@@ -18,39 +19,51 @@ $(function () {
 
         if (nameInputText.length === 0) {
             nameInput.toggleClass("invalid", true);
-            nameErrorMessage.toggleClass("input-error-message-hidden", false).toggleClass("input-error-message-visible", true);
+            nameErrorMessage.toggleClass("invalid", true);
 
             return;
         }
 
         nameInput.toggleClass("invalid", false);
-        nameErrorMessage.toggleClass("input-error-message-hidden", true).toggleClass("input-error-message-visible", false);
+        nameErrorMessage.toggleClass("invalid", false);
 
         var lastNameInputText = lastNameInput.val().trim();
 
         if (lastNameInputText.length === 0) {
             lastNameInput.toggleClass("invalid", true);
-            lastNameErrorMessage.toggleClass("input-error-message-hidden", false).toggleClass("input-error-message-visible", true);
+            lastNameErrorMessage.toggleClass("invalid", true);
 
             return;
         }
 
         lastNameInput.toggleClass("invalid", false);
-        lastNameErrorMessage.toggleClass("input-error-message-hidden", true).toggleClass("input-error-message-visible", false);
+        lastNameErrorMessage.toggleClass("invalid", false);
 
         var regularExpression = /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
         var phoneNumber = phoneNumberInput.val().trim();
         var isValid = regularExpression.test(phoneNumber);
 
+
         if (phoneNumber.length === 0 || !isValid) {
             phoneNumberInput.toggleClass("invalid", true);
-            phoneErrorMessage.toggleClass("input-error-message-hidden", false).toggleClass("input-error-message-visible", true);
+            phoneErrorMessage.toggleClass("invalid", true);
+
+            return;
+        }
+
+        if (phoneNumbers.indexOf(phoneNumber) !== -1) {
+            phoneErrorMessage.text("Контакт с таким номером уже существует");
+            phoneNumberInput.toggleClass("invalid", true);
+            phoneErrorMessage.toggleClass("invalid", true);
 
             return;
         }
 
         phoneNumberInput.toggleClass("invalid", false);
-        phoneErrorMessage.toggleClass("input-error-message-hidden", true).toggleClass("input-error-message-visible", false);
+        phoneErrorMessage.toggleClass("invalid", false);
+        phoneErrorMessage.text("Номер введен некорректно");
+
+        phoneNumbers.push(phoneNumber);
 
         var deleteButton = $("<button class='delete-button'>Удалить</button>");
         var rowsCount = $("#contacts-table tr").length;

@@ -63,17 +63,15 @@ input[type="number"]::-webkit-inner-spin-button {
     background-color: #f50;
 }
 
-.input-error-message-visible {
-    margin-bottom: 20px;
-    color: #f00;
-}
-
 .input-error-message-hidden {
-    visibility: hidden;
+    display: none;
 }
 
 .invalid {
+    display: block;
     border-color: #f00;
+    margin-bottom: 20px;
+    color: #f00;
 }
 
 
