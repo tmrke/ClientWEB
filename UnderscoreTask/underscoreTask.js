@@ -55,7 +55,7 @@
         .sortBy("age")
         .value();
 
-    console.log("Люди в возрасте от 20 до 30 лет:");
+    console.log("Люди в возрасте от 20 до 30 лет");
     console.log(between20And30PersonsNames);
 
     var between20And30PersonsUniqueNames = _.chain(persons)
