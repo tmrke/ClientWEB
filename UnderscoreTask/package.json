@@ -2,16 +2,13 @@
   "name": "underscore",
   "version": "1.0.0",
   "description": "",
-  "main": "underscore-esm-min.js",
+  "main": "underscoreTask.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "ageev timur",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "jquery": "^3.6.3"
-  },
-  "devDependencies": {
     "underscore": "^1.13.6"
   }
 }

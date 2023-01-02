@@ -1,0 +1,32 @@
+.celsius {
+    text-align: center;
+}
+
+.fahrenheit {
+    text-align: center;
+}
+
+.kelvin {
+    text-align: center;
+}
+
+.table {
+    margin: auto;
+    width: 100%;
+}
+
+.header {
+    margin: 50px auto;
+    width: 500px;
+}
+
+.convert-button{
+    width: 200px;
+    margin: 45px 41%;
+    padding: 10px 50px;
+    background: #3498db;
+}
+
+body {
+    max-width: 1200px;
+}
