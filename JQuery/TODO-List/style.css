@@ -5,14 +5,13 @@ body {
 }
 
 .input-label {
-    margin: 5px
+    margin: 5px;
 }
 
 .form {
     width: 60%;
     display: block;
     margin: 20px auto 5px;
-    position: relative;
 }
 
 li {
@@ -37,14 +36,14 @@ li {
     width: 98%;
 }
 
-.is-error-message-hidden {
-    visibility: hidden;
+.is-error-message-visible {
+    visibility: visible;
+    padding: 5px 10px;
     color: #f00;
 }
 
 .error-message {
-    padding: 5px 10px;
-    color: #f00;
+    visibility: hidden;
 }
 
 .invalid {
@@ -82,7 +81,6 @@ li {
     border-radius: 5px;
     padding: 3px 4px 1px 4px;
     background: #fff;
-    display: inline;
 }
 
 .cancel-button {
@@ -91,7 +89,6 @@ li {
     border-radius: 5px;
     padding: 3px 4px 1px 4px;
     background: #fff;
-    display: inline;
 }
 
 .cancel-button:hover {
@@ -115,10 +112,6 @@ li {
     cursor: pointer;
 }
 
-.note-text {
-    width: 84%;
-}
-
 .edit-input {
     width: 95%;
 }
@@ -127,13 +120,6 @@ li {
     width: 100%;
 }
 
-.note td:nth-child(1){
+.note td:nth-child(1) {
     width: 80%;
-}
-
-.buttons {
-    display: inline-block;
-    text-align: right;
-    margin-bottom: -20px;
-
 }

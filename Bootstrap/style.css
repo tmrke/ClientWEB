@@ -85,7 +85,7 @@ body {
     margin: 20px 0;
 }
 
-.is-error-message-hidden::placeholder {
+.is-error-message-visible::placeholder {
     visibility: hidden;
 }
 

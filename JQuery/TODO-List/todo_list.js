@@ -12,14 +12,20 @@ $(function () {
     addButton.click(function () {
         var newTodoListNoteText = textInput.val().trim();
 
-        if (newTodoListNoteText.length === 0) {
-            textInput.toggleClass("invalid", true);
-            errorMessage.toggleClass("is-error-message-hidden", false);
+        var isEmptyNoteText = newTodoListNoteText.length === 0;
 
+        textInput.toggleClass("invalid", isEmptyNoteText);
+        errorMessage.toggleClass("error-message", !isEmptyNoteText);
+
+        if (isEmptyNoteText) {
             return;
         }
 
-        errorMessage.toggleClass("is-error-message-hidden", true);
+        textInput.toggleClass("invalid", isEmptyNoteText);
+        errorMessage.toggleClass("error-message", isEmptyNoteText);
+
+        textInput.toggleClass("invalid", false);
+        errorMessage.toggleClass("error-message", true);
 
         var newTodoListNote = $("<li>").addClass("new-todo-list-note");
         todoList.append(newTodoListNote);
@@ -28,16 +34,18 @@ $(function () {
 
         function setViewMode() {
             newTodoListNote.html("<table class='note'>\
-            <td>\
-            <span class='note-text'></span>\
-            </td>\
-           <td>\
-           <button class='edit-button' title='edit'><img src='/JS-DOM/TODO-List/resources/edit.png' alt='edit'></button>\
-           </td>\
-           <td>\
-           <button class='delete-button' title='delete'><img src='/JS-DOM/TODO-List/resources/delete.png' alt='delete'></button>\
-           </td>\
-           </table>");
+                <tr>\
+                    <td>\
+                        <span class='note-text'></span>\
+                    </td>\
+                    <td>\
+                        <button class='edit-button' title='edit'><img src='/JS-DOM/TODO-List/resources/edit.png' alt='edit'></button>\
+                    </td>\
+                    <td>\
+                        <button class='delete-button' title='delete'><img src='/JS-DOM/TODO-List/resources/delete.png' alt='delete'></button>\
+                    </td>\
+                </tr>\
+            </table>");
 
             newTodoListNote.find(".note-text").text(newTodoListNoteText);
             textInput.val("");
@@ -68,7 +76,7 @@ $(function () {
             </tr>\
             <tr>\
                 <td>\
-                    <div class='is-error-message-hidden error-message' id='error-message'>Note can't be empty</div>\
+                    <div class='error-message is-error-message-visible'>Note can't be empty</div>\
                 </td>\
             </tr>\
             </table>");
@@ -84,12 +92,12 @@ $(function () {
             });
 
             saveButton.click(function () {
-                var editErrorMessage = newTodoListNote.find(".is-error-message-hidden");
+                var isEmptyEditText = editInput.val().trim().length === 0;
 
-                if (editInput.val().length === 0) {
-                    editInput.toggleClass("invalid", true);
-                    editErrorMessage.toggleClass("is-error-message-hidden", false);
+                editInput.toggleClass("invalid", isEmptyEditText);
+                newTodoListNote.find(".is-error-message-visible").toggleClass("error-message", !isEmptyEditText);
 
+                if (isEmptyEditText) {
                     return;
                 }
 

@@ -37,7 +37,7 @@ li {
     width: 98%;
 }
 
-.is-error-message-hidden {
+.is-error-message-visible {
     visibility: hidden;
     color: #f00;
 }

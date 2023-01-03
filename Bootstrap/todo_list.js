@@ -47,7 +47,7 @@ $(function () {
 
         function setEditMode() {
             newTodoListNote.html("<div class='note row'>\
-                <input type='text' class='edit-input is-error-message-hidden col-11 col-md-5' placeholder='Note cant be empty'>\
+                <input type='text' class='edit-input is-error-message-visible col-11 col-md-5' placeholder='Note cant be empty'>\
                 <button class='btn btn-outline-primary save-button col-5 col-md-1' title='save'>save</button>\
                 <button class='btn btn-outline-danger cancel-button col-5 col-md-1' title='cancel'>cancel</button></div>");
 

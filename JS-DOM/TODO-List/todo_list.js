@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <img src='/JS-DOM/TODO-List/resources/save.png' alt='save'></button>\
                 <button class='cancel-button' title='cancel'>\
                 <img src='/JS-DOM/TODO-List/resources/cancel.png' alt='cancel'></button></div>\
-                <div class='is-error-message-hidden error-message'>Note can't be empty</div>";
+                <div class='is-error-message-visible error-message'>Note can't be empty</div>";
 
                 var editInput = newTodoListNote.querySelector(".edit-input");
                 editInput.value = newTodoListNoteText;
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 saveButton.addEventListener("click", function () {
-                    var editErrorMessage = newTodoListNote.querySelector(".is-error-message-hidden");
+                    var editErrorMessage = newTodoListNote.querySelector(".is-error-message-visible");
 
                     if (editInput.value.length === 0) {
                         editInput.classList.add("invalid");
