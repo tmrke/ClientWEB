@@ -64,28 +64,34 @@ li {
     margin: 5px 0 5px 10px;
     cursor: pointer;
     border-radius: 5px;
-    padding: 4px;
+    padding: 3px 4px 1px 4px;
+    background: #fff;
 }
 
 .delete-button {
     margin: 5px;
     cursor: pointer;
     border-radius: 5px;
-    padding: 4px;
+    padding: 3px 4px 1px 4px;
+    background: #fff;
 }
 
 .save-button {
     margin: 5px 0 5px 10px;
     cursor: pointer;
     border-radius: 5px;
-    padding: 4px;
+    padding: 3px 4px 1px 4px;
+    background: #fff;
+    display: inline;
 }
 
 .cancel-button {
     margin: 5px;
     cursor: pointer;
     border-radius: 5px;
-    padding: 4px;
+    padding: 3px 4px 1px 4px;
+    background: #fff;
+    display: inline;
 }
 
 .cancel-button:hover {
@@ -110,19 +116,24 @@ li {
 }
 
 .note-text {
-    display: inline-block;
     width: 84%;
 }
 
 .edit-input {
-    width: 83%;
+    width: 95%;
 }
 
 .note {
     width: 100%;
 }
 
+.note td:nth-child(1){
+    width: 80%;
+}
+
 .buttons {
     display: inline-block;
     text-align: right;
+    margin-bottom: -20px;
+
 }

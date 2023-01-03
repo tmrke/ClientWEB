@@ -27,11 +27,17 @@ $(function () {
         setViewMode();
 
         function setViewMode() {
-            newTodoListNote.html("<span class='note-text'></span>\
-                <label class='buttons'>\
-                <button class='edit-button' title='edit'><img src='/JS-DOM/TODO-List/resources/edit.png' alt='edit'></button>\
-                <button class='delete-button' title='delete'><img src='/JS-DOM/TODO-List/resources/delete.png' alt='delete'></button>\
-                </label>");
+            newTodoListNote.html("<table class='note'>\
+            <td>\
+            <span class='note-text'></span>\
+            </td>\
+           <td>\
+           <button class='edit-button' title='edit'><img src='/JS-DOM/TODO-List/resources/edit.png' alt='edit'></button>\
+           </td>\
+           <td>\
+           <button class='delete-button' title='delete'><img src='/JS-DOM/TODO-List/resources/delete.png' alt='delete'></button>\
+           </td>\
+           </table>");
 
             newTodoListNote.find(".note-text").text(newTodoListNoteText);
             textInput.val("");
@@ -46,12 +52,26 @@ $(function () {
         }
 
         function setEditMode() {
-            newTodoListNote.html("<div class='note'><input type='text' class='edit-input'>\
-                <button class='save-button' title='save'>\
-                <img src='/JS-DOM/TODO-List/resources/save.png' alt='save'></button>\
-                <button class='cancel-button' title='cancel'>\
-                <img src='/JS-DOM/TODO-List/resources/cancel.png' alt='cancel'></button></div>\
-                <div class='is-error-message-hidden error-message'>Note can't be empty</div>");
+            newTodoListNote.html("<table class='note'>\
+            <tr>\
+                <td >\
+                    <input type='text' class='edit-input'>\
+                </td>\
+                \<td>\
+                    <button class='save-button' title='save'>\
+                    <img src='/JS-DOM/TODO-List/resources/save.png' alt='save'></button>\
+                </td>\
+                \<td>\
+                    <button class='cancel-button' title='cancel'>\
+                    <img src='/JS-DOM/TODO-List/resources/cancel.png' alt='cancel'></button>\
+                </td>\
+            </tr>\
+            <tr>\
+                <td>\
+                    <div class='is-error-message-hidden error-message' id='error-message'>Note can't be empty</div>\
+                </td>\
+            </tr>\
+            </table>");
 
             var editInput = newTodoListNote.find(".edit-input");
             editInput.val(newTodoListNoteText);
