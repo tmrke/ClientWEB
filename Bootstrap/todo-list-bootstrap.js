@@ -12,14 +12,8 @@ $(function () {
         var newTodoListNoteText = textInput.val().trim();
 
         if (newTodoListNoteText.length === 0) {
-            textInput.toggleClass("invalid", true);
-            textInput.toggleClass("is-error-message-hidden", false);
-
             return;
         }
-
-        textInput.toggleClass("invalid", false);
-        textInput.toggleClass("is-error-message-hidden", true);
 
         var newTodoListNote = $("<li>");
         todoList.append(newTodoListNote);
@@ -27,11 +21,17 @@ $(function () {
         setViewMode();
 
         function setViewMode() {
-            newTodoListNote.html("<div class='new-todo-list-note row'>\
-            <span class='note-text col-11 col-md-5'></span>\
-            <button class='btn btn-primary edit-button col-5 col-md-1' title='edit'>edit</button>\
-            <button class='btn btn-danger delete-button col-5 col-md-1' title='delete'>delete</button>\
-            </div>");
+            newTodoListNote.html("<div class='row my-2 gx-4 offset-md-2 ml-md-0 align-items-center'>\
+                    <div class='note-text col-12 col-md-8 px-0'>\
+                        <span></span>\
+                    </div>\
+                    <div class='col-6 col-md-2'>\
+                        <button class='btn btn-primary edit-button' title='edit'>edit</button>\
+                    </div>\
+                    <div class='col-6 col-md-2'>\
+                        <button class='btn btn-danger delete-button' title='delete'>delete</button>\
+                    </div>\
+                </div>");
 
             newTodoListNote.find(".note-text").text(newTodoListNoteText);
             textInput.val("");
@@ -46,10 +46,19 @@ $(function () {
         }
 
         function setEditMode() {
-            newTodoListNote.html("<div class='note row'>\
-                <input type='text' class='edit-input is-error-message-hidden col-11 col-md-5' placeholder='Note cant be empty'>\
-                <button class='btn btn-outline-primary save-button col-5 col-md-1' title='save'>save</button>\
-                <button class='btn btn-outline-danger cancel-button col-5 col-md-1' title='cancel'>cancel</button></div>");
+            newTodoListNote.html("<form class='was-validated edit-form'>\
+                    <div class='row my-2 gx-4 offset-md-2 ml-md-0 align-items-center'>\
+                        <div class='col-12 col-md-8 px-0'>\
+                            <input type='text' class='edit-input form-control' required>\
+                        </div>\
+                        <div class='col-6 col-md-2'>\
+                            <input class='btn btn-outline-primary save-button' type='submit' value='save' title='save'>\
+                        </div>\
+                        <div class='col-6 col-md-2'>\
+                            <button class='btn btn-outline-danger cancel-button' title='cancel'>cancel</button>\
+                         </div>\
+                    </div>\
+                </form>");
 
             var editInput = newTodoListNote.find(".edit-input");
             editInput.val(newTodoListNoteText);
@@ -62,12 +71,7 @@ $(function () {
             });
 
             saveButton.click(function () {
-                var editErrorMessage = newTodoListNote.find(".is-error-message-hidden");
-
-                if (editInput.val().length === 0) {
-                    editInput.toggleClass("invalid", true);
-                    editErrorMessage.toggleClass("is-error-message-hidden", false);
-
+                if (editInput.val().trim().length === 0) {
                     return;
                 }
 

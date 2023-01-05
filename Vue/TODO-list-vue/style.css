@@ -4,7 +4,7 @@ body {
     margin: 20px;
 }
 
-.input-block {
+.form {
     display: flex;
     justify-content: center;
     align-items: baseline;
