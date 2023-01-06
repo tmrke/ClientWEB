@@ -35,8 +35,10 @@
     <ul id="list" class="list row">
         <note :note="note"
               v-for="note in notes"
-              v-on:delete-note="deleteNote"
-              v-on:edit-note="editNote">
+              @delete-note="deleteNote"
+              @edit-note="editNote"
+              @save-change="saveChange"
+              @cancel-change="cancelChange">
         </note>
     </ul>
 </div>
@@ -59,13 +61,17 @@
         <div v-else>
             <form class='was-validated edit-form row my-2 gx-4  ml-md-0 align-items-center'>
                 <div class='col-12 col-md-8 px-0'>
-                    <input v-model="note" type='text' class='edit-input form-control' required>
+                    <input v-model="note" type='text' class='edit-input form-control ' required>
                 </div>
                 <div class='col-6 col-md-2'>
-                    <input class='btn btn-outline-primary save-button' type='submit' value='save' title='save'>
+                    <button @click.prevent="saveChange" class='btn btn-outline-primary save-button' type='submit'
+                            title='save'>save
+                    </button>
                 </div>
                 <div class='col-6 col-md-2'>
-                    <button class='btn btn-outline-danger cancel-button' title='cancel'>cancel</button>
+                    <button @click.prevent="cancelChange" class='btn btn-outline-danger cancel-button' title='cancel'>
+                        cancel
+                    </button>
                 </div>
             </form>
         </div>

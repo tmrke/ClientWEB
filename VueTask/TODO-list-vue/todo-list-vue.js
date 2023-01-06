@@ -3,7 +3,8 @@ Vue.component("note", {
     template: "#note-template",
     data: function () {
         return {
-            isEditMode: false
+            isEditMode: false,
+            beforeChangeNoteText: this.newNoteText
         }
     },
     methods: {
@@ -13,6 +14,14 @@ Vue.component("note", {
 
         editNote: function () {
             this.isEditMode = true;
+        },
+
+        saveChange: function () {
+            this.$emit("save-change", this.beforeChangeNoteText, this.note)
+        },
+
+        cancelChange: function () {
+            this.isEditMode = false;
         }
     }
 });
@@ -22,7 +31,6 @@ new Vue({
     data: {
         isEditMode: false,
         newNoteText: "",
-        changedText: "",
         notes: []
     },
     methods: {
@@ -45,16 +53,18 @@ new Vue({
             });
         },
 
-        saveChange: function () {
-            if (this.changedText.trim().length === 0) {
-                return;
+        saveChange: function (beforeChangeNoteText, note) {     //тут разрулить че где. не работает
+            if (note.trim().length === 0) {
+                this.newNoteText = beforeChangeNoteText;
+            } else {
+                this.beforeChangeNoteText = this.newNoteText;
             }
 
-
+            this.isEditMode = false;
         },
 
         cancelChange: function () {
-
+            this.isEditMode = false;
         }
     }
 });
