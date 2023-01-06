@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="todo-list-vue.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <script defer src="node_modules/vue/dist/vue.js"></script>
+    <script defer src="node_modules/jquery/dist/jquery.js"></script>
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    <title>TODO list</title>
+</head>
+<body>
+<h1 class="header">TODO list</h1>
+<div class="container px-2" id="app">
+    <form class="form row was-validated align-items-baseline" id="form">
+        <div class="col-12 col-md-2">
+            <label class="label-text-input" for="text-input">Enter your note: </label>
+        </div>
+        <div class="col-12 col-md-8 my-2">
+            <input class="form-control text-input" id="text-input" v-model="newNoteText" required>
+        </div>
+        <div class="col-12 col-md-2 mb-4">
+            <input @click.prevent="addNote"
+                   class="btn btn-success add-button"
+                   type="submit" id="add-button"
+                   value="Add">
+        </div>
+        <hr>
+    </form>
+
+    <ul id="list" class="list row">
+        <note :note="note"
+              v-for="note in notes"
+              v-on:delete-note="deleteNote"
+              v-on:edit-note="editNote">
+        </note>
+    </ul>
+</div>
+
+<script id="note-template" type="text/x-template">
+    <li>
+        <div v-if="!isEditMode" class="row my-2 gx-4  ml-md-0 align-items-center">
+            <span class='col-12 col-md-8 px-0'>
+                {{ note }}
+            </span>
+            <div class='col-6 col-md-2'>
+                <button @click="editNote" class='btn btn-primary edit-button' title='edit'>edit</button>
+            </div>
+            <div class='col-6 col-md-2'>
+                <button @click="deleteNote" class='btn btn-danger delete-button' type="button" title='delete'>delete
+                </button>
+            </div>
+        </div>
+
+        <div v-else>
+            <form class='was-validated edit-form row my-2 gx-4  ml-md-0 align-items-center'>
+                <div class='col-12 col-md-8 px-0'>
+                    <input v-model="note" type='text' class='edit-input form-control' required>
+                </div>
+                <div class='col-6 col-md-2'>
+                    <input class='btn btn-outline-primary save-button' type='submit' value='save' title='save'>
+                </div>
+                <div class='col-6 col-md-2'>
+                    <button class='btn btn-outline-danger cancel-button' title='cancel'>cancel</button>
+                </div>
+            </form>
+        </div>
+    </li>
+</script>
+
+<script defer src="todo-list-vue.js"></script>
+</body>
+</html>
