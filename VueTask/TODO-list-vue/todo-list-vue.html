@@ -21,7 +21,7 @@
             <label class="label-text-input" for="text-input">Enter your note: </label>
         </div>
         <div class="col-12 col-md-8 my-2">
-            <input class="form-control text-input" id="text-input" v-model="newNoteText" required>
+            <input class="form-control text-input" id="text-input" v-model.trim="newNoteText" required>
         </div>
         <div class="col-12 col-md-2 mb-4">
             <input @click.prevent="addNote"
@@ -33,17 +33,16 @@
     </form>
 
     <ul id="list" class="list row">
-        <note :note="note"
-              v-for="note in notes"
-              @delete-note="deleteNote"
-              @edit-note="editNote"
-              @save-change="saveChange"
-              @cancel-change="cancelChange">
-        </note>
+        <list-item :note="note"
+                   v-for="note in notes"
+                   @delete-note="deleteNote"
+                   @save-change="saveChange"
+                   @cancel-change="cancelChange">
+        </list-item>
     </ul>
 </div>
 
-<script id="note-template" type="text/x-template">
+<script id="list-item-template" type="text/x-template">
     <li>
         <div v-if="!isEditMode" class="row my-2 gx-4  ml-md-0 align-items-center">
             <span class='col-12 col-md-8 px-0'>
@@ -61,7 +60,7 @@
         <div v-else>
             <form class='was-validated edit-form row my-2 gx-4  ml-md-0 align-items-center'>
                 <div class='col-12 col-md-8 px-0'>
-                    <input v-model="note" type='text' class='edit-input form-control ' required>
+                    <input type='text' class='edit-input form-control' v-model.trim="note" required>
                 </div>
                 <div class='col-6 col-md-2'>
                     <button @click.prevent="saveChange" class='btn btn-outline-primary save-button' type='submit'

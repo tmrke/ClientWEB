@@ -1,10 +1,10 @@
-Vue.component("note", {
+Vue.component("list-item", {
     props: ["note"],
-    template: "#note-template",
+    template: "#list-item-template",
     data: function () {
         return {
             isEditMode: false,
-            beforeChangeNoteText: this.newNoteText
+            beforeChangeNote: this.note
         }
     },
     methods: {
@@ -17,10 +17,14 @@ Vue.component("note", {
         },
 
         saveChange: function () {
-            this.$emit("save-change", this.beforeChangeNoteText, this.note)
+            if(this.note)
+
+            this.$emit("save-change", this.beforeChangeNote, this.note);
+            this.isEditMode = false;
         },
 
         cancelChange: function () {
+            this.$emit("cancel-change", this.beforeChangeNote);
             this.isEditMode = false;
         }
     }
@@ -29,22 +33,17 @@ Vue.component("note", {
 new Vue({
     el: "#app",
     data: {
-        isEditMode: false,
         newNoteText: "",
         notes: []
     },
     methods: {
         addNote: function () {
-            if (this.newNoteText.trim().length === 0) {
+            if (this.newNoteText.length === 0) {
                 return;
             }
 
             this.notes.push(this.newNoteText);
             this.newNoteText = "";
-        },
-
-        editNote: function () {
-            this.isEditMode = true;
         },
 
         deleteNote: function (note) {
@@ -53,18 +52,11 @@ new Vue({
             });
         },
 
-        saveChange: function (beforeChangeNoteText, note) {     //тут разрулить че где. не работает
-            if (note.trim().length === 0) {
-                this.newNoteText = beforeChangeNoteText;
-            } else {
-                this.beforeChangeNoteText = this.newNoteText;
-            }
+        saveChange: function (beforeChangeNote, note) {
 
-            this.isEditMode = false;
         },
 
         cancelChange: function () {
-            this.isEditMode = false;
         }
     }
 });
