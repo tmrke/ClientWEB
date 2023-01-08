@@ -34,7 +34,7 @@ body {
 .input {
     display: block;
     padding: 5px 10px;
-    margin: 10px auto;
+    margin: 0 auto;
     -moz-appearance: textfield;
 }
 
@@ -42,6 +42,10 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.input-label {
+    margin: 20px 0;
 }
 
 .add-button {
@@ -65,23 +69,27 @@ input[type="number"]::-webkit-inner-spin-button {
     background-color: #f50;
 }
 
-.input-error-message-hidden {
+.error-message {
     display: none;
 }
 
 .invalid {
     display: block;
     border-color: #f00;
-    margin-bottom: 20px;
     color: #f00;
 }
 
 .modal-dialog {
+    position: fixed;
+    top: 20%;
+    left: 39%;
     width: 300px;
     height: 120px;
     display: block;
     margin: auto;
     background: #ccb;
+    z-index: 99999;
+    opacity: 1;
 }
 
 .modal-dialog-hidden {
@@ -89,22 +97,26 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .modal-dialog-head {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
     color: #eee;
     height: 30px;
-    background: #00995b;
     text-align: center;
+    background: #00995b;
     padding-top: 10px;
 }
 
 .yes-button {
-    margin-top: 20px;
+    margin-top: 70px;
     margin-left: 40px;
     background: #00995b;
     padding: 5px 20px;
 }
 
 .no-button {
-    margin-top: 20px;
+    margin-top: 70px;
     margin-left: 90px;
     background: #f00;
     padding: 5px 20px;

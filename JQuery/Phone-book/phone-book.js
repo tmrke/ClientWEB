@@ -16,52 +16,52 @@ $(function () {
 
     addButton.click(function () {
         var nameInputText = nameInput.val().trim();
+        var isCorrect = true;
 
         if (nameInputText.length === 0) {
-            nameInput.toggleClass("invalid", true);
-            nameErrorMessage.toggleClass("invalid", true);
-
-            return;
+            nameInput.addClass("invalid");
+            nameErrorMessage.addClass("invalid");
+            isCorrect = false;
+        } else {
+            nameInput.removeClass("invalid");
+            nameErrorMessage.removeClass("invalid");
         }
-
-        nameInput.toggleClass("invalid", false);
-        nameErrorMessage.toggleClass("invalid", false);
 
         var lastNameInputText = lastNameInput.val().trim();
 
         if (lastNameInputText.length === 0) {
-            lastNameInput.toggleClass("invalid", true);
-            lastNameErrorMessage.toggleClass("invalid", true);
-
-            return;
+            lastNameInput.addClass("invalid");
+            lastNameErrorMessage.removeClass("invalid");
+            isCorrect = false;
+        } else {
+            lastNameInput.removeClass("invalid");
+            lastNameErrorMessage.removeClass("invalid");
         }
 
-        lastNameInput.toggleClass("invalid", false);
-        lastNameErrorMessage.toggleClass("invalid", false);
-
-        var regularExpression = /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+        var regex = /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
         var phoneNumber = phoneNumberInput.val().trim();
-        var isValid = regularExpression.test(phoneNumber);
-
+        var isValid = regex.test(phoneNumber);
 
         if (phoneNumber.length === 0 || !isValid) {
-            phoneNumberInput.toggleClass("invalid", true);
-            phoneErrorMessage.toggleClass("invalid", true);
+            phoneNumberInput.addClass("invalid");
+            phoneErrorMessage.addClass("invalid");
 
-            return;
-        }
-
-        if (phonesNumbers.indexOf(phoneNumber) !== -1) {
+            isCorrect = false;
+        } else if (phonesNumbers.indexOf(phoneNumber) !== -1) {
             phoneErrorMessage.text("Контакт с таким номером уже существует");
-            phoneNumberInput.toggleClass("invalid", true);
-            phoneErrorMessage.toggleClass("invalid", true);
+            phoneNumberInput.addClass("invalid");
+            phoneErrorMessage.addClass("invalid");
 
-            return;
+            isCorrect = false;
+        } else {
+            phoneNumberInput.removeClass("invalid");
+            phoneErrorMessage.removeClass("invalid");
+            phoneErrorMessage.text("Номер введен некорректно, введите в формате: +79234567890");
         }
 
-        phoneNumberInput.toggleClass("invalid", false);
-        phoneErrorMessage.toggleClass("invalid", false);
-        phoneErrorMessage.text("Номер введен некорректно");
+        if (!isCorrect) {
+            return;
+        }
 
         phonesNumbers.push(phoneNumber);
 
@@ -79,7 +79,21 @@ $(function () {
         deleteButton.click(function () {
             var modalDialog = $("#modal-dialog");
 
-            modalDialog.toggleClass("modal-dialog-hidden", false);
+            /*
+            modalDialog.dialog({
+                modal: true
+            });
+             */
+
+            modalDialog.set(modalDialog.modal = true);
+
+            modalDialog.click(function (e) {
+                if ($(e.target).closest('.modal-dialog').length === 0) {
+                    $(this).fadeOut();
+                }
+            });
+
+            modalDialog.removeClass("modal-dialog-hidden");
 
             $("#yes-button").click(function () {
                 newRow.remove();
@@ -97,12 +111,11 @@ $(function () {
                 });
 
                 phonesNumbers.splice(phonesNumbers.indexOf(phoneNumber));
-
-                modalDialog.toggleClass("modal-dialog-hidden", true);
+                modalDialog.addClass("modal-dialog-hidden");
             });
 
             $("#no-button").click(function () {
-                modalDialog.toggleClass("modal-dialog-hidden", true);
+                modalDialog.addClass("modal-dialog-hidden");
             });
         });
 
@@ -111,3 +124,4 @@ $(function () {
         phoneNumberInput.val("");
     });
 });
+

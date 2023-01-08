@@ -16,23 +16,26 @@
 </h1>
 
 <form class="form" id="form">
-    <label> Имя:
-        <input class="input" id="name-input" type="text">
-    </label>
+    <div class="input-label">
+        <label>Имя:
+            <input class="input" id="name-input" type="text">
+            <span class="error-message" id="name-error-message">Введите имя</span>
+        </label>
+    </div>
 
-    <div class="input-error-message-hidden" id="name-error-message">Введите имя</div>
+    <div class="input-label">
+        <label> Фамилия:
+            <input class="input" id="last-name-input" type="text">
+            <span class="error-message" id="last-name-error-message">Введите фамилию</span>
+        </label>
+    </div>
 
-    <label> Фамилия:
-        <input class="input" id="last-name-input" type="text">
-    </label>
-
-    <div class="input-error-message-hidden" id="last-name-error-message">Введите фамилию</div>
-
-    <label> Номер телефона:
-        <input class="input" id="phone-number-input" placeholder="81234567890">
-    </label>
-
-    <div class="input-error-message-hidden" id="phone-error-message">Номер введен некорректно</div>
+    <div class="input-label">
+        <label> Номер телефона:
+            <input class="input" id="phone-number-input" placeholder="89234567890" value="89234567890">
+            <span class="error-message" id="phone-error-message">Номер введен некорректно</span>
+        </label>
+    </div>
 
     <label>
         <input type="submit" class="add-button" id="add-button" value="Добавить">
@@ -52,11 +55,13 @@
     </tbody>
 </table>
 
-<div class="modal-dialog modal-dialog-hidden" id="modal-dialog">
-    <div class="modal-dialog-head">Вы уверены?</div>
-    <div class="content">
-        <button class="yes-button" id="yes-button">Да</button>
-        <button class="no-button" id="no-button">Нет</button>
+<div class="modal-dialog modal-dialog-hidden" aria-modal="true" id="modal-dialog">
+    <div class="popup">
+        <div class="modal-dialog-head">Вы уверены?</div>
+        <div class="content">
+            <button class="yes-button" id="yes-button">Да</button>
+            <button class="no-button" id="no-button">Нет</button>
+        </div>
     </div>
 </div>
 </body>
