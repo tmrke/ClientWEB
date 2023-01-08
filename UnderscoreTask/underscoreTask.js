@@ -39,7 +39,7 @@
         {
             name: "person10",
             age: 100
-        },
+        }
     ];
 
     var averageAge = _.reduce(persons, function (agesSum, p) {
@@ -68,21 +68,9 @@
         .reverse()
         .value();
 
-    console.log("Люди с уникальными именами в возрасте от 20 до 30 лет: " + between20And30PersonsUniqueNames.join(", "));
+    console.log("Список уникальных имен людей с возрастом от 20 до 30 включительно: "
+        + between20And30PersonsUniqueNames.join(", "));
 
-    var personsByNamesCount = {};
-
-    persons.map(function (p) {
-        var name = p.name;
-        personsByNamesCount[name] = _.chain(persons)
-            .filter(function (p) {
-                return p.name === name;
-            })
-            .value()
-            .length
-    });
-
-    // еще вот такой вариант нашел: var personsByNamesCount = _.countBy(persons, "name");
-
+    var personsByNamesCount = _.countBy(persons, "name");
     console.log(personsByNamesCount);
 })();
