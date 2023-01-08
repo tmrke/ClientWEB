@@ -9,12 +9,13 @@ body {
 }
 
 .header {
-    margin: 0 20px;
-    font-size: 29px;
+    margin: 120px 20px 0 20px;
+    font-weight: normal;
+    font-size: 32px;
 }
 
 .block {
-    max-width: 890px;
+    max-width: 810px;
     margin-top: 5px;
     margin-left: auto;
     margin-right: auto;
@@ -37,11 +38,11 @@ body {
 
 .comment {
     width: 100%;
-    margin: 10px 0 10px 0;
+    margin: 10px 0;
     height: 130px;
     border: none;
     resize: vertical;
-    padding: 10px 0 0 10px;
+    padding: 10px 0 10px 10px;
     font-size: 14px;
 }
 
@@ -50,11 +51,7 @@ body {
 }
 
 .description {
-    font-weight: bold;
-}
-
-.button:hover {
-    background-color: #3498db;
+    font-weight: 700;
 }
 
 .button {
@@ -66,4 +63,8 @@ body {
     font-size: 16px;
     float: right;
     cursor: pointer;
+}
+
+.button:hover {
+    background-color: #3498db;
 }
