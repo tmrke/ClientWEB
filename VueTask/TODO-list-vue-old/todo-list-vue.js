@@ -17,14 +17,12 @@ Vue.component("list-item", {
         },
 
         saveChange: function () {
-            if(this.note)
-
-            this.$emit("save-change", this.beforeChangeNote, this.note);
+            this.$emit("update:note", this.note);
             this.isEditMode = false;
         },
 
         cancelChange: function () {
-            this.$emit("cancel-change", this.beforeChangeNote);
+            this.$emit('cancel-change', this.beforeChangeNote);
             this.isEditMode = false;
         }
     }
@@ -53,7 +51,9 @@ new Vue({
         },
 
         saveChange: function (beforeChangeNote, note) {
-
+            if(note === ""){
+                alert(beforeChangeNote)
+            }
         },
 
         cancelChange: function () {

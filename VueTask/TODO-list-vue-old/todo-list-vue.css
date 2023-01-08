@@ -1,0 +1,59 @@
+body {
+    box-sizing: border-box;
+    min-width: 300px;
+}
+
+.form {
+    justify-content: center;
+    align-items: baseline;
+}
+
+.label-text-input {
+    font-size: 12px;
+}
+
+
+.list {
+    list-style-type: none;
+}
+
+.header {
+    text-align: center;
+    color: #00995b;
+}
+
+.text-input {
+    justify-content: center;
+    width: 100%;
+}
+
+.invalid {
+    border-color: #f00;
+}
+
+.add-button {
+    width: 100%;
+}
+
+.edit-button {
+    width: 100%;
+}
+
+.delete-button {
+    width: 100%;
+}
+
+.save-button {
+    width: 100%;
+}
+
+.cancel-button {
+    width: 100%;
+}
+
+.note-text {
+    text-align: justify;
+}
+
+.edit-input {
+}

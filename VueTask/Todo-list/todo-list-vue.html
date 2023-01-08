@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="todo-list-vue.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <script defer src="node_modules/vue/dist/vue.js"></script>
+    <script defer src="node_modules/jquery/dist/jquery.js"></script>
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script defer src="todo-list-vue.js"></script>
+
+    <title>TODO list</title>
+</head>
+<body>
+<div id="app">
+    <h1 class="header">TODO list</h1>
+    <div class="container px-2">
+        <form class="form row was-validated" id="form">
+            <div class="col-12 col-md-2">
+                <label class="label-text-input" for="text-input">Enter your note: </label>
+            </div>
+            <div class="col-12 col-md-8 my-2">
+                <input v-model.trim="newItemText"
+                       data-bs-target="#error"
+                       class="form-control text-input"
+                       id="text-input"
+                       required>
+            </div>
+            <div class="col-12 col-md-2 mb-4">
+                <input @click.prevent="addItems"
+                       class="btn btn-success add-button"
+                       type="submit"
+                       id="add-button"
+                       value="Add">
+            </div>
+            <hr>
+        </form>
+        <ul id="list" class="list row">
+            <!--
+            <template v-if="isShowError">
+                <div class="modal fade" id="error" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div>Note can't be empty</div>
+                        <button @click="hideError" class='btn btn-close ok-button'>OK</button>
+                    </div>
+                </div>
+            </template>
+            -->
+
+            <template>
+                <a href="#"
+                   role="button"
+                   class="btn btn-secondary popover-test"
+                   data-bs-content="В этом атрибуте задается содержимое тела всплывающего окна."
+                >
+
+                </a>
+            </template>
+
+            <li v-for="(item, index) in items" :key="item.id">
+                <template v-if="!item.isEditMode">
+                    <div class='row my-2 gx-4 offset-md-2 ml-md-0 align-items-center'>
+                        <span v-text="item.text" class='note-text col-12 col-md-8 px-0'></span>
+                        <div class='col-6 col-md-2'>
+                            <button @click="editItem(item)" class='btn btn-primary edit-button' title='edit'>edit
+                            </button>
+                        </div>
+                        <div class='col-6 col-md-2'>
+                            <button @click="deleteItem(index)" class='btn btn-danger delete-button' title='delete'>
+                                delete
+                            </button>
+                        </div>
+                    </div>
+                </template>
+
+                <template v-else>
+                    <form class='was-validated edit-form'>
+                        <div class='row my-2 gx-4 offset-md-2 ml-md-0 align-items-center'>
+                            <div class='col-12 col-md-8 px-0 my-2'>
+                                <input v-model.trim="item.editText"
+                                       type='text'
+                                       class='edit-input form-control'
+                                       required>
+                            </div>
+                            <div class='col-6 col-md-2'>
+                                <input @click.prevent="saveChange(item)"
+                                       class='btn btn-outline-primary save-button'
+                                       type='submit'
+                                       value='save'
+                                       title='save'>
+                            </div>
+                            <div class='col-6 col-md-2'>
+                                <button @click="cancelChange(item)"
+                                        class='btn btn-outline-danger cancel-button'
+                                        title='cancel'>cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </template>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
