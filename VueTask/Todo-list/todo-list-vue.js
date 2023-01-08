@@ -22,7 +22,7 @@ new Vue({
                 text: this.newItemText,
                 isEditMode: false,
                 editText: ""
-            })
+            });
 
             this.itemId++;
             this.newItemText = "";
@@ -56,6 +56,4 @@ new Vue({
             this.isShowError = false;
         }
     }
-
-
 });

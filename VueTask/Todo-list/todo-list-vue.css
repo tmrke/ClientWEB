@@ -20,6 +20,7 @@ body {
 .header {
     text-align: center;
     color: #00995b;
+    position: relative;
 }
 
 .text-input {
@@ -57,4 +58,11 @@ body {
 
 .edit-input {
     width: 100%;
+}
+
+.error {
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    background: #f16464;
 }
