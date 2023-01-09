@@ -1,0 +1,23 @@
+.error-message {
+    color: #f00;
+}
+
+.invalid{
+    border-color: #f00;
+}
+
+.contacts-table{
+    margin: auto;
+    text-align: center;
+    border: #6b6774 solid 1px;
+}
+
+.delete-button{
+    padding: 5px 0;
+    min-width: 100%;
+}
+
+.table-head{
+    background: #3498db;
+}
+
