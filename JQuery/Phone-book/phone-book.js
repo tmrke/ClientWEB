@@ -31,7 +31,7 @@ $(function () {
 
         if (lastNameInputText.length === 0) {
             lastNameInput.addClass("invalid");
-            lastNameErrorMessage.removeClass("invalid");
+            lastNameErrorMessage.addClass("invalid");
             isCorrect = false;
         } else {
             lastNameInput.removeClass("invalid");
