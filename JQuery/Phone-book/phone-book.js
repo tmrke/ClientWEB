@@ -85,8 +85,6 @@ $(function () {
             });
              */
 
-            modalDialog.set(modalDialog.modal = true);
-
             modalDialog.click(function (e) {
                 if ($(e.target).closest('.modal-dialog').length === 0) {
                     $(this).fadeOut();
