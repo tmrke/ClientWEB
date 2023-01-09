@@ -18,15 +18,15 @@
     <h1 class="mx-auto row justify-content-center">
         Phone book
     </h1>
-    <form class="form-control w-50 justify-content-center mx-auto" id="form">
+    <form class="was-validated w-50 justify-content-center mx-auto" id="form">
         <label class="m-4 justify-content-center row">Имя:
-            <input v-model.trim="name" id="name-input" type="text" required>
-            <span class="error-message justify-content-center row invisible" id="name-error-message">Введите имя</span>
+            <input v-model.trim="name" id="name-input" type="text" class="form-control" required>
+            <span class="error-message justify-content-center row visually-hidden" id="name-error-message">Введите имя</span>
         </label>
 
         <label class="m-4 justify-content-center row">Фамилия:
-            <input v-model.trim="lastName" id="last-name-input" type="text" required>
-            <span class="error-message justify-content-center row invisible"
+            <input v-model.trim="lastName" id="last-name-input" type="text" class="form-control" required>
+            <span class="error-message justify-content-center row visually-hidden"
                   id="last-name-error-message">
                 Введите фамилию
             </span>
@@ -37,6 +37,7 @@
                    id="phone-number-input"
                    placeholder="89234567890"
                    value="89234567890"
+                   class="form-control"
                    required>
             <span class="error-message justify-content-center row invisible"
                   id="phone-error-message">Номер введен некорректно</span>
@@ -50,9 +51,9 @@
                    value="Добавить">
         </label>
     </form>
-    <table class="contacts-table table mx-auto my-2 w-100" id="contacts-table">
+    <table class="contacts-table w-100 table mt-3 table-striped table-hover" id="contacts-table">
         <thead>
-        <tr class="row table-head w-100 mx-auto">
+        <tr class="row table-head w-100">
             <th class="col-1">№</th>
             <th class="col-3">Имя</th>
             <th class="col-3">Фамилия</th>
@@ -60,30 +61,21 @@
             <th class="col-2"></th>
         </tr>
         </thead>
-        <tbody id="tbody">
-        <tr v-for="(contact, contactId) in contacts" :key="contact.id" class="row align-items-baseline b-table">
+        <tbody class="contacts-table w-100 table-dark " id="tbody">
+        <tr v-for="(contact, contactId) in contacts" :key="contact.id" class="row w-100">
             <template>
-                <td class="col-1"></td>
+                <td class="col-1 positions"></td>
                 <td v-text="contact.name" class="col-3"></td>
                 <td v-text="contact.lastName" class="col-3"></td>
                 <td v-text="contact.phone" class="col-3"></td>
                 <td class="col-2">
-                    <button @click="deleteContact(contactId)" class="w-100 btn btn-danger delete-button">Удалить
+                    <button @click="deleteContact(contactId)" class="w-100 btn btn-danger">Удалить
                     </button>
                 </td>
             </template>
-
         </tr>
         </tbody>
     </table>
-</div>
-
-<div>
-    <b-button v-b-modal.modal-1>Запустить демонстрацию модального окна</b-button>
-
-    <b-modal id="modal-1" title="BootstrapVue">
-        <p class="my-4">Привет из модального окна!</p>
-    </b-modal>
 </div>
 
 <div class="modal-dialog modal-dialog-hidden invisible" aria-modal="true" id="modal-dialog">
