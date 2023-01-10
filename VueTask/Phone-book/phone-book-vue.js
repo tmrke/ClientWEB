@@ -79,13 +79,7 @@ new Vue({
         },
 
         deleteContact: function (contactId, phone) {
-            var myInput = $('#myModal')
-            var myModal = $('.delete-button')
-
-            myModal.click('shown.bs.modal', function () {
-                myInput.focus()
-            });
-
+            $("#1").id = "this-id";
             this.contacts.splice(contactId, 1);
             this.phones.splice(phone, 1);
             this.updatePositionContact();

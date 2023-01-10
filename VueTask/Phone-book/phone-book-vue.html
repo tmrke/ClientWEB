@@ -68,13 +68,23 @@
                 <td v-text="contact.lastName" class="col-3"></td>
                 <td v-text="contact.phone" class="col-3"></td>
                 <td class="col-2">
-                    <button @click="deleteContact(contactId, phone)" class="w-100 btn btn-danger delete-button">Удалить
-                    </button>
+                    <b-button  class="w-100 btn btn-danger delete-button" v-b-modal.this-id>Удалить</b-button>
+
+                    <b-modal class="currentId" id="1" title="Вы действительно хотите удалить контакт?">
+                        <b-button @click="deleteContact(contactId, phone)">Да</b-button>
+                        <b-button class="btn-success">Нет</b-button>
+                    </b-modal>
                 </td>
             </template>
         </tr>
         </tbody>
     </table>
+
+    <div>
+
+    </div>
 </div>
+
+
 </body>
 </html>
