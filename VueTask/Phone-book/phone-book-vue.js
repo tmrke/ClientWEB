@@ -79,7 +79,7 @@ new Vue({
         },
 
         deleteContact: function (contactId, phone) {
-            $("#1").id = "this-id";
+
             this.contacts.splice(contactId, 1);
             this.phones.splice(phone, 1);
             this.updatePositionContact();

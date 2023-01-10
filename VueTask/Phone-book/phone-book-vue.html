@@ -63,15 +63,15 @@
         <tbody class="contacts-table w-100 table-dark " id="tbody">
         <tr v-for="(contact, contactId, phone) in contacts" :key="contact.id" class="row w-100">
             <template>
-                <td class="col-1 positions"></td>
+                <td class="col-1"></td>
                 <td v-text="contact.name" class="col-3"></td>
                 <td v-text="contact.lastName" class="col-3"></td>
                 <td v-text="contact.phone" class="col-3"></td>
                 <td class="col-2">
-                    <b-button  class="w-100 btn btn-danger delete-button" v-b-modal.this-id>Удалить</b-button>
+                    <b-button  class="w-100 btn btn-danger delete-button" v-b-modal.current>Удалить</b-button>
 
-                    <b-modal class="currentId" id="1" title="Вы действительно хотите удалить контакт?">
-                        <b-button @click="deleteContact(contactId, phone)">Да</b-button>
+                    <b-modal hide-footer class="currentId" id="current" title="Вы действительно хотите удалить контакт?">
+                        <b-button class="btn-danger" @click="deleteContact(contactId, phone)">Да</b-button>
                         <b-button class="btn-success">Нет</b-button>
                     </b-modal>
                 </td>
