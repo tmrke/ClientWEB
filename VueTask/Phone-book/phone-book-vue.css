@@ -2,12 +2,11 @@
     color: #f00;
 }
 
-.invalid{
-    visibility: visible;
+.invalid {
     border-color: #f00;
 }
 
-.table-head{
+.table-head {
     background: #3498db;
 }
 

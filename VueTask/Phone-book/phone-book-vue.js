@@ -6,65 +6,88 @@ new Vue({
         contactId: 1,
         name: "",
         lastName: "",
-        phone: ""
+        phone: "",
+        phones: [],
+        isContainPhone: function (phones, phone) {
+            return phones.indexOf(phone, 0) !== -1;
+        }
     },
 
     methods: {
         addContact: function () {
             var isCorrect = true;
-            var errorInputs = []
+            var nameInput = $("#name-input");
+            var nameError = $("#name-error-message");
+            var lastNameInput = $("#last-name-input");
+            var lastNameError = $("#last-name-error-message");
+            var phoneNumberInput = $("#phone-number-input");
+            var phoneNumberError = $("#phone-error-message");
 
             if (this.name === "") {
                 isCorrect = false;
+                nameInput.addClass("invalid");
+                nameError.show();
             } else {
-                errorInputs.push($("#name-input"))
+                nameInput.removeClass("invalid");
+                nameError.hide();
             }
 
             if (this.lastName === "") {
                 isCorrect = false;
+                lastNameInput.addClass("invalid");
+                lastNameError.show();
             } else {
-                errorInputs.push($("#last-name-input"))
+                lastNameInput.removeClass("invalid");
+                lastNameError.hide();
             }
 
             var regex = /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
             var isValid = regex.test(this.phone);
 
             if (this.phone === "" || !isValid) {
-                errorInputs.push($("#phone-number-input"))
+                phoneNumberInput.addClass("invalid");
+                phoneNumberError.show();
                 isCorrect = false;
-            } else if (this.contacts.phone.indexOf(this.phone) !== -1) {
-                $("#phone-number-input").text("Контакт с таким номером уже существует");
+            } else if (this.isContainPhone(this.phones, this.phone)) {
+                phoneNumberError.text("Контакт с таким номером уже существует");
+                phoneNumberInput.addClass("invalid");
+                phoneNumberError.show();
                 isCorrect = false;
             } else {
-                $("#phone-number-input").text("Номер введен некорректно, введите в формате: +79234567890");
+                phoneNumberInput.removeClass("invalid");
+                phoneNumberError.hide();
+                phoneNumberInput.text("Номер введен некорректно, введите в формате: +79123456789");
             }
 
             if (!isCorrect) {
-                this.showError(errorInputs);
-            } else {
-                this.contacts.push({
-                    name: this.name,
-                    lastName: this.lastName,
-                    phone: this.phone,
-                    id: this.contactId,
-                });
-
-                this.updatePositionContact();
-                this.contactId++;
-                this.name = "";
-                this.lastName = "";
-                this.phone = "";
+                return;
             }
-        },
 
-        showError: function (inputs) {
-            inputs.forEach(function (input) {
-                input.addClass("invalid");
+            this.contacts.push({
+                name: this.name,
+                lastName: this.lastName,
+                phone: this.phone,
+                id: this.contactId,
             });
+
+            this.phones.push(this.phone);
+            this.updatePositionContact();
+            this.contactId++;
+            this.name = "";
+            this.lastName = "";
+            this.phone = "";
         },
 
-        deleteContact: function (contactId) {
+        deleteContact: function (contactId, phone) {
+            var myInput = $('#myModal')
+            var myModal = $('.delete-button')
+
+            myModal.click('shown.bs.modal', function () {
+                myInput.focus()
+            });
+
             this.contacts.splice(contactId, 1);
+            this.phones.splice(phone, 1);
             this.updatePositionContact();
         },
 

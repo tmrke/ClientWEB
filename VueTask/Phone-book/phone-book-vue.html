@@ -21,12 +21,12 @@
     <form class="was-validated w-50 justify-content-center mx-auto" id="form">
         <label class="m-4 justify-content-center row">Имя:
             <input v-model.trim="name" id="name-input" type="text" class="form-control" required>
-            <span class="error-message justify-content-center row visually-hidden" id="name-error-message">Введите имя</span>
+            <span class="error-message justify-content-center row" id="name-error-message">Введите имя</span>
         </label>
 
         <label class="m-4 justify-content-center row">Фамилия:
             <input v-model.trim="lastName" id="last-name-input" type="text" class="form-control" required>
-            <span class="error-message justify-content-center row visually-hidden"
+            <span class="error-message justify-content-center row"
                   id="last-name-error-message">
                 Введите фамилию
             </span>
@@ -36,11 +36,10 @@
             <input v-model.trim="phone"
                    id="phone-number-input"
                    placeholder="89234567890"
-                   value="89234567890"
                    class="form-control"
                    required>
-            <span class="error-message justify-content-center row invisible"
-                  id="phone-error-message">Номер введен некорректно</span>
+            <span class="error-message justify-content-center row"
+                  id="phone-error-message">Введите номер в формате: +79123456789</span>
         </label>
 
         <label class="m-4 justify-content-center row">
@@ -62,30 +61,20 @@
         </tr>
         </thead>
         <tbody class="contacts-table w-100 table-dark " id="tbody">
-        <tr v-for="(contact, contactId) in contacts" :key="contact.id" class="row w-100">
+        <tr v-for="(contact, contactId, phone) in contacts" :key="contact.id" class="row w-100">
             <template>
                 <td class="col-1 positions"></td>
                 <td v-text="contact.name" class="col-3"></td>
                 <td v-text="contact.lastName" class="col-3"></td>
                 <td v-text="contact.phone" class="col-3"></td>
                 <td class="col-2">
-                    <button @click="deleteContact(contactId)" class="w-100 btn btn-danger">Удалить
+                    <button @click="deleteContact(contactId, phone)" class="w-100 btn btn-danger delete-button">Удалить
                     </button>
                 </td>
             </template>
         </tr>
         </tbody>
     </table>
-</div>
-
-<div class="modal-dialog modal-dialog-hidden invisible" aria-modal="true" id="modal-dialog">
-    <div class="popup">
-        <div class="modal-dialog-head">Вы уверены?</div>
-        <div class="content">
-            <button class="yes-button" id="yes-button">Да</button>
-            <button class="no-button" id="no-button">Нет</button>
-        </div>
-    </div>
 </div>
 </body>
 </html>
