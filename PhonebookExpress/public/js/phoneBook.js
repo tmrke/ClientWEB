@@ -11,7 +11,7 @@ function post(url, data) {
         url: url,
         data: JSON.stringify(data),
         contentType: "application/json"
-    })
+    });
 }
 
 phoneBookService.prototype.getContacts = function (term) {
@@ -31,30 +31,38 @@ new Vue({
 
     data: {
         contacts: [],
-        contactId: 1,
+        id: 1,
         name: "",
         lastName: "",
         phone: "",
-        phones: [],
         term: "",
-        service: new phoneBookService(),
+        phones: [],
         isContainPhone: function (phones, phone) {
             return phones.indexOf(phone, 0) !== -1;
-        }
+        },
+        service: new phoneBookService(),
     },
 
     methods: {
         loadContact: function () {
             var self = this;
-            this.service.getContacts(this.term).done(function (response) {
-                self.contacts = response.contacts;
+            this.service.getContacts(this.term).done(function (contacts) {
+                self.contacts = contacts;
+                self.updatePositionContact();
+
+                self.phones = [];
+                this.phones = [];
+
+                self.contacts.forEach(function (contact) {
+                    self.phones.push(contact.phone);
+                });
             }).fail(function () {
-                alert("Не удалось загрузить контакт")
+                alert("Не удалось загрузить контакт");
             });
         },
 
-        added: function (){
-
+        added: function () {
+            this.loadContact();
         },
 
         addContact: function () {
@@ -106,34 +114,53 @@ new Vue({
                 return;
             }
 
-            this.contacts.push({
+            this.loadContact();
+            var self = this;
+
+            var request = {
                 name: this.name,
                 lastName: this.lastName,
                 phone: this.phone,
-                id: this.contactId,
+                id: this.id
+            }
+
+            this.service.addContact(request).done(function (response) {
+                if (!response.success) {
+                    alert(response.message);
+                    return;
+                }
+
+                self.loadContact();
+
+                self.id++;
+                self.name = "";
+                self.lastName = "";
+                self.phone = "";
+            }).fail(function () {
+                alert("Не удалось добавить контакт")
             });
-            this.phones.push(this.phone);
-
-            this.loadContact()
-
-            this.updatePositionContact();
-            this.contactId++;
-            this.name = "";
-            this.lastName = "";
-            this.phone = "";
         },
 
-        deleteContact: function (contactId, phone) {
+        deleteContact: function (contact) {
+            var self = this;
 
-            this.contacts.splice(contactId, 1);
-            this.phones.splice(phone, 1);
-            this.updatePositionContact();
+            this.service.deleteContact(contact.id).done(function (response) {
+                if (!response.success) {
+                    alert(response.message);
+
+                    return;
+                }
+
+                self.loadContact();
+            }).fail(function () {
+                alert("Не удалось удалить контакт");
+            });
         },
 
         updatePositionContact: function () {
             function updateTableNumeration() {
                 $(".contacts-table tr").each(function (positionNumber) {
-                    $(this).find("td:first").text(positionNumber);
+                    $(this).find("td:first").text(positionNumber + ".");
                 });
             }
 
