@@ -58,10 +58,16 @@ $(function () {
                     <div class='row my-2 gx-1 px-0 align-items-center'>\
                         <div class='col-12 col-md-6 my-1 px-0 offset-md-2'>\
                             <input type='text' class='edit-input form-control' required>\
+                            <div class='error-message invalid-feedback d-none'>Note can't be empty</div>\
                         </div>\
                         <div class='col-6 col-md-2'>\
-                            <input class='btn btn-outline-primary save-button' type='submit' value='Save' title='Save'>\
-                            <div class='error-message invalid-feedback d-none'>Note can't be empty</div>\
+                            <button class='btn btn-outline-primary save-button'\
+                                type='button'\
+                                value='Save'\
+                                title='Save'\
+                                aria-describedby='error-message'>\
+                                    Save\
+                            </button>\
                         </div>\
                         <div class='col-6 col-md-2'>\
                             <button class='btn btn-outline-danger cancel-button' title='Cancel'>Cancel</button>\
@@ -70,7 +76,6 @@ $(function () {
                 </form>");
 
             var editInput = newTodoListNote.find(".edit-input");
-
             editInput.val(newTodoListNoteText);
 
             var saveButton = newTodoListNote.find(".save-button");
@@ -79,8 +84,6 @@ $(function () {
             cancelButton.click(function () {
                 setViewMode();
             });
-
-            //TODO сделать превент дефолт на сейв
 
             saveButton.click(function () {
                 var editNoteErrorMessage = newTodoListNote.find(".error-message");
