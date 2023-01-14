@@ -55,8 +55,8 @@ $(function () {
 
         function setEditMode() {
             newTodoListNote.html("<form class='was-validated edit-form' novalidate>\
-                    <div class='row my-2 gx-1 px-0 align-items-center'>\
-                        <div class='col-12 col-md-6 my-1 px-0 offset-md-2'>\
+                    <div class='row my-2 gx-1 px-0 align-items-stretch'>\
+                        <div class='col-12 col-md-6  px-0 offset-md-2'>\
                             <input type='text' class='edit-input form-control' required>\
                             <div class='error-message invalid-feedback d-none'>Note can't be empty</div>\
                         </div>\
