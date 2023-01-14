@@ -1,29 +1,24 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Todo list</title>
-
+    <title>TODO list</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-
     <script defer src="todo_list.js"></script>
 </head>
 <body>
 <h1 class="header">TODO list</h1>
-
 <form class="form" id="form">
-    <div>
+    <div class="label-block">
         <label class="input-label">Enter your note:
             <input class="text-input" type="text" id="text-input">
         </label>
-
-        <div class="is-error-message-hidden error-message" id="error-message">Note can't be empty</div>
+        <div class="error-message is-invisible" id="error-message">Note can't be empty</div>
     </div>
-
     <input class="add-button" type="submit" id="add-button" value="Add">
-
-    <ul id="list" class="list"></ul>
 </form>
+
+<ul id="list" class="list"></ul>
 </body>
 </html>
