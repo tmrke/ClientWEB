@@ -76,7 +76,6 @@ $(function () {
 
             saveButton.click(function () {
                 var isEmptyEditText = editInput.val().trim().length === 0;
-
                 editInput.toggleClass("invalid", isEmptyEditText);
                 newTodoListNote.find(".error-message").toggleClass("is-invisible", !isEmptyEditText);
 

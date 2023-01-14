@@ -52,6 +52,19 @@ li {
     border-color: #f00;
 }
 
+.add-button {
+    display: block;
+    padding: 10px 20px;
+    text-align: center;
+    background: #85b235;
+    color: #eee;
+    border: none;
+    border-radius: 20px;
+    width: 50%;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
 .note-button {
     cursor: pointer;
     border-radius: 5px;
@@ -85,19 +98,6 @@ li {
 
 .cancel-button:hover {
     border-color: #f00;
-}
-
-.add-button {
-    display: block;
-    padding: 10px 20px;
-    text-align: center;
-    background: #85b235;
-    color: #eee;
-    border: none;
-    border-radius: 20px;
-    width: 50%;
-    margin: 20px auto;
-    cursor: pointer;
 }
 
 .note {
