@@ -21,6 +21,9 @@ li {
 
 .list {
     list-style-type: none;
+    width: 60%;
+    margin: 0 auto;
+    padding-left: 0;
 }
 
 .header {
@@ -36,13 +39,12 @@ li {
     width: 98%;
 }
 
-.is-error-message-visible {
-    visibility: visible;
+.error-message {
     padding: 5px 10px;
     color: #f00;
 }
 
-.error-message {
+.is-invisible {
     visibility: hidden;
 }
 
@@ -50,53 +52,39 @@ li {
     border-color: #f00;
 }
 
-.delete-button:hover {
-    border-color: #f00;
+.note-button {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 3px 4px 1px 4px;
+    background: #fff;
+}
+
+.edit-button {
 }
 
 .edit-button:hover {
     border-color: #00f;
 }
 
-.edit-button {
-    right: 0;
-    margin: 5px 0 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 3px 4px 1px 4px;
-    background: #fff;
+.delete-button {
 }
 
-.delete-button {
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 3px 4px 1px 4px;
-    background: #fff;
+.delete-button:hover {
+    border-color: #f00;
 }
 
 .save-button {
-    margin: 5px 0 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 3px 4px 1px 4px;
-    background: #fff;
-}
-
-.cancel-button {
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 3px 4px 1px 4px;
-    background: #fff;
-}
-
-.cancel-button:hover {
-    border-color: #f00;
 }
 
 .save-button:hover {
     border-color: #85b235;
+}
+
+.cancel-button {
+}
+
+.cancel-button:hover {
+    border-color: #f00;
 }
 
 .add-button {
@@ -112,14 +100,18 @@ li {
     cursor: pointer;
 }
 
-.edit-input {
-    width: 95%;
-}
-
 .note {
-    width: 100%;
+    display: flex;
 }
 
-.note td:nth-child(1) {
+.note :nth-child(1) {
     width: 90%;
+}
+
+.note :nth-child(2) {
+    margin: 5px 0 5px 10px;
+}
+
+.note :nth-child(3) {
+    margin: 5px 0 5px 5px;
 }
