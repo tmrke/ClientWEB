@@ -3,6 +3,7 @@ $(function () {
     var addButton = $("#add-button");
     var todoList = $("#list");
     var form = $("#form");
+    var errorMessage = $("#error-message")
 
     form.submit(function (e) {
         e.preventDefault();
@@ -10,10 +11,17 @@ $(function () {
 
     addButton.click(function () {
         var newTodoListNoteText = textInput.val().trim();
+        var isTextNoteEmpty = newTodoListNoteText.length === 0;
 
-        if (newTodoListNoteText.length === 0) {
+        if (isTextNoteEmpty) {
+            errorMessage.removeClass("d-none");
+            textInput.addClass("is-invalid");
+
             return;
         }
+
+        errorMessage.addClass("d-none");
+        textInput.removeClass("is-invalid");
 
         var newTodoListNote = $("<li>");
         todoList.append(newTodoListNote);
@@ -21,15 +29,15 @@ $(function () {
         setViewMode();
 
         function setViewMode() {
-            newTodoListNote.html("<div class='row my-2 gx-4 offset-md-2 ml-md-0 align-items-center'>\
-                    <div class='note-text col-12 col-md-8 px-0'>\
+            newTodoListNote.html("<div class='row my-2 gx-1 px-0 align-items-center'>\
+                    <div class='note-text offset-md-2 col-12 col-md-6 px-0'>\
                         <span></span>\
                     </div>\
                     <div class='col-6 col-md-2'>\
-                        <button class='btn btn-primary edit-button' title='edit'>edit</button>\
+                        <button class='btn btn-primary edit-button' title='Edit'>Edit</button>\
                     </div>\
                     <div class='col-6 col-md-2'>\
-                        <button class='btn btn-danger delete-button' title='delete'>delete</button>\
+                        <button class='btn btn-danger delete-button' title='Delete'>Delete</button>\
                     </div>\
                 </div>");
 
@@ -46,21 +54,23 @@ $(function () {
         }
 
         function setEditMode() {
-            newTodoListNote.html("<form class='was-validated edit-form'>\
-                    <div class='row my-2 gx-4 offset-md-2 ml-md-0 align-items-center'>\
-                        <div class='col-12 col-md-8 px-0'>\
+            newTodoListNote.html("<form class='was-validated edit-form' novalidate>\
+                    <div class='row my-2 gx-1 px-0 align-items-center'>\
+                        <div class='col-12 col-md-6 my-1 px-0 offset-md-2'>\
                             <input type='text' class='edit-input form-control' required>\
                         </div>\
                         <div class='col-6 col-md-2'>\
-                            <input class='btn btn-outline-primary save-button' type='submit' value='save' title='save'>\
+                            <input class='btn btn-outline-primary save-button' type='submit' value='Save' title='Save'>\
+                            <div class='error-message invalid-feedback d-none'>Note can't be empty</div>\
                         </div>\
                         <div class='col-6 col-md-2'>\
-                            <button class='btn btn-outline-danger cancel-button' title='cancel'>cancel</button>\
+                            <button class='btn btn-outline-danger cancel-button' title='Cancel'>Cancel</button>\
                          </div>\
                     </div>\
                 </form>");
 
             var editInput = newTodoListNote.find(".edit-input");
+
             editInput.val(newTodoListNoteText);
 
             var saveButton = newTodoListNote.find(".save-button");
@@ -70,10 +80,20 @@ $(function () {
                 setViewMode();
             });
 
+            //TODO сделать превент дефолт на сейв
+
             saveButton.click(function () {
+                var editNoteErrorMessage = newTodoListNote.find(".error-message");
+
                 if (editInput.val().trim().length === 0) {
+                    editNoteErrorMessage.removeClass("d-none");
+                    editInput.addClass("is-invalid");
+
                     return;
                 }
+
+                editNoteErrorMessage.addClass("d-none");
+                editInput.removeClass("is-invalid");
 
                 newTodoListNoteText = editInput.val();
                 setViewMode();

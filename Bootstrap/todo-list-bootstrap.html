@@ -7,27 +7,33 @@
     <link rel="stylesheet" href="todo-list-bootstrap.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="todo-list-bootstrap.js"></script>
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script defer src="node_modules/jquery/dist/jquery.js"></script>
+    <script defer src="todo-list-bootstrap.js"></script>
     <title>TODO list</title>
 </head>
 <body>
 <h1 class="header">TODO list</h1>
 <div class="container px-2">
-    <form class="form row was-validated" id="form">
-        <div class="col-12 col-md-2">
-            <label class="label-text-input" for="text-input">Enter your note: </label>
-        </div>
-        <div class="col-12 col-md-8 my-2">
-            <input class="form-control text-input" id="text-input" required>
-        </div>
-        <div class="col-12 col-md-2 mb-4">
-            <input class="btn btn-success add-button" type="submit" id="add-button" value="Add">
+    <form class="form" id="form" novalidate>
+        <div class="row align-items-baseline">
+            <div class="col-12 col-md-2">
+                <label class="label-text-input" for="text-input">Enter your note: </label>
+            </div>
+            <div class="col-12 col-md-8 my-2">
+                <input class="form-control text-input" id="text-input" aria-describedby="error-message" required>
+                <div id="error-message" class="invalid-feedback d-none">
+                    Note can't be empty
+                </div>
+            </div>
+            <div class="col-12 col-md-2 mb-4">
+                <input class="btn btn-success add-button" type="submit" id="add-button" value="Add">
+            </div>
         </div>
         <hr>
     </form>
-    <ul id="list" class="list row"></ul>
+    <ul id="list" class="list row p-0"></ul>
 </div>
-<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
 </body>
 </html>
