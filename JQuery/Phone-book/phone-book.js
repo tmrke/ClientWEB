@@ -38,11 +38,13 @@ $(function () {
             lastNameErrorMessage.removeClass("invalid");
         }
 
-        var regex = /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
-        var phoneNumber = phoneNumberInput.val().trim();
-        var isValid = regex.test(phoneNumber);
+        var phoneNumber = phoneNumberInput.mask("+7(999)999-99-99").val();
 
-        if (phoneNumber.length === 0 || !isValid) {
+        phoneNumberInput.removeClass("invalid");
+        phoneErrorMessage.removeClass("invalid");
+        phoneErrorMessage.text("Номер введен некорректно, введите в формате: +7(999)999-99-99");
+
+        if (phoneNumber.length === 0) {
             phoneNumberInput.addClass("invalid");
             phoneErrorMessage.addClass("invalid");
 
@@ -56,7 +58,7 @@ $(function () {
         } else {
             phoneNumberInput.removeClass("invalid");
             phoneErrorMessage.removeClass("invalid");
-            phoneErrorMessage.text("Номер введен некорректно, введите в формате: +79234567890");
+            phoneErrorMessage.text("Номер введен некорректно, введите в формате: +7(999)999-99-99");
         }
 
         if (!isCorrect) {
@@ -65,61 +67,52 @@ $(function () {
 
         phonesNumbers.push(phoneNumber);
 
-        var deleteButton = $("<button class='delete-button'>Удалить</button>");
+        var deleteButton = $("<button class='delete-button' data-bs-toggle='modal' data-bs-target='#modal-dialog'>Удалить</button>");
         var rowsCount = $("#contacts-table tr").length;
+        var modalDialog = $("<div class='modal fade' id='modal-dialog' tabindex='-1' aria-labelledby='modal-dialog-label' aria-hidden='true'>\
+                                 <div class='modal-dialog'>\
+                                     <div class='modal-content'>\
+                                        <div class='modal-header'>\
+                                            <h5 class='modal-title' id='modal-dialog-label'>Вы уверены?</h5>\
+                                        </div>\
+                                        <div class='modal-footer'>\
+                                            <button class='btn bg-danger' data-bs-dismiss='modal' id='yes-button'>Да</button>\
+                                            <button class='btn btn-success' data-bs-dismiss='modal' id='no-button'>Нет</button>\
+                                        </div>\
+                                     </div>\
+                                 </div>\
+                             </div>")
         var newRow = $("<tr></tr>")
             .append($("<td></td>").text(rowsCount))
             .append($("<td></td>").text(nameInputText))
             .append($("<td></td>").text(lastNameInputText))
             .append($("<td></td>").text(phoneNumber))
-            .append(deleteButton);
+            .append(deleteButton).append(modalDialog);
 
         newRow.appendTo(table);
 
-        deleteButton.click(function () {
-            var modalDialog = $("#modal-dialog");
+        $("#yes-button").click(function (e) {
+            e.stopPropagation();
+            newRow.remove();
 
-            /*
-            modalDialog.dialog({
-                modal: true
-            });
-             */
-
-            modalDialog.click(function (e) {
-                if ($(e.target).closest('.modal-dialog').length === 0) {
-                    $(this).fadeOut();
-                }
-            });
-
-            modalDialog.removeClass("modal-dialog-hidden");
-
-            $("#yes-button").click(function () {
-                newRow.remove();
-
-                function updateTableNumeration() {
-                    $(".contacts-table tr").each(function (positionNumber) {
-                        $(this).find("td:first").text(positionNumber);
-                    });
-                }
-
-                $.ajax({
-                    success: function () {
-                        updateTableNumeration();
-                    }
+            function updateTableNumeration() {
+                $(".contacts-table tr").each(function (positionNumber) {
+                    $(this).find("td:first").text(positionNumber);
                 });
+            }
 
-                phonesNumbers.splice(phonesNumbers.indexOf(phoneNumber));
-                modalDialog.addClass("modal-dialog-hidden");
-            });
-
-            $("#no-button").click(function () {
-                modalDialog.addClass("modal-dialog-hidden");
-            });
+            updateTableNumeration();
+            phonesNumbers.splice(phonesNumbers.indexOf(phoneNumber));
         });
+
+        deleteButton.click(function (e) {
+            e.stopPropagation();
+        });
+
 
         nameInput.val("");
         lastNameInput.val("");
-        phoneNumberInput.val("");
+        phoneNumberInput.mask("+7(999)999-99-99").val("");
     });
 });
 

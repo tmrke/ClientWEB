@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <title>Phone book</title>
 
-    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="style.css">
 
-    <script defer src="jquery-3.6.2.js"></script>
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script defer src="node_modules/jquery/dist/jquery.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" type="text/javascript"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js"
+            type="text/javascript"></script>
     <script defer src="phone-book.js"></script>
 </head>
 <body>
@@ -32,7 +36,7 @@
 
     <div class="input-label">
         <label> Номер телефона:
-            <input class="input" id="phone-number-input" placeholder="89234567890" value="89234567890">
+            <input class="input" id="phone-number-input" placeholder="89234567890">
             <span class="error-message" id="phone-error-message">Номер введен некорректно</span>
         </label>
     </div>
@@ -54,15 +58,5 @@
     <tbody id="tbody">
     </tbody>
 </table>
-
-<div class="modal-dialog modal-dialog-hidden" aria-modal="true" id="modal-dialog">
-    <div class="popup">
-        <div class="modal-dialog-head">Вы уверены?</div>
-        <div class="content">
-            <button class="yes-button" id="yes-button">Да</button>
-            <button class="no-button" id="no-button">Нет</button>
-        </div>
-    </div>
-</div>
 </body>
 </html>
