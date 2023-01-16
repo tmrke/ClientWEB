@@ -12,7 +12,6 @@ body {
     font-size: 12px;
 }
 
-
 .list {
     list-style-type: none;
 }
@@ -20,7 +19,6 @@ body {
 .header {
     text-align: center;
     color: #00995b;
-    position: relative;
 }
 
 .text-input {
@@ -28,11 +26,16 @@ body {
     width: 100%;
 }
 
+.error-message {
+    color: #f00;
+}
+
 .invalid {
     border-color: #f00;
 }
 
 .add-button {
+    margin-top: -5px;
     width: 100%;
 }
 
@@ -53,16 +56,9 @@ body {
 }
 
 .note-text {
-    text-align: justify;
+    text-align: left;
 }
 
 .edit-input {
     width: 100%;
-}
-
-.error {
-    position: absolute;
-    top: 25%;
-    left: 35%;
-    background: #f16464;
 }

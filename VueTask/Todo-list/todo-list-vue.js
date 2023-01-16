@@ -5,17 +5,21 @@ new Vue({
         items: [],
         newItemText: "",
         itemId: 1,
-        isNewItemInvalid: false,
-        isShowError: false
+        isNewItemInvalid: false
     },
 
     methods: {
-        addItems: function () {
-            if (this.newItemText.length === 0) {
-                this.isShowError = true;
+        addItem: function () {
+            var errorMessage = $("#error-message")
+            this.isNewItemInvalid = this.newItemText.length === 0;
+
+            if (this.isNewItemInvalid) {
+                errorMessage.removeClass("d-none");
 
                 return;
             }
+
+            errorMessage.addClass("d-none");
 
             this.items.push({
                 id: this.itemId,
@@ -39,8 +43,6 @@ new Vue({
 
         saveChange: function (item) {
             if (item.editText.length === 0) {
-                this.isShowError = true;
-
                 return;
             }
 
@@ -50,10 +52,6 @@ new Vue({
 
         cancelChange: function (item) {
             item.isEditMode = false;
-        },
-
-        hideError: function () {
-            this.isShowError = false;
         }
     }
 });

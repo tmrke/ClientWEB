@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="todo-list-vue.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="todo-list-vue.css">
 
     <script defer src="node_modules/vue/dist/vue.js"></script>
     <script defer src="node_modules/jquery/dist/jquery.js"></script>
@@ -18,64 +18,74 @@
 <div id="app">
     <h1 class="header">TODO list</h1>
     <div class="container px-2">
-        <form class="form row was-validated" id="form">
-            <div class="col-12 col-md-2">
-                <label class="label-text-input" for="text-input">Enter your note: </label>
-            </div>
-            <div class="col-12 col-md-8 my-2">
-                <input v-model.trim="newItemText"
-                       data-toggle="modal"
-                       data-target="#error"
-                       class="form-control text-input"
-                       id="text-input"
-                       required>
-            </div>
-            <div class="col-12 col-md-2 mb-4">
-                <input @click.prevent="addItems"
-                       class="btn btn-success add-button"
-                       type="submit"
-                       id="add-button"
-                       value="Add">
+        <form class="form" id="form" novalidate>
+            <div class="row align-items-baseline">
+                <div class="col-md-2">
+                    <label class="label-text-input" for="text-input">Enter your note: </label>
+                </div>
+                <div class="col-md-8 my-2">
+                    <input :class="{invalid: isNewItemInvalid}"
+                           v-model.trim="newItemText"
+                           class="form-control text-input"
+                           id="text-input"
+                           aria-describedby="error-message"
+                           required>
+                    <div id="error-message" class="error-message d-none">
+                        Note can"t be empty
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <input @click.prevent="addItem"
+                           class="btn btn-success add-button"
+                           type="submit"
+                           id="add-button"
+                           value="Add">
+                </div>
             </div>
             <hr>
         </form>
-        <ul id="list" class="list row">
+        <ul id="list" class="list row p-0">
             <li v-for="(item, index) in items" :key="item.id">
                 <template v-if="!item.isEditMode">
-                    <div class='row my-2 gx-4 offset-md-2 ml-md-0 align-items-center'>
-                        <span v-text="item.text" class='note-text col-12 col-md-8 px-0'></span>
-                        <div class='col-6 col-md-2'>
-                            <button @click="editItem(item)" class='btn btn-primary edit-button' title='edit'>edit
+                    <div class="row my-2 gx-1 px-0 align-items-center">
+                        <span v-text="item.text" class="note-text offset-md-2 col-md-6 px-0"></span>
+                        <div class="col-6 col-md-2">
+                            <button @click="editItem(item)" class="btn btn-primary edit-button" title="Edit">
+                                Edit
                             </button>
                         </div>
-                        <div class='col-6 col-md-2'>
-                            <button @click="deleteItem(index)" class='btn btn-danger delete-button' title='delete'>
-                                delete
+                        <div class="col-6 col-md-2">
+                            <button @click="deleteItem(index)" class="btn btn-danger delete-button" title="Delete">
+                                Delete
                             </button>
                         </div>
                     </div>
                 </template>
 
                 <template v-else>
-                    <form class='was-validated edit-form'>
-                        <div class='row my-2 gx-4 offset-md-2 ml-md-0 align-items-center'>
-                            <div class='col-12 col-md-8 px-0 my-2'>
-                                <input v-model.trim="item.editText"
-                                       type='text'
-                                       class='edit-input form-control'
+                    <form class="was-validated edit-form" novalidate>
+                        <div class="row my-2 gx-1 px-0 align-items-stretch">
+                            <div class="col-md-6  px-0 offset-md-2">
+                                <input :class="{invalid: item.isInvalid}"
+                                       v-model.trim="item.editText"
+                                       type="text"
+                                       class="edit-input form-control"
                                        required>
+                                <div class="error-message invalid-feedback">Note can"t be empty</div>
                             </div>
-                            <div class='col-6 col-md-2'>
-                                <input @click.prevent="saveChange(item)"
-                                       class='btn btn-outline-primary save-button'
-                                       type='submit'
-                                       value='save'
-                                       title='save'>
+                            <div class="col-6 col-md-2">
+                                <button @click.prevent="saveChange(item)"
+                                        class="btn btn-outline-primary save-button"
+                                        type="submit"
+                                        title="Save"
+                                        aria-describedby="error-message">
+                                    Save
+                                </button>
                             </div>
-                            <div class='col-6 col-md-2'>
+                            <div class="col-6 col-md-2">
                                 <button @click="cancelChange(item)"
-                                        class='btn btn-outline-danger cancel-button'
-                                        title='cancel'>cancel
+                                        class="btn btn-outline-danger cancel-button"
+                                        title="Cancel">Cancel
                                 </button>
                             </div>
                         </div>
@@ -83,13 +93,6 @@
                 </template>
             </li>
         </ul>
-
-        <template v-if="isShowError">
-            <div class="container row error w-25 h-25">
-                <div class="col-12 text-center pt-4">Note can't be empty</div>
-                <button class="col-12 btn btn-success mx-10-auto h-25" @click="hideError">OK</button>
-            </div>
-        </template>
     </div>
 </div>
 </body>
