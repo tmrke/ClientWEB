@@ -78,7 +78,7 @@
             <td v-text="contact.lastName"></td>
             <td v-text="contact.phone"></td>
             <td>
-                <button @click="putForDeleteContactIndex(index)"
+                <button @click="putToDeleteContactIndex(index)"
                         class="btn delete-button btn-danger w-100"
                         data-bs-toggle="modal"
                         data-bs-target="#modal-dialog">
@@ -96,7 +96,7 @@
                     <h5 class="modal-title" id="modal-dialog-label">Вы уверены?</h5>
                 </div>
                 <div class="modal-footer">
-                    <button @click="deleteContact()"
+                    <button @click="deleteContact"
                             class="btn bg-danger yes-button"
                             data-bs-dismiss="modal"
                             id="yes-button">

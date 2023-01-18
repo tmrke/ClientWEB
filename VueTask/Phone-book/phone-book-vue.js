@@ -79,13 +79,14 @@ new Vue({
             this.name = "";
             this.lastName = "";
             this.phone = "";
+            isContainPhone = false;
         },
 
         deleteContact: function () {
             this.contacts.splice(this.deletableContactIndex, 1);
         },
 
-        putForDeleteContactIndex: function (index) {
+        putToDeleteContactIndex: function (index) {
             this.deletableContactIndex = index;
         }
     }
