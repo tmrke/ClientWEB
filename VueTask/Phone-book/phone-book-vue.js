@@ -3,60 +3,65 @@ new Vue({
 
     data: {
         contacts: [],
-        contactId: 1,
+        id: 1,
         name: "",
         lastName: "",
         phone: "",
-        phones: [],
-        isContainPhone: function (phones, phone) {
-            return phones.indexOf(phone, 0) !== -1;
-        }
+        deletableContactIndex: -1
     },
 
     methods: {
         addContact: function () {
             var isCorrect = true;
-            var nameInput = $("#name-input");
-            var nameError = $("#name-error-message");
-            var lastNameInput = $("#last-name-input");
-            var lastNameError = $("#last-name-error-message");
-            var phoneNumberInput = $("#phone-number-input");
-            var phoneNumberError = $("#phone-error-message");
+            var nameInput = document.getElementById("name-input");
+            var nameError = document.getElementById("name-error-message");
+            var lastNameInput = document.getElementById("last-name-input");
+            var lastNameError = document.getElementById("last-name-error-message");
+            var phoneNumberInput = document.getElementById("phone-number-input");
+            var phoneNumberError = document.getElementById("phone-error-message");
 
             if (this.name === "") {
                 isCorrect = false;
-                nameInput.addClass("invalid");
-                nameError.show();
+                nameInput.classList.add("invalid");
+                nameError.style.display = "block";
             } else {
-                nameInput.removeClass("invalid");
-                nameError.hide();
+                nameInput.classList.remove("invalid");
+                nameError.style.display = "none";
             }
 
             if (this.lastName === "") {
                 isCorrect = false;
-                lastNameInput.addClass("invalid");
-                lastNameError.show();
+                lastNameInput.classList.add("invalid");
+                lastNameError.style.display = "block";
             } else {
-                lastNameInput.removeClass("invalid");
-                lastNameError.hide();
+                lastNameInput.classList.remove("invalid");
+                lastNameError.style.display = "none";
             }
 
             var regex = /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
             var isValid = regex.test(this.phone);
 
+            var isContainPhone = false;
+
+            this.contacts.forEach(function (contact) {
+                if (contact.phone === phoneNumberInput.value) {
+                    isContainPhone = true;
+                }
+            });
+
             if (this.phone === "" || !isValid) {
-                phoneNumberInput.addClass("invalid");
-                phoneNumberError.show();
+                phoneNumberInput.classList.add("invalid");
+                phoneNumberError.style.display = "block";
                 isCorrect = false;
-            } else if (this.isContainPhone(this.phones, this.phone)) {
-                phoneNumberError.text("Контакт с таким номером уже существует");
-                phoneNumberInput.addClass("invalid");
-                phoneNumberError.show();
+            } else if (isContainPhone) {
+                phoneNumberError.textContent = "Контакт с таким номером уже существует";
+                phoneNumberInput.classList.add("invalid");
+                phoneNumberError.style.display = "block";
                 isCorrect = false;
             } else {
-                phoneNumberInput.removeClass("invalid");
-                phoneNumberError.hide();
-                phoneNumberInput.text("Номер введен некорректно, введите в формате: +79123456789");
+                phoneNumberInput.classList.remove("invalid");
+                phoneNumberError.style.display = "none";
+                phoneNumberInput.textContent = "Номер введен некорректно, введите в формате: +79123456789";
             }
 
             if (!isCorrect) {
@@ -67,36 +72,21 @@ new Vue({
                 name: this.name,
                 lastName: this.lastName,
                 phone: this.phone,
-                id: this.contactId,
+                id: this.id,
             });
 
-            this.phones.push(this.phone);
-            this.updatePositionContact();
-            this.contactId++;
+            this.id++;
             this.name = "";
             this.lastName = "";
             this.phone = "";
         },
 
-        deleteContact: function (contactId, phone) {
-
-            this.contacts.splice(contactId, 1);
-            this.phones.splice(phone, 1);
-            this.updatePositionContact();
+        deleteContact: function () {
+            this.contacts.splice(this.deletableContactIndex, 1);
         },
 
-        updatePositionContact: function () {
-            function updateTableNumeration() {
-                $(".contacts-table tr").each(function (positionNumber) {
-                    $(this).find("td:first").text(positionNumber);
-                });
-            }
-
-            $.ajax({
-                success: function () {
-                    updateTableNumeration();
-                }
-            });
+        putForDeleteContactIndex: function (index) {
+            this.deletableContactIndex = index;
         }
     }
 });

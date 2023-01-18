@@ -7,78 +7,106 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="phone-book-vue.css">
 
-    <script defer src="node_modules/vue/dist/vue.js"></script>
-    <script defer src="node_modules/jquery/dist/jquery.js"></script>
     <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script defer src="node_modules/bootstrap-vue/dist/bootstrap-vue.js"></script>
+    <script defer src="node_modules/vue/dist/vue.js"></script>
     <script defer src="phone-book-vue.js"></script>
 </head>
 <body>
-<div id="app" class="container">
+<div id="app" class="container" v-cloak>
     <h1 class="mx-auto row justify-content-center">
         Phone book
     </h1>
-    <form class="was-validated w-50 justify-content-center mx-auto" id="form">
-        <label class="m-4 justify-content-center row">Имя:
-            <input v-model.trim="name" id="name-input" type="text" class="form-control" required>
-            <span class="error-message justify-content-center row" id="name-error-message">Введите имя</span>
-        </label>
+    <div class="row">
+        <form class="col-12 col-md-6 justify-content-center mx-auto" id="form" novalidate>
+            <label class="m-4 justify-content-center row">Имя:
+                <input v-model.trim="name"
+                       id="name-input"
+                       type="text"
+                       class="form-control"
+                       aria-describedby="name-error-message"
+                       required>
+                <span class="error-message justify-content-center row invalid-feedback" id="name-error-message">Введите имя</span>
+            </label>
 
-        <label class="m-4 justify-content-center row">Фамилия:
-            <input v-model.trim="lastName" id="last-name-input" type="text" class="form-control" required>
-            <span class="error-message justify-content-center row"
-                  id="last-name-error-message">
-                Введите фамилию
-            </span>
-        </label>
+            <label class="m-4 justify-content-center row">Фамилия:
+                <input v-model.trim="lastName"
+                       id="last-name-input"
+                       type="text"
+                       class="form-control"
+                       aria-describedby="last-name-error-message"
+                       required>
+                <span class="error-message justify-content-center row invalid-feedback"
+                      id="last-name-error-message">
+                    Введите фамилию
+                </span>
+            </label>
 
-        <label class="m-4 justify-content-center row"> Номер телефона:
-            <input v-model.trim="phone"
-                   id="phone-number-input"
-                   placeholder="89234567890"
-                   class="form-control"
-                   required>
-            <span class="error-message justify-content-center row"
-                  id="phone-error-message">Введите номер в формате: +79123456789</span>
-        </label>
+            <label class="m-4 justify-content-center row"> Номер телефона:
+                <input v-model.trim="phone"
+                       id="phone-number-input"
+                       placeholder="89234567890"
+                       class="form-control"
+                       aria-describedby="phone-error-message"
+                       required>
+                <span class="error-message justify-content-center row invalid-feedback"
+                      id="phone-error-message">Введите номер в формате: +79123456789</span>
+            </label>
 
-        <label class="m-4 justify-content-center row">
-            <input @click.prevent="addContact"
-                   type="submit"
-                   class="add-button btn btn-success"
-                   id="add-button"
-                   value="Добавить">
-        </label>
-    </form>
-    <table class="contacts-table w-100 table mt-3 table-striped table-hover" id="contacts-table">
+            <label class="m-4 justify-content-center row">
+                <input @click.prevent="addContact"
+                       type="submit"
+                       class="add-button btn btn-success"
+                       id="add-button"
+                       value="Добавить">
+            </label>
+        </form>
+    </div>
+    <table class="contacts-table table mt-3 table-striped table-hover" id="contacts-table">
         <thead>
-        <tr class="row table-head w-100">
-            <th class="col-1">№</th>
-            <th class="col-3">Имя</th>
-            <th class="col-3">Фамилия</th>
-            <th class="col-3">Номер телефона</th>
-            <th class="col-2"></th>
+        <tr class="table-head">
+            <th>№</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Номер телефона</th>
+            <th></th>
         </tr>
         </thead>
-        <tbody class="contacts-table w-100 table-dark " id="tbody">
-        <tr v-for="(contact, contactId, phone) in contacts" :key="contact.id" class="row w-100">
-            <template>
-                <td class="col-1"></td>
-                <td v-text="contact.name" class="col-3"></td>
-                <td v-text="contact.lastName" class="col-3"></td>
-                <td v-text="contact.phone" class="col-3"></td>
-                <td class="col-2">
-                    <b-button  class="w-100 btn btn-danger delete-button" v-b-modal.current>Удалить</b-button>
-
-                    <b-modal hide-footer class="currentId" id="current" title="Вы действительно хотите удалить контакт?">
-                        <b-button class="btn-danger" @click="deleteContact(contactId, phone)">Да</b-button>
-                        <b-button class="btn-success">Нет</b-button>
-                    </b-modal>
-                </td>
-            </template>
+        <tbody class="contacts-table table-dark" id="tbody">
+        <tr v-for="(contact, index) in contacts" :key="contact.id">
+            <td v-text="index+1"></td>
+            <td v-text="contact.name"></td>
+            <td v-text="contact.lastName"></td>
+            <td v-text="contact.phone"></td>
+            <td>
+                <button @click="putForDeleteContactIndex(index)"
+                        class="btn delete-button btn-danger w-100"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-dialog">
+                    Удалить
+                </button>
+            </td>
         </tr>
         </tbody>
     </table>
+    <div class="modal fade bg-opacity-25" id="modal-dialog" tabindex="-1" aria-labelledby="modal-dialog-label"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-dialog-label">Вы уверены?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button @click="deleteContact()"
+                            class="btn bg-danger yes-button"
+                            data-bs-dismiss="modal"
+                            id="yes-button">
+                        Да
+                    </button>
+                    <button class="btn btn-success" data-bs-dismiss="modal" id="no-button">Нет</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
