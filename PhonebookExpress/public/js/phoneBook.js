@@ -36,11 +36,8 @@ new Vue({
         lastName: "",
         phone: "",
         term: "",
-        phones: [],
-        isContainPhone: function (phones, phone) {
-            return phones.indexOf(phone, 0) !== -1;
-        },
-        service: new phoneBookService(),
+        deletableContact: null,
+        service: new phoneBookService()
     },
 
     methods: {
@@ -48,21 +45,9 @@ new Vue({
             var self = this;
             this.service.getContacts(this.term).done(function (contacts) {
                 self.contacts = contacts;
-                self.updatePositionContact();
-
-                self.phones = [];
-                this.phones = [];
-
-                self.contacts.forEach(function (contact) {
-                    self.phones.push(contact.phone);
-                });
             }).fail(function () {
                 alert("Не удалось загрузить контакт");
             });
-        },
-
-        added: function () {
-            this.loadContact();
         },
 
         addContact: function () {
@@ -99,11 +84,6 @@ new Vue({
                 phoneNumberInput.addClass("invalid");
                 phoneNumberError.show();
                 isCorrect = false;
-            } else if (this.isContainPhone(this.phones, this.phone)) {
-                phoneNumberError.text("Контакт с таким номером уже существует");
-                phoneNumberInput.addClass("invalid");
-                phoneNumberError.show();
-                isCorrect = false;
             } else {
                 phoneNumberInput.removeClass("invalid");
                 phoneNumberError.hide();
@@ -125,6 +105,14 @@ new Vue({
             }
 
             this.service.addContact(request).done(function (response) {
+                if (response.message === "Контакт с таким номером телефона уже есть") {
+                    phoneNumberError.text("Контакт с таким номером уже существует");
+                    phoneNumberInput.addClass("invalid");
+                    phoneNumberError.show();
+
+                    return;
+                }
+
                 if (!response.success) {
                     alert(response.message);
                     return;
@@ -141,10 +129,10 @@ new Vue({
             });
         },
 
-        deleteContact: function (contact) {
+        deleteContact: function () {
             var self = this;
 
-            this.service.deleteContact(contact.id).done(function (response) {
+            this.service.deleteContact(self.deletableContact.id).done(function (response) {
                 if (!response.success) {
                     alert(response.message);
 
@@ -157,18 +145,8 @@ new Vue({
             });
         },
 
-        updatePositionContact: function () {
-            function updateTableNumeration() {
-                $(".contacts-table tr").each(function (positionNumber) {
-                    $(this).find("td:first").text(positionNumber + ".");
-                });
-            }
-
-            $.ajax({
-                success: function () {
-                    updateTableNumeration();
-                }
-            });
+        putToDeleteContact: function (contact) {
+            this.deletableContact = contact;
         }
     }
 });
