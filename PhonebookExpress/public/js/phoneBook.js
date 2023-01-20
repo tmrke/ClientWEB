@@ -4,7 +4,6 @@ function phoneBookService() {
 
 function get(url, data) {
     return $.get(url, data);
-
 }
 
 function post(url, data) {
