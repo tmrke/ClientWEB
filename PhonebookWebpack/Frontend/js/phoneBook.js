@@ -3,7 +3,7 @@ import Vue from "vue";
 import $ from "jquery";
 
 import "bootstrap/dist/css/bootstrap.css";
-import "../css/phoneBook.css";
+import "../css/phoneBook.scss";
 
 function phoneBookService() {
     this.url = "/api/";

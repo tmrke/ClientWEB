@@ -1,0 +1,18 @@
+$primary-color: #f00;
+
+* {
+  box-sizing: border-box;
+}
+
+.error-message {
+  color: $primary-color;
+}
+
+.invalid {
+  border-color: $primary-color;
+}
+
+.table-head {
+  background: #3498db;
+}
+
