@@ -1,3 +1,11 @@
+import "bootstrap/dist/js/bootstrap.bundle";
+import Vue from "vue";
+import $ from "jquery";
+
+import "bootstrap/dist/css/bootstrap.css";
+import "../css/phoneBook.css";
+
+
 function phoneBookService() {
     this.url = "/api/";
 }
