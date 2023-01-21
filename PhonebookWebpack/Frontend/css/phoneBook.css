@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+.error-message {
+    color: #f00;
+}
+
+.invalid {
+    border-color: #f00;
+}
+
+.table-head {
+    background: #3498db;
+}
+
