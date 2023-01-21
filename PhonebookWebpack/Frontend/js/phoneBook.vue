@@ -92,13 +92,6 @@
 </template>
 
 <script>
-import "bootstrap/dist/js/bootstrap.bundle";
-import Vue from "vue";
-import $ from "jquery";
-
-import "bootstrap/dist/css/bootstrap.css";
-import "../css/phoneBook.scss";
-
 function phoneBookService() {
   this.url = "/api/";
 }
@@ -127,20 +120,21 @@ phoneBookService.prototype.deleteContact = function (id) {
   return post(this.url + "deleteContact", {id: id});
 }
 
-new Vue({
+export default {
   el: "#app",
 
-  data: {
-    contacts: [],
-    id: 1,
-    name: "",
-    lastName: "",
-    phone: "",
-    term: "",
-    deletableContact: null,
-    service: new phoneBookService()
+  data() {
+    return {
+      contacts: [],
+      id: 1,
+      name: "",
+      lastName: "",
+      phone: "",
+      term: "",
+      deletableContact: null,
+      service: new phoneBookService()
+    }
   },
-
   methods: {
     loadContact: function () {
       var self = this;
@@ -250,7 +244,7 @@ new Vue({
       this.deletableContact = contact;
     }
   }
-});
+}
 </script>
 
 <style lang="scss">
@@ -271,6 +265,4 @@ $primary-color: #f00;
 .table-head {
   background: #3498db;
 }
-
-
 </style>
