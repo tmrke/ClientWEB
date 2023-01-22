@@ -2,6 +2,7 @@ const path = require("path");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {VueLoaderPlugin} = require("vue-loader");
+//const {VueLoaderPlugin} = require("vue-loader/lib/plugin");
 
 module.exports = {
     entry: "./js/phonebook.js",
