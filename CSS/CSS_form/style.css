@@ -5,11 +5,11 @@
 body {
     color: #6b6774;
     font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .header {
-    margin: 120px 20px 0 20px;
+    margin: 20px 20px 0 20px;
     font-weight: normal;
     font-size: 32px;
 }
@@ -33,7 +33,7 @@ body {
     padding: 10px;
     margin: 10px 0 20px 0;
     border: none;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .comment {
@@ -43,7 +43,7 @@ body {
     border: none;
     resize: vertical;
     padding: 10px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .bottom-text {
