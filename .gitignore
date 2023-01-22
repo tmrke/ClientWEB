@@ -5,4 +5,6 @@
 /PhonebookExpress/node_modules/
 /JQuery/Phone-book/node_modules/
 /PhonebookExpress/public/node_modules/
-/PhonebookWebpack/Frontend/node_modules/
+/WebpackPhonebook/frontend/node_modules/
+/WebpackPhonebook/node_modules/
+/WebpackPhonebook/public/

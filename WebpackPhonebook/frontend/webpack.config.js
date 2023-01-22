@@ -12,6 +12,7 @@ module.exports = {
         path: path.resolve(__dirname, "..", "public"),
         publicPath: "auto",
     },
+
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
@@ -26,14 +27,11 @@ module.exports = {
             use: ["vue-loader"]
         }, {
             test: /\.css$/,
-            use: [
-                MiniCssExtractPlugin.loader, "css-loader"
-            ]
+            use: [MiniCssExtractPlugin.loader, "css-loader"]
         }, {
             test: /\.(png|jpg|gif|svg|ttf|eot|woff|woff2)$/,
             type: "asset/resource"
         }, {
-
             test: /\.scss$/,
             use: [
                 MiniCssExtractPlugin.loader,
@@ -45,11 +43,10 @@ module.exports = {
             exclude: /node_modules/,
             use: {
                 loader: "babel-loader",
-                options: {
-                    presets: ["@babel/preset-env"]
-                }
+                options: {presets: ["@babel/preset-env"]}
             }
-        }]
+        }
+        ]
     },
     resolve: {
         alias: {
