@@ -7,27 +7,27 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="todo-list-bootstrap.css">
 
-    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script defer src="node_modules/jquery/dist/jquery.js"></script>
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script defer src="todo-list-bootstrap.js"></script>
     <title>TODO list</title>
 </head>
 <body>
-<h1 class="header">TODO list</h1>
+<h1 class="header text-center">TODO list</h1>
 <div class="container px-2">
-    <form class="form" id="form" novalidate>
+    <form class="form justify-content-center align-items-center" id="form" novalidate>
         <div class="row align-items-baseline">
-            <div class="col-12 col-md-2">
-                <label class="label-text-input" for="text-input">Enter your note: </label>
+            <div class="col-md-2">
+                <label class="label-text-input justify-content-center w-100" for="text-input">Enter your note: </label>
             </div>
-            <div class="col-12 col-md-8 my-2">
+            <div class="col-md-8 my-2">
                 <input class="form-control text-input" id="text-input" aria-describedby="error-message" required>
-                <div id="error-message" class="invalid-feedback d-none">
+                <div id="error-message" class="invalid-feedback">
                     Note can't be empty
                 </div>
             </div>
-            <div class="col-12 col-md-2 mb-4">
-                <input class="btn btn-success add-button" type="submit" id="add-button" value="Add">
+            <div class="col-md-2 mb-4">
+                <input class="btn btn-success add-button w-100 mt-n1" type="submit" id="add-button" value="Add">
             </div>
         </div>
         <hr>
