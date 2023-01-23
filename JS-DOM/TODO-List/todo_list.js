@@ -16,9 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isEmptyNoteText) {
             textInput.classList.add("invalid");
             errorMessage.classList.remove("is-invisible");
-        }
 
-        if (isEmptyNoteText) {
             return;
         }
 
@@ -75,10 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (isEmptyEditText) {
                     editInput.classList.add("invalid");
-                    newTodoListNote.querySelector(".error-message").classList.remove("is-invisible")
-                }
+                    newTodoListNote.querySelector(".error-message").classList.remove("is-invisible");
 
-                if (isEmptyEditText) {
                     return;
                 }
 
