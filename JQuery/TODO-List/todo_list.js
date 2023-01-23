@@ -20,9 +20,6 @@ $(function () {
             return;
         }
 
-        textInput.toggleClass("invalid", isEmptyNoteText);
-        errorMessage.toggleClass("is-invisible", !isEmptyNoteText);
-
         var newTodoListNote = $("<li>").addClass("new-todo-list-note");
         todoList.append(newTodoListNote);
 
@@ -65,7 +62,7 @@ $(function () {
                 }
             });
 
-            editInput.val(newTodoListNoteText);
+            editInput.val(newTodoListNoteText.trim());
 
             var saveButton = newTodoListNote.find(".save-button");
             var cancelButton = newTodoListNote.find(".cancel-button");

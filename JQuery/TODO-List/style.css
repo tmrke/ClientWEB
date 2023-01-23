@@ -1,7 +1,10 @@
-body {
-    margin: 30px auto;
+* {
     box-sizing: border-box;
-    min-width: 500px;
+}
+
+.block {
+    margin: 30px auto;
+    max-width: 1000px;
 }
 
 .input-label {
@@ -9,7 +12,7 @@ body {
 }
 
 .form {
-    width: 60%;
+    width: 90%;
     display: block;
     margin: 20px auto 5px;
 }
@@ -21,7 +24,7 @@ li {
 
 .list {
     list-style-type: none;
-    width: 60%;
+    width: 90%;
     margin: 0 auto;
     padding-left: 0;
 }
@@ -65,53 +68,39 @@ li {
     cursor: pointer;
 }
 
+.note {
+    display: flex;
+}
+
 .note-button {
     cursor: pointer;
     border-radius: 5px;
     padding: 3px 4px 1px 4px;
     background: #fff;
+    height: 30px;
 }
 
-.edit-button {
+.note-text, .edit-input {
+    width: 90%;
+}
+
+.edit-button, .save-button {
+    margin: 5px 0 5px 10px;
 }
 
 .edit-button:hover {
     border-color: #00f;
 }
 
-.delete-button {
-}
-
-.delete-button:hover {
-    border-color: #f00;
-}
-
-.save-button {
-}
-
 .save-button:hover {
     border-color: #85b235;
 }
 
-.cancel-button {
+.delete-button, .cancel-button {
+    margin: 5px 0 5px 5px;
 }
 
-.cancel-button:hover {
+.delete-button:hover, .cancel-button:hover {
     border-color: #f00;
 }
 
-.note {
-    display: flex;
-}
-
-.note :nth-child(1) {
-    width: 90%;
-}
-
-.note :nth-child(2) {
-    margin: 5px 0 5px 10px;
-}
-
-.note :nth-child(3) {
-    margin: 5px 0 5px 5px;
-}
