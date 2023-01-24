@@ -10,22 +10,18 @@ new Vue({
 
     methods: {
         addItem: function () {
-            var errorMessage = $("#error-message")
             this.isNewItemInvalid = this.newItemText.length === 0;
 
             if (this.isNewItemInvalid) {
-                errorMessage.removeClass("d-none");
-
                 return;
             }
-
-            errorMessage.addClass("d-none");
 
             this.items.push({
                 id: this.itemId,
                 text: this.newItemText,
                 isEditMode: false,
-                editText: ""
+                editText: "",
+                isInvalid: false
             });
 
             this.itemId++;
@@ -41,8 +37,10 @@ new Vue({
             item.isEditMode = true;
         },
 
-        saveChange: function (item) {
-            if (item.editText.length === 0) {
+        save: function (item) {
+            item.isInvalid = item.editText.length === 0;
+
+            if (item.isInvalid) {
                 return;
             }
 
@@ -50,7 +48,7 @@ new Vue({
             item.isEditMode = false;
         },
 
-        cancelChange: function (item) {
+        cancelEdit: function (item) {
             item.isEditMode = false;
         }
     }
