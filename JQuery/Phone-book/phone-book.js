@@ -5,11 +5,12 @@ $(function () {
     var phoneNumberInput = $("#phone-number-input").mask("+7(999)999-99-99");
     var addButton = $("#add-button");
     var form = $("#form");
-    var nameErrorMessage = $("#name-error-message")
-    var lastNameErrorMessage = $("#last-name-error-message")
-    var phoneErrorMessage = $("#phone-error-message")
-    var phonesNumbers = [];
+    var nameErrorMessage = $("#name-error-message");
+    var lastNameErrorMessage = $("#last-name-error-message");
+    var phoneErrorMessage = $("#phone-error-message");
+    var phoneNumbers = [];
     var modalDialog = $("#modal-dialog");
+    var currentContact = null;
 
     form.submit(function (e) {
         e.preventDefault();
@@ -43,14 +44,14 @@ $(function () {
 
         phoneNumberInput.removeClass("invalid");
         phoneErrorMessage.removeClass("invalid");
-        phoneErrorMessage.text("Номер введен некорректно, введите в формате: +7(999)999-99-99");
 
         if (phoneNumber.length === 0) {
             phoneNumberInput.addClass("invalid");
             phoneErrorMessage.addClass("invalid");
+            phoneErrorMessage.text("Номер введен некорректно, введите в формате: +7(999)999-99-99");
 
             isCorrect = false;
-        } else if (phonesNumbers.indexOf(phoneNumber) !== -1) {
+        } else if (phoneNumbers.indexOf(phoneNumber) !== -1) {
             phoneErrorMessage.text("Контакт с таким номером уже существует");
             phoneNumberInput.addClass("invalid");
             phoneErrorMessage.addClass("invalid");
@@ -59,14 +60,13 @@ $(function () {
         } else {
             phoneNumberInput.removeClass("invalid");
             phoneErrorMessage.removeClass("invalid");
-            phoneErrorMessage.text("Номер введен некорректно, введите в формате: +7(999)999-99-99");
         }
 
         if (!isCorrect) {
             return;
         }
 
-        phonesNumbers.push(phoneNumber);
+        phoneNumbers.push(phoneNumber);
 
         var deleteButton = $("<button class='delete-button' data-bs-toggle='modal' data-bs-target='#modal-dialog'>Удалить</button>");
         var rowsCount = $("#contacts-table tr").length;
@@ -80,14 +80,16 @@ $(function () {
         newRow.appendTo(table);
 
         deleteButton.click(function () {
+            currentContact = deleteButton.parent();
+
             modalDialog.find(".yes-button").click(function () {
-                newRow.remove()
+                currentContact.remove();
 
                 $(".contacts-table tr").each(function (positionNumber) {
                     $(this).find("td:first").text(positionNumber);
                 });
 
-                phonesNumbers.splice(phonesNumbers.indexOf(phoneNumber));
+                phoneNumbers.splice(phoneNumbers.indexOf(phoneNumber));
             });
         });
 

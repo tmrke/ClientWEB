@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="style.css">
 
-    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script defer src="node_modules/jquery/dist/jquery.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" type="text/javascript"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js"
-            type="text/javascript"></script>
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js"></script>
     <script defer src="phone-book.js"></script>
 </head>
 <body>
@@ -21,22 +19,22 @@
 
 <form class="form" id="form">
     <div class="input-label">
-        <label>Имя:
-            <input class="input" id="name-input" type="text">
+        <label class="w-100">Имя:
+            <input class="input w-50 text-center" id="name-input" type="text">
             <span class="error-message" id="name-error-message">Введите имя</span>
         </label>
     </div>
 
     <div class="input-label">
-        <label> Фамилия:
-            <input class="input" id="last-name-input" type="text">
+        <label class="w-100"> Фамилия:
+            <input class="input w-50 text-center" id="last-name-input" type="text">
             <span class="error-message" id="last-name-error-message">Введите фамилию</span>
         </label>
     </div>
 
     <div class="input-label">
-        <label> Номер телефона:
-            <input class="input" id="phone-number-input" placeholder="89234567890">
+        <label class="w-100"> Номер телефона:
+            <input class="input w-50 text-center" id="phone-number-input" placeholder="89234567890">
             <span class="error-message" id="phone-error-message">Номер введен некорректно</span>
         </label>
     </div>
@@ -58,14 +56,15 @@
     <tbody id="tbody">
     </tbody>
 </table>
-<div class="modal fade" id="modal-dialog" tabindex="-1" aria-labelledby="modal-dialog-label" aria-hidden="true">
+<div class="modal fade" id="modal-dialog" tabindex="-1" aria-labelledby="modal-dialog-label" aria-hidden="true"
+     data-contact="null">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modal-dialog-label">Вы уверены?</h5>
+                <h5 class="modal-title" id="modal-dialog-label">Вы уверены, что хотите удалить этот контакт?</h5>
             </div>
-            <div class="modal-footer">
-                <button class="btn bg-danger yes-button" data-bs-dismiss="modal" id="yes-button">Да</button>
+            <div class="modal-footer bg-dark bg-opacity-25">
+                <button class="btn btn-light yes-button" data-bs-dismiss="modal" id="yes-button">Да</button>
                 <button class="btn btn-success" data-bs-dismiss="modal" id="no-button">Нет</button>
             </div>
         </div>
