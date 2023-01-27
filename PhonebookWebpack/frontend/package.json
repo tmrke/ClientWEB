@@ -9,8 +9,9 @@
     "dev": "webpack --mode development",
     "start": "webpack serve --mode development"
   },
+
   "keywords": [],
-  "author": "",
+  "author": "   ",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.2.3",
