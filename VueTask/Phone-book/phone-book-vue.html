@@ -22,7 +22,7 @@
                 <input :class="{'is-invalid': isNameInvalid}"
                        v-model.trim="name"
                        type="text"
-                       class="form-control"
+                       class="form-control text-center"
                        aria-describedby="name-error-message"
                        required>
                 <span :class="{'is-invalid':isNameInvalid}"
@@ -33,7 +33,7 @@
                 <input :class="{'is-invalid': isLastNameInvalid}"
                        v-model.trim="lastName"
                        type="text"
-                       class="form-control"
+                       class="form-control text-center"
                        aria-describedby="last-name-error-message"
                        required>
                 <span :class="{'is-invalid':isLastNameInvalid}"
@@ -46,7 +46,7 @@
                 <input :class="{'is-invalid': isPhoneNumberInvalid}"
                        v-model.trim="phone"
                        placeholder="89234567890"
-                       class="form-control"
+                       class="form-control text-center"
                        aria-describedby="phone-error-message"
                        required>
                 <span :class="{'is-invalid':isPhoneNumberInvalid}"
