@@ -110,7 +110,7 @@ new Vue({
             });
         },
 
-        putToDeleteContact: function (contact) {
+        setDeletableContact: function (contact) {
             this.deletableContact = contact;
         }
     }

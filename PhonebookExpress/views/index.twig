@@ -74,7 +74,7 @@
             <td v-text="contact.lastName"></td>
             <td v-text="contact.phone"></td>
             <td>
-                <button @click="setDeletableContactIndex(index)"
+                <button @click="setDeletableContact(contact)"
                         class="btn delete-button btn-danger w-100"
                         data-bs-toggle="modal"
                         data-bs-target="#modal-dialog">
