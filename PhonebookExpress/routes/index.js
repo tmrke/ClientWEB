@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res) {
-    res.render('index', {title: 'Express'});
+    res.render('index', {title: 'Phonebook'});
 });
 
 var contacts = [];
@@ -70,7 +70,7 @@ router.post("/api/addContact", function (req, res) {
     })) {
         res.send({
             success: false,
-            message: "Контакт с таким номером телефона уже есть"
+            message: "Контакт с таким номером телефона уже существует"
         });
     }
 

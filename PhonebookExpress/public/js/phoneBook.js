@@ -1,11 +1,3 @@
-import "bootstrap/dist/js/bootstrap.bundle";
-import Vue from "vue";
-import $ from "jquery";
-
-import "bootstrap/dist/css/bootstrap.css";
-import "../css/phoneBook.css";
-
-
 function phoneBookService() {
     this.url = "/api/";
 }
@@ -43,8 +35,11 @@ new Vue({
         name: "",
         lastName: "",
         phone: "",
-        term: "",
-        deletableContact: null,
+        deletableContactIndex: -1,
+        isNameInvalid: false,
+        isLastNameInvalid: false,
+        isPhoneNumberInvalid: false,
+        isContainPhone: false,
         service: new phoneBookService()
     },
 
@@ -59,51 +54,17 @@ new Vue({
         },
 
         addContact: function () {
-            var isCorrect = true;
-            var nameInput = $("#name-input");
-            var nameError = $("#name-error-message");
-            var lastNameInput = $("#last-name-input");
-            var lastNameError = $("#last-name-error-message");
-            var phoneNumberInput = $("#phone-number-input");
-            var phoneNumberError = $("#phone-error-message");
-
-            if (this.name === "") {
-                isCorrect = false;
-                nameInput.addClass("invalid");
-                nameError.show();
-            } else {
-                nameInput.removeClass("invalid");
-                nameError.hide();
-            }
-
-            if (this.lastName === "") {
-                isCorrect = false;
-                lastNameInput.addClass("invalid");
-                lastNameError.show();
-            } else {
-                lastNameInput.removeClass("invalid");
-                lastNameError.hide();
-            }
-
             var regex = /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
             var isValid = regex.test(this.phone);
 
-            if (this.phone === "" || !isValid) {
-                phoneNumberInput.addClass("invalid");
-                phoneNumberError.show();
-                isCorrect = false;
-            } else {
-                phoneNumberInput.removeClass("invalid");
-                phoneNumberError.hide();
-                phoneNumberInput.text("Номер введен некорректно, введите в формате: +79123456789");
-            }
+            this.isContainPhone = false;
+            this.isNameInvalid = this.name === "";
+            this.isLastNameInvalid = this.lastName === "";
+            this.isPhoneNumberInvalid = this.isPhoneNumberInvalid === "" || !isValid;
 
-            if (!isCorrect) {
+            if (this.isNameInvalid || this.isLastNameInvalid || this.isPhoneNumberInvalid) {
                 return;
             }
-
-            this.loadContact();
-            var self = this;
 
             var request = {
                 name: this.name,
@@ -112,17 +73,12 @@ new Vue({
                 id: this.id
             }
 
+            var self = this;
+
             this.service.addContact(request).done(function (response) {
-                if (response.message === "Контакт с таким номером телефона уже есть") {
-                    phoneNumberError.text("Контакт с таким номером уже существует");
-                    phoneNumberInput.addClass("invalid");
-                    phoneNumberError.show();
-
-                    return;
-                }
-
                 if (!response.success) {
-                    alert(response.message);
+                    self.isContainPhone = true;
+
                     return;
                 }
 
@@ -132,6 +88,7 @@ new Vue({
                 self.name = "";
                 self.lastName = "";
                 self.phone = "";
+                self.isContainPhone = false;
             }).fail(function () {
                 alert("Не удалось добавить контакт")
             });

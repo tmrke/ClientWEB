@@ -2,50 +2,62 @@
 
 {% block body %}
     {% verbatim %}
-<div id="app" class="container" v-cloak>
-    <form class="col-12 col-md-6 justify-content-center mx-auto" id="form" novalidate>
-        <label class="m-4 justify-content-center row">Имя:
-            <input v-model.trim="name"
-                   id="name-input"
-                   type="text"
-                   class="form-control"
-                   aria-describedby="name-error-message"
-                   required>
-            <span class="error-message justify-content-center row invalid-feedback"
-                  id="name-error-message">Введите имя</span>
-        </label>
+<div v-cloak id="app" class="container">
+    <h1 class="mx-auto row justify-content-center">
+        Phone book
+    </h1>
+    <div class="row">
+        <form class="col-md-6 justify-content-center mx-auto" novalidate>
+            <label class="m-4 justify-content-center row">Имя:
+                <input :class="{'is-invalid': isNameInvalid}"
+                       v-model.trim="name"
+                       type="text"
+                       class="form-control text-center"
+                       aria-describedby="name-error-message"
+                       required>
+                <span :class="{'is-invalid':isNameInvalid}"
+                      class=" justify-content-center row invalid-feedback">Введите имя</span>
+            </label>
 
-        <label class="m-4 justify-content-center row">Фамилия:
-            <input v-model.trim="lastName" id="last-name-input"
-                   type="text"
-                   class="form-control"
-                   aria-describedby="last-name-error-message"
-                   required>
-            <span class="error-message justify-content-center row invalid-feedback"
-                  id="last-name-error-message">
-                Введите фамилию
-            </span>
-        </label>
+            <label class="m-4 justify-content-center row">Фамилия:
+                <input :class="{'is-invalid': isLastNameInvalid}"
+                       v-model.trim="lastName"
+                       type="text"
+                       class="form-control text-center"
+                       aria-describedby="last-name-error-message"
+                       required>
+                <span :class="{'is-invalid':isLastNameInvalid}"
+                      class="justify-content-center row invalid-feedback">
+                    Введите фамилию
+                </span>
+            </label>
 
-        <label class="m-4 justify-content-center row"> Номер телефона:
-            <input v-model.trim="phone"
-                   id="phone-number-input"
-                   placeholder="+79234567890"
-                   class="form-control"
-                   required>
-            <span class="error-message justify-content-center row invalid-feedback"
-                  id="phone-error-message">Введите номер в формате: +79123456789</span>
-        </label>
+            <label class="m-4 justify-content-center row"> Номер телефона:
+                <input :class="{'is-invalid': isPhoneNumberInvalid}"
+                       v-model.trim="phone"
+                       placeholder="89234567890"
+                       class="form-control text-center"
+                       aria-describedby="phone-error-message"
+                       required>
+                <span :class="{'is-invalid':isPhoneNumberInvalid}"
+                      class="justify-content-center row invalid-feedback">
+                    Введите номер в формате: +79123456789
+                </span>
+                <span v-if="isContainPhone" :class="{'d-block':isContainPhone}"
+                      class="justify-content-center row invalid-feedback">
+                    Контакт с таким номером телефона уже существует
+                </span>
+            </label>
 
-        <label class="m-4 justify-content-center row">
-            <input @click.prevent="addContact"
-                   type="submit"
-                   class="add-button btn btn-success"
-                   id="add-button"
-                   value="Добавить">
-        </label>
-    </form>
-    <table class="contacts-table table mt-3 table-striped table-hover" id="contacts-table">
+            <label class="m-4 justify-content-center row">
+                <input @click.prevent="addContact"
+                       type="submit"
+                       class="add-button btn btn-success"
+                       value="Добавить">
+            </label>
+        </form>
+    </div>
+    <table class="contacts-table w-100 table mt-3">
         <thead>
         <tr class="table-head">
             <th>№</th>
@@ -55,14 +67,14 @@
             <th></th>
         </tr>
         </thead>
-        <tbody class="contacts-table table-dark" id="tbody">
+        <tbody class="contacts-table table-dark">
         <tr v-for="(contact, index) in contacts" :key="contact.id">
-            <td v-text="index+1"></td>
+            <td v-text="index + 1"></td>
             <td v-text="contact.name"></td>
             <td v-text="contact.lastName"></td>
             <td v-text="contact.phone"></td>
             <td>
-                <button @click="putToDeleteContact(contact)"
+                <button @click="setDeletableContactIndex(index)"
                         class="btn delete-button btn-danger w-100"
                         data-bs-toggle="modal"
                         data-bs-target="#modal-dialog">
@@ -77,16 +89,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-dialog-label">Вы уверены?</h5>
+                    <h5 class="modal-title" id="modal-dialog-label">Подтвердите действие</h5>
                 </div>
+                <div class="modal-body">Вы уверены, что хотите удалить этот контакт?</div>
                 <div class="modal-footer">
                     <button @click="deleteContact"
-                            class="btn bg-danger yes-button"
-                            data-bs-dismiss="modal"
-                            id="yes-button">
+                            class="btn btn-light yes-button"
+                            data-bs-dismiss="modal">
                         Да
                     </button>
-                    <button class="btn btn-success" data-bs-dismiss="modal" id="no-button">Нет</button>
+                    <button class="btn btn-success" data-bs-dismiss="modal">Нет</button>
                 </div>
             </div>
         </div>
