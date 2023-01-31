@@ -80,7 +80,7 @@ $(function () {
                     return;
                 }
 
-                newTodoListNoteText = editInput.val();
+                newTodoListNoteText = editInput.val().trim();
                 setViewMode();
             });
         }

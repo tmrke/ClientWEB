@@ -7,10 +7,6 @@
     max-width: 1000px;
 }
 
-.input-label {
-    margin: 5px;
-}
-
 .form {
     width: 90%;
     display: block;
@@ -37,13 +33,12 @@ li {
 }
 
 .text-input {
-    margin: 5px auto -20px;
+    margin: 5px auto;
     display: block;
-    width: 98%;
+    width: 100%;
 }
 
 .error-message {
-    padding: 5px 10px;
     color: #f00;
 }
 
@@ -77,15 +72,18 @@ li {
     border-radius: 5px;
     padding: 3px 4px 1px 4px;
     background: #fff;
-    height: 30px;
+    height: 28px;
 }
 
-.note-text, .edit-input {
-    width: 90%;
+.note-text,
+.edit-input {
+    width: 100%;
+    height: 28px;
 }
 
-.edit-button, .save-button {
-    margin: 5px 0 5px 10px;
+.edit-button,
+.save-button {
+    margin: 0 0 5px 10px;
 }
 
 .edit-button:hover {
@@ -96,11 +94,12 @@ li {
     border-color: #85b235;
 }
 
-.delete-button, .cancel-button {
-    margin: 5px 0 5px 5px;
+.delete-button,
+.cancel-button {
+    margin: 0 0 5px 5px;
 }
 
-.delete-button:hover, .cancel-button:hover {
+.delete-button:hover,
+.cancel-button:hover {
     border-color: #f00;
 }
-
