@@ -17,7 +17,3 @@ body {
 .invalid {
     border-color: #f00;
 }
-
-.mt-n1 {
-    margin-top: -0.25rem !important;
-}
