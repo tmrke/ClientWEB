@@ -14,20 +14,20 @@
 </head>
 <body>
 <h1 class="header text-center">TODO list</h1>
-<div class="container px-2">
+<div class="container">
     <form class="form justify-content-center align-items-center" id="form" novalidate>
-        <div class="row align-items-baseline">
+        <div class="row align-top">
             <div class="col-md-2">
                 <label class="label-text-input justify-content-center w-100" for="text-input">Enter your note: </label>
             </div>
-            <div class="col-md-8 my-2">
-                <input class="form-control text-input" id="text-input" aria-describedby="error-message" required>
+            <div class="col-md-8 mb-2">
+                <input class="form-control text-input" id="text-input" required>
                 <div id="error-message" class="invalid-feedback">
                     Note can't be empty
                 </div>
             </div>
             <div class="col-md-2 mb-4">
-                <input class="btn btn-success add-button w-100 mt-n1" type="submit" id="add-button" value="Add">
+                <input class="btn btn-success add-button w-100" type="submit" id="add-button" value="Add">
             </div>
         </div>
         <hr>

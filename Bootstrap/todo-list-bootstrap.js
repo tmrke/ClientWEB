@@ -26,8 +26,8 @@ $(function () {
         setViewMode();
 
         function setViewMode() {
-            newTodoListNote.html("<div class='row my-2 gx-1 px-0 align-items-center'>\
-                    <div class='note-text offset-md-2 col-md-6 px-0 mb-1'>\
+            newTodoListNote.html("<div class='row my-2 align-items-center'>\
+                    <div class='note-text offset-md-2 col-md-6 mb-1'>\
                         <span></span>\
                     </div>\
                     <div class='col-6 col-md-2'>\
@@ -52,17 +52,16 @@ $(function () {
 
         function setEditMode() {
             newTodoListNote.html("<form class='edit-form' novalidate>\
-                    <div class='row my-2 gx-1 px-0 align-items-stretch'>\
-                        <div class='col-md-6 px-0 offset-md-2 mb-1'>\
-                            <input type='text' class='edit-input form-control w-100' aria-describedby='error-message' required>\
+                    <div class='row my-2 px-0 align-items-stretch'>\
+                        <div class='col-md-6 offset-md-2 mb-1'>\
+                            <input type='text' class='edit-input form-control w-100' required>\
                             <div class='error-message invalid-feedback'>Note can't be empty</div>\
                         </div>\
-                        <div class='col-6 col-md-2'>\
+                        <div class='col-6 col-md-2 pl-0'>\
                             <button class='btn btn-outline-primary save-button w-100'\
                                 type='button'\
                                 value='Save'\
-                                title='Save'\
-                                aria-describedby='error-message'>\
+                                title='Save'>\
                                     Save\
                             </button>\
                         </div>\
