@@ -18,25 +18,24 @@
     <h1 class="header text-center">TODO list</h1>
     <div class="container">
         <form class="form justify-content-center align-items-center" id="form" novalidate>
-            <div class="row align-items-baseline">
+            <div class="row align-top">
                 <div class="col-md-2">
-                    <label class="label-text-input justify-content-center w-100" for="text-input">Enter your
-                        note: </label>
+                    <label class="label-text-input justify-content-center w-100" for="text-input">
+                        Enter your note: </label>
                 </div>
-                <div class="col-md-8 my-2">
-                    <input :class="{invalid: isNewItemInvalid}"
+                <div class="col-md-8 my-2 my-md-0">
+                    <input :class="{'is-invalid': isNewItemInvalid}"
                            v-model.trim="newItemText"
                            class="form-control text-input"
                            id="text-input"
-                           aria-describedby="error-message"
                            required>
-                    <div :class="{'d-block': isNewItemInvalid}" id="error-message" class="invalid-feedback">
+                    <div :class="{'is-invalid': isNewItemInvalid}" id="error-message" class="invalid-feedback">
                         Note can't be empty
                     </div>
                 </div>
                 <div class="col-md-2 mb-4">
                     <input @click.prevent="addItem"
-                           class="btn btn-success add-button w-100 mt-n1"
+                           class="btn btn-success add-button w-100"
                            type="submit"
                            id="add-button"
                            value="Add">
@@ -47,8 +46,8 @@
         <ul id="list" class="list p-0">
             <li v-for="(item, index) in items" :key="item.id">
                 <template v-if="!item.isEditMode">
-                    <div class="row my-2 gx-1 px-0 align-items-center">
-                        <span v-text="item.text" class="note-text offset-md-2 col-md-6 px-0 mb-1"></span>
+                    <div class="row my-2 align-items-center">
+                        <span v-text="item.text" class="note-text offset-md-2 col-md-6 mb-2"></span>
                         <div class="col-6 col-md-2">
                             <button @click="editItem(item)" class="btn btn-primary edit-button w-100" title="Edit">
                                 Edit
@@ -64,25 +63,23 @@
                 </template>
 
                 <template v-else>
-                    <form class='edit-form' novalidate>
-                        <div class="row my-2 gx-1 align-items-stretch">
-                            <div class="col-md-6 p-md-0 offset-md-2 mb-1">
-                                <input :class="{invalid: item.isInvalid}"
+                    <form class="edit-form" novalidate>
+                        <div class="row my-2 px-0 align-items-stretch">
+                            <div class="col-md-6 offset-md-2 mb-2">
+                                <input :class="{'is-invalid': item.isInvalid}"
                                        v-model.trim="item.editText"
                                        type="text"
                                        class="edit-input form-control"
-                                       aria-describedby="error-message"
                                        required>
-                                <div :class="{'d-block': item.isInvalid}" class="error-message invalid-feedback">
+                                <div :class="{'is-invalid': item.isInvalid}" class="error-message invalid-feedback">
                                     Note can"t be empty
                                 </div>
                             </div>
-                            <div class="col-6 col-md-2">
+                            <div class="col-6 col-md-2 pl-0">
                                 <button @click.prevent="save(item)"
                                         class="btn btn-outline-primary save-button w-100"
                                         type="submit"
-                                        title="Save"
-                                        aria-describedby="error-message">
+                                        title="Save">
                                     Save
                                 </button>
                             </div>

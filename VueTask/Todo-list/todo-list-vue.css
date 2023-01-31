@@ -10,18 +10,6 @@ body {
     list-style-type: none;
 }
 
-.edit-input {
-
-}
-
 .header {
     color: #00995b;
-}
-
-.invalid {
-    border-color: #f00;
-}
-
-.mt-n1 {
-    margin-top: -0.25rem !important;
 }
