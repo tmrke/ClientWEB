@@ -43,6 +43,10 @@ new Vue({
         service: new phoneBookService()
     },
 
+    created() {
+        this.loadContact();
+    },
+
     methods: {
         loadContact: function () {
             var self = this;

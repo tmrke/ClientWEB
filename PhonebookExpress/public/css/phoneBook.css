@@ -2,6 +2,10 @@
     background: #3498db;
 }
 
+.header {
+    color: #3498db;
+}
+
 [v-cloak] {
     display: none;
 }

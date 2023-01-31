@@ -6,11 +6,15 @@ router.get('/', function (req, res) {
     res.render('index', {title: 'Phonebook'});
 });
 
-var contacts = [];
+var contacts = [
+    // {id: 0, name: "test", lastName: "test", phone: "+79000000000"}
+];
+
 var newContactId = 1;
 
 router.get("/api/getContacts", function (req, res) {
     var term = (req.query.term || "").toUpperCase();
+
     var filteredContacts = term.length === 0
         ? contacts
         : contacts.filter(function (c) {
@@ -72,6 +76,8 @@ router.post("/api/addContact", function (req, res) {
             success: false,
             message: "Контакт с таким номером телефона уже существует"
         });
+
+        return;
     }
 
     contacts.push({
