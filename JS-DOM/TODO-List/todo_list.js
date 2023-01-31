@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
                <div class='error-message is-invisible'>Note can't be empty</div>";
 
             var editInput = newTodoListNote.querySelector(".edit-input");
-            editInput.value = newTodoListNoteText;
+            editInput.value = newTodoListNoteText.trim();
 
             var saveButton = newTodoListNote.querySelector(".save-button");
             var cancelButton = newTodoListNote.querySelector(".cancel-button");
@@ -90,6 +90,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
-
-
