@@ -10,7 +10,7 @@ $(function () {
     var phoneErrorMessage = $("#phone-error-message");
     var phoneNumbers = [];
     var modalDialog = $("#modal-dialog");
-    var currentContact = null;
+    var deletableContact = null;
 
     form.submit(function (e) {
         e.preventDefault();
@@ -79,18 +79,16 @@ $(function () {
 
         newRow.appendTo(table);
 
-        deleteButton.click(function () {
-            currentContact = deleteButton.parent();
+        deletableContact = deleteButton.parent();
 
-            modalDialog.find(".yes-button").click(function () {
-                currentContact.remove();
+        modalDialog.find(".yes-button").click(function () {
+            deletableContact.remove();
 
-                $(".contacts-table tr").each(function (positionNumber) {
-                    $(this).find("td:first").text(positionNumber);
-                });
-
-                phoneNumbers.splice(phoneNumbers.indexOf(phoneNumber));
+            $(".contacts-table tr").each(function (positionNumber) {
+                $(this).find("td:first").text(positionNumber);
             });
+
+            phoneNumbers.splice(phoneNumbers.indexOf(phoneNumber));
         });
 
         nameInput.val("");

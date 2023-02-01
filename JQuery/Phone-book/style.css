@@ -21,6 +21,7 @@ body {
 }
 
 .header {
+    text-align: center;
     width: 300px;
     margin: 20px auto;
 }
