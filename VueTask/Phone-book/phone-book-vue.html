@@ -12,88 +12,102 @@
     <script defer src="phone-book-vue.js"></script>
 </head>
 <body>
-<div v-cloak id="app" class="container">
-    <h1 class="mx-auto row justify-content-center">
+<div v-cloak id="app" class="container w-auto">
+    <h1 class="text-center">
         Phone book
     </h1>
-    <div class="row">
-        <form class="col-md-6 justify-content-center mx-auto" novalidate>
-            <label class="m-4 justify-content-center row">Имя:
-                <input :class="{'is-invalid': isNameInvalid}"
-                       v-model.trim="name"
-                       type="text"
-                       class="form-control text-center"
-                       aria-describedby="name-error-message"
-                       required>
-                <span :class="{'is-invalid':isNameInvalid}"
-                      class=" justify-content-center row invalid-feedback">Введите имя</span>
-            </label>
+    <div class="row justify-content-center">
+        <form class="col-md-6" novalidate>
+            <div class="m-4 justify-content-center">
+                <label class="w-100">Имя:
+                    <input :class="{'is-invalid': isNameInvalid}"
+                           v-model.trim="name"
+                           type="text"
+                           class="form-control text-center"
+                           aria-describedby="name-error-message"
+                           required>
+                    <span :class="{'is-invalid':isNameInvalid}"
+                          class="invalid-feedback">
+                    Введите имя
+                </span>
+                </label>
+            </div>
 
-            <label class="m-4 justify-content-center row">Фамилия:
-                <input :class="{'is-invalid': isLastNameInvalid}"
-                       v-model.trim="lastName"
-                       type="text"
-                       class="form-control text-center"
-                       aria-describedby="last-name-error-message"
-                       required>
-                <span :class="{'is-invalid':isLastNameInvalid}"
-                      class="justify-content-center row invalid-feedback">
+            <div class="m-4 justify-content-center">
+                <label class="w-100">Фамилия:
+                    <input :class="{'is-invalid': isLastNameInvalid}"
+                           v-model.trim="lastName"
+                           type="text"
+                           class="form-control text-center"
+                           aria-describedby="last-name-error-message"
+                           required>
+                    <span :class="{'is-invalid':isLastNameInvalid}"
+                          class="invalid-feedback">
                     Введите фамилию
                 </span>
-            </label>
+                </label>
+            </div>
 
-            <label class="m-4 justify-content-center row"> Номер телефона:
-                <input :class="{'is-invalid': isPhoneNumberInvalid}"
-                       v-model.trim="phone"
-                       placeholder="89234567890"
-                       class="form-control text-center"
-                       aria-describedby="phone-error-message"
-                       required>
-                <span :class="{'is-invalid':isPhoneNumberInvalid}"
-                      class="justify-content-center row invalid-feedback">
+            <div class="m-4 justify-content-center">
+                <label class="w-100"> Номер телефона:
+                    <input :class="{'is-invalid': isPhoneNumberInvalid || containsPhone}"
+                           v-model.trim="phone"
+                           placeholder="89234567890"
+                           class="form-control text-center"
+                           aria-describedby="phone-error-message"
+                           required>
+                    <span v-if="isPhoneNumberInvalid"
+                          :class="{'is-invalid':isPhoneNumberInvalid}"
+                          class="invalid-feedback">
                     Введите номер в формате: +79123456789
                 </span>
-                <span v-if="isContainPhone" :class="{'d-block':isContainPhone}"
-                      class="justify-content-center row invalid-feedback">
+                    <span v-if="containsPhone"
+                          :class="{'d-block':containsPhone}"
+                          class="invalid-feedback">
                     Контакт с таким номером телефона уже существует
                 </span>
-            </label>
+                </label>
+            </div>
 
-            <label class="m-4 justify-content-center row">
-                <input @click.prevent="addContact"
-                       type="submit"
-                       class="add-button btn btn-success"
-                       value="Добавить">
-            </label>
+            <div class="m-4">
+                <label class="w-100">
+                    <input @click.prevent="addContact"
+                           type="submit"
+                           class="add-button btn btn-success w-100"
+                           value="Добавить">
+                </label>
+            </div>
         </form>
     </div>
-    <table class="contacts-table w-100 table mt-3">
-        <thead>
-        <tr class="table-head">
-            <th>№</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Номер телефона</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody class="contacts-table table-dark">
-        <tr v-for="(contact, index) in contacts" :key="contact.id">
-            <td v-text="index + 1"></td>
-            <td v-text="contact.name"></td>
-            <td v-text="contact.lastName"></td>
-            <td v-text="contact.phone"></td>
-            <td>
-                <button @click="setDeletableContactIndex(index)"
-                        class="btn delete-button btn-danger w-100"
-                        data-bs-toggle="modal"
-                        data-bs-target="#modal-dialog">
-                    Удалить
-                </button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive-md">
+        <table class="contacts-table w-100 table mt-3">
+            <thead>
+            <tr class="table-head">
+                <th>№</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Номер телефона</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody class="contacts-table table-dark">
+            <tr v-for="(contact, index) in contacts" :key="contact.id">
+                <td v-text="index + 1"></td>
+                <td v-text="contact.name"></td>
+                <td v-text="contact.lastName"></td>
+                <td v-text="contact.phone"></td>
+                <td>
+                    <button @click="setDeletableContactIndex(index)"
+                            class="btn delete-button btn-danger w-100"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modal-dialog">
+                        Удалить
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <div class="modal fade bg-opacity-25" id="modal-dialog" tabindex="-1" aria-labelledby="modal-dialog-label"
          aria-hidden="true">
         <div class="modal-dialog">

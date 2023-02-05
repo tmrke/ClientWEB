@@ -6,7 +6,5 @@
       <excludeFolder url="file://$MODULE_DIR$/WebpackTask/public" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jquery" level="application" />
-    <orderEntry type="library" name="jquery.maskedinput" level="application" />
   </component>
 </module>

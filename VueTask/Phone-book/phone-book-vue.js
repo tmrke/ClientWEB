@@ -2,25 +2,23 @@ new Vue({
     el: "#app",
 
     data: {
+        nextContactId: 1,
         contacts: [],
-        id: 1,
         name: "",
         lastName: "",
         phone: "",
-        deletableContactIndex: -1,
+        deletableContactIndex: null,
         isNameInvalid: false,
         isLastNameInvalid: false,
         isPhoneNumberInvalid: false,
-        isContainPhone: false
+        containsPhone: false,
+        regex: /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/
     },
 
     methods: {
         addContact: function () {
-            var regex = /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
-            var isValid = regex.test(this.phone);
-            this.isContainPhone = false;
-            this.isContainPhone = false;
-
+            var isValid = this.regex.test(this.phone);
+            this.containsPhone = false;
             this.isNameInvalid = this.name === "";
             this.isLastNameInvalid = this.lastName === "";
             this.isPhoneNumberInvalid = this.isPhoneNumberInvalid === "" || !isValid;
@@ -29,26 +27,26 @@ new Vue({
 
             this.contacts.forEach(function (contact) {
                 if (contact.phone === self.phone) {
-                    self.isContainPhone = true;
+                    self.containsPhone = true;
                 }
             });
 
-            if (this.isNameInvalid || this.isLastNameInvalid || this.isPhoneNumberInvalid || this.isContainPhone) {
+            if (this.isNameInvalid || this.isLastNameInvalid || this.isPhoneNumberInvalid || self.containsPhone) {
                 return;
             }
 
             this.contacts.push({
+                id: this.nextContactId,
                 name: this.name,
                 lastName: this.lastName,
-                phone: this.phone,
-                id: this.id,
+                phone: this.phone
             });
 
-            this.id++;
+            this.nextContactId++;
             this.name = "";
             this.lastName = "";
             this.phone = "";
-            this.isContainPhone = false;
+            this.containsPhone = false;
         },
 
         deleteContact: function () {
