@@ -27,6 +27,10 @@ PhoneBookService.prototype.deleteContact = function (id) {
     return post(this.url + "deleteContact", {id: id});
 }
 
+PhoneBookService.prototype.searchContact = function (searchValue) {
+    return post(this.url + "searchContact", {searchValue: searchValue});
+}
+
 new Vue({
     el: "#app",
 
@@ -36,6 +40,9 @@ new Vue({
         name: "",
         lastName: "",
         phone: "",
+
+        searchValue: "",
+
         deletableContactIndex: -1,
         isNameInvalid: false,
         isLastNameInvalid: false,
@@ -115,6 +122,14 @@ new Vue({
             }).fail(function () {
                 alert("Не удалось удалить контакт");
             });
+        },
+
+        searchContact: function () {
+            var request = {
+                searchValue: this.searchValue
+            };
+
+            this.service.searchContact(request);
         },
 
         setDeletableContact: function (contact) {
