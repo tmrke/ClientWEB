@@ -68,18 +68,20 @@ $(function () {
 
         phoneNumbers.push(phoneNumber);
 
-        var deleteButton = $("<button class='delete-button' data-bs-toggle='modal' data-bs-target='#modal-dialog'>Удалить</button>");
         var rowsCount = $("#contacts-table tr").length;
         var newRow = $("<tr></tr>")
             .append($("<td></td>").text(rowsCount))
             .append($("<td></td>").text(nameInputText))
             .append($("<td></td>").text(lastNameInputText))
             .append($("<td></td>").text(phoneNumber))
-            .append(deleteButton);
+            .append($("<td><button class='delete-button' data-bs-toggle='modal' data-bs-target='#modal-dialog'>Удалить</button></td>"));
 
+        var deleteButton = newRow.find(".delete-button");
         newRow.appendTo(table);
 
-        deletableContact = deleteButton.parent();
+        deleteButton.click(function () {
+            deletableContact = deleteButton.parent().parent();
+        });
 
         modalDialog.find(".yes-button").click(function () {
             deletableContact.remove();
