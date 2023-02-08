@@ -32,20 +32,23 @@
                 </label>
 
                 <label class="m-4 justify-content-center row"> Номер телефона:
-                    <input :class="{'is-invalid': isPhoneNumberInvalid}"
+                    <input :class="{'is-invalid': isPhoneNumberInvalid || containsPhone}"
                            v-model.trim="phone"
                            placeholder="89234567890"
                            class="form-control text-center"
                            aria-describedby="phone-error-message"
                            required>
-                    <span :class="{'is-invalid':isPhoneNumberInvalid}"
-                          class="justify-content-center row invalid-feedback">
+
+                    <span v-if="isPhoneNumberInvalid"
+                          :class="{'is-invalid':isPhoneNumberInvalid}"
+                          class="invalid-feedback">
                     Введите номер в формате: +79123456789
-                </span>
-                    <span v-if="isContainPhone" :class="{'d-block':isContainPhone}"
-                          class="justify-content-center row invalid-feedback">
+                    </span>
+                    <span v-if="containsPhone"
+                          :class="{'d-block':containsPhone}"
+                          class="invalid-feedback">
                     Контакт с таким номером телефона уже существует
-                </span>
+                    </span>
                 </label>
 
                 <label class="m-4 justify-content-center row">

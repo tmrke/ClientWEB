@@ -1,5 +1,4 @@
-function phoneBookService() {
-    this.url = "/api/";
+function PhoneBookService() {
 }
 
 function get(url, data) {
@@ -14,15 +13,17 @@ function post(url, data) {
     });
 }
 
-phoneBookService.prototype.getContacts = function (term) {
+PhoneBookService.prototype.url = "/api/";
+
+PhoneBookService.prototype.getContacts = function (term) {
     return get(this.url + "getContacts", {term: term});
 }
 
-phoneBookService.prototype.addContact = function (contact) {
+PhoneBookService.prototype.addContact = function (contact) {
     return post(this.url + "addContact", {contact: contact});
 }
 
-phoneBookService.prototype.deleteContact = function (id) {
+PhoneBookService.prototype.deleteContact = function (id) {
     return post(this.url + "deleteContact", {id: id});
 }
 
@@ -30,8 +31,8 @@ new Vue({
     el: "#app",
 
     data: {
+        nextContactId: 1,
         contacts: [],
-        id: 1,
         name: "",
         lastName: "",
         phone: "",
@@ -39,17 +40,20 @@ new Vue({
         isNameInvalid: false,
         isLastNameInvalid: false,
         isPhoneNumberInvalid: false,
-        isContainPhone: false,
-        service: new phoneBookService()
+        containsPhone: false,
+        regex: /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/,
+        term: null,
+        service: new PhoneBookService()
     },
 
     created() {
-        this.loadContact();
+        this.loadContacts();
     },
 
     methods: {
-        loadContact: function () {
+        loadContacts: function () {
             var self = this;
+
             this.service.getContacts(this.term).done(function (contacts) {
                 self.contacts = contacts;
             }).fail(function () {
@@ -58,43 +62,42 @@ new Vue({
         },
 
         addContact: function () {
-            var regex = /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
-            var isValid = regex.test(this.phone);
+            var isValid = this.regex.test(this.phone);
 
-            this.isContainPhone = false;
+            this.containsPhone = false;
             this.isNameInvalid = this.name === "";
             this.isLastNameInvalid = this.lastName === "";
             this.isPhoneNumberInvalid = this.isPhoneNumberInvalid === "" || !isValid;
 
-            if (this.isNameInvalid || this.isLastNameInvalid || this.isPhoneNumberInvalid) {
+            if (this.isNameInvalid || this.isLastNameInvalid || this.isPhoneNumberInvalid || this.containsPhone) {
                 return;
             }
 
             var request = {
+                id: this.nextContactId,
                 name: this.name,
                 lastName: this.lastName,
-                phone: this.phone,
-                id: this.id
-            }
+                phone: this.phone
+            };
 
             var self = this;
 
             this.service.addContact(request).done(function (response) {
-                if (!response.success) {
-                    self.isContainPhone = true;
+                if (response.message === "Контакт с таким номером телефона уже существует") {
+                    self.containsPhone = true;
 
                     return;
                 }
 
-                self.loadContact();
+                self.loadContacts();
 
-                self.id++;
+                self.nextContactId++;
                 self.name = "";
                 self.lastName = "";
                 self.phone = "";
-                self.isContainPhone = false;
+                self.containsPhone = false;
             }).fail(function () {
-                alert("Не удалось добавить контакт")
+                alert("Не удалось добавить контакт");
             });
         },
 
@@ -108,7 +111,7 @@ new Vue({
                     return;
                 }
 
-                self.loadContact();
+                self.loadContacts();
             }).fail(function () {
                 alert("Не удалось удалить контакт");
             });
