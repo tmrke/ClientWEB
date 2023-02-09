@@ -27,10 +27,6 @@ PhoneBookService.prototype.deleteContact = function (id) {
     return post(this.url + "deleteContact", {id: id});
 }
 
-PhoneBookService.prototype.searchContact = function (searchValue) {
-    return post(this.url + "searchContact", {searchValue: searchValue});
-}
-
 new Vue({
     el: "#app",
 
@@ -41,15 +37,14 @@ new Vue({
         lastName: "",
         phone: "",
 
-        searchValue: "",
-
         deletableContactIndex: -1,
         isNameInvalid: false,
         isLastNameInvalid: false,
         isPhoneNumberInvalid: false,
+        isSearchInvalid: false,
         containsPhone: false,
         regex: /^(\+7|7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/,
-        term: null,
+        term: "",
         service: new PhoneBookService()
     },
 
@@ -125,11 +120,19 @@ new Vue({
         },
 
         searchContact: function () {
-            var request = {
-                searchValue: this.searchValue
-            };
+            if (this.term === "") {
+                this.isSearchInvalid = true;
 
-            this.service.searchContact(request);
+                return;
+            }
+
+            this.loadContacts();
+        },
+
+        cancelSearch: function () {
+            this.isSearchInvalid = false;
+            this.term = "";
+            this.loadContacts();
         },
 
         setDeletableContact: function (contact) {

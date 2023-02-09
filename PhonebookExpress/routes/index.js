@@ -39,16 +39,6 @@ router.post("/api/deleteContact", function (req, res) {
     });
 });
 
-router.post("/api/searchContact", function (req, res) {
-    var searchValue = req.body.searchValue;
-
-    var contactsBySearch = contacts.filter(function (searchValue) {
-        return (contacts.name === searchValue || contacts.lastName === searchValue || contacts.phone === searchValue);
-    });
-
-    res.send(contactsBySearch)
-});
-
 router.post("/api/addContact", function (req, res) {
     var contact = req.body.contact;
 

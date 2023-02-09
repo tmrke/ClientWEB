@@ -13,12 +13,11 @@
                                v-model.trim="name"
                                type="text"
                                class="form-control text-center"
-                               aria-describedby="name-error-message"
                                required>
                         <span :class="{'is-invalid':isNameInvalid}"
                               class="invalid-feedback">
-                    Введите имя
-                </span>
+                            Введите имя
+                         </span>
                     </label>
                 </div>
 
@@ -28,12 +27,11 @@
                                v-model.trim="lastName"
                                type="text"
                                class="form-control text-center"
-                               aria-describedby="last-name-error-message"
                                required>
                         <span :class="{'is-invalid':isLastNameInvalid}"
                               class="invalid-feedback">
-                    Введите фамилию
-                </span>
+                        Введите фамилию
+                        </span>
                     </label>
                 </div>
 
@@ -43,7 +41,6 @@
                                v-model.trim="phone"
                                placeholder="89234567890"
                                class="form-control text-center"
-                               aria-describedby="phone-error-message"
                                required>
                         <span v-if="isPhoneNumberInvalid"
                               :class="{'is-invalid':isPhoneNumberInvalid}"
@@ -73,24 +70,26 @@
             <form class="col-md-6" novalidate>
                 <div class="my-1">
                     <label class="w-100">Поиск:
-                        <input v-model.trim="searchValue"
+                        <input :class="{'is-invalid': isSearchInvalid}"
+                               v-model.trim="term"
                                type="text"
                                class="form-control text-center"
                                required>
-                        <span class="invalid-feedback">
-                        Введите номер для поиска
+                        <span :class="{'is-invalid':isSearchInvalid}"
+                              class="invalid-feedback">
+                        Введите данные для поиска
                         </span>
                     </label>
                 </div>
-                <div class="row m">
+                <div class="row">
                     <label class="col-8">
-                        <input @click.prevent="searchButton"
+                        <input @click.prevent="searchContact"
                                type="submit"
                                class="add-button btn btn-info w-100"
                                value="Найти">
                     </label>
                     <label class="col-4">
-                        <input @click.prevent="cancelSearchButton"
+                        <input @click.prevent="cancelSearch"
                                type="submit"
                                class="add-button btn btn-danger w-100"
                                value="Отменить">
