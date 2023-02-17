@@ -31,7 +31,6 @@ new Vue({
     el: "#app",
 
     data: {
-        nextContactId: 1,
         contacts: [],
         name: "",
         lastName: "",
@@ -59,33 +58,32 @@ new Vue({
             this.service.getContacts(this.term).done(function (contacts) {
                 self.contacts = contacts;
             }).fail(function () {
-                alert("Не удалось загрузить контакт");
+                alert("Не удалось загрузить контакты");
             });
         },
 
         addContact: function () {
             var isValid = this.regex.test(this.phone);
 
-            this.containsPhone = false;
             this.isNameInvalid = this.name === "";
             this.isLastNameInvalid = this.lastName === "";
             this.isPhoneNumberInvalid = this.isPhoneNumberInvalid === "" || !isValid;
 
-            if (this.isNameInvalid || this.isLastNameInvalid || this.isPhoneNumberInvalid || this.containsPhone) {
+            if (this.isNameInvalid || this.isLastNameInvalid || this.isPhoneNumberInvalid) {
                 return;
             }
 
             var request = {
-                id: this.nextContactId,
                 name: this.name,
                 lastName: this.lastName,
                 phone: this.phone
             };
 
+            this.containsPhone = false;
             var self = this;
 
             this.service.addContact(request).done(function (response) {
-                if (response.message === "Контакт с таким номером телефона уже существует") {
+                if (response.errorCode === 1) {
                     self.containsPhone = true;
 
                     return;
@@ -93,7 +91,6 @@ new Vue({
 
                 self.loadContacts();
 
-                self.nextContactId++;
                 self.name = "";
                 self.lastName = "";
                 self.phone = "";

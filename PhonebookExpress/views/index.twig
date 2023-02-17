@@ -17,10 +17,9 @@
                         <span :class="{'is-invalid':isNameInvalid}"
                               class="invalid-feedback">
                             Введите имя
-                         </span>
+                        </span>
                     </label>
                 </div>
-
                 <div class="my-3 justify-content-center">
                     <label class="w-100">Фамилия:
                         <input :class="{'is-invalid': isLastNameInvalid}"
@@ -30,13 +29,12 @@
                                required>
                         <span :class="{'is-invalid':isLastNameInvalid}"
                               class="invalid-feedback">
-                        Введите фамилию
+                            Введите фамилию
                         </span>
                     </label>
                 </div>
-
                 <div class="my-3 justify-content-center">
-                    <label class="w-100"> Номер телефона:
+                    <label class="w-100">Номер телефона:
                         <input :class="{'is-invalid': isPhoneNumberInvalid || containsPhone}"
                                v-model.trim="phone"
                                placeholder="89234567890"
@@ -45,16 +43,15 @@
                         <span v-if="isPhoneNumberInvalid"
                               :class="{'is-invalid':isPhoneNumberInvalid}"
                               class="invalid-feedback">
-                    Введите номер в формате: +79123456789
-                    </span>
+                            Введите номер в формате: +79123456789
+                        </span>
                         <span v-if="containsPhone"
                               :class="{'d-block':containsPhone}"
                               class="invalid-feedback">
-                    Контакт с таким номером телефона уже существует
-                    </span>
+                            Контакт с таким номером телефона уже существует
+                        </span>
                     </label>
                 </div>
-
                 <div class="my-3">
                     <label class="w-100">
                         <input @click.prevent="addContact"
@@ -65,7 +62,6 @@
                 </div>
             </form>
         </div>
-
         <div class="row justify-content-center">
             <form class="col-md-6" novalidate>
                 <div class="my-1">
@@ -77,7 +73,7 @@
                                required>
                         <span :class="{'is-invalid':isSearchInvalid}"
                               class="invalid-feedback">
-                        Введите данные для поиска
+                            Введите данные для поиска
                         </span>
                     </label>
                 </div>
@@ -97,37 +93,35 @@
                 </div>
             </form>
         </div>
-
         <div class="table-responsive">
             <table class="contacts-table w-100 table mt-3">
                 <thead>
-                <tr class="table-head">
-                    <th>№</th>
-                    <th>Имя</th>
-                    <th>Фамилия</th>
-                    <th>Номер телефона</th>
-                    <th></th>
-                </tr>
+                    <tr class="table-head">
+                        <th>№</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Номер телефона</th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody class="contacts-table table-dark">
-                <tr v-for="(contact, index) in contacts" :key="contact.id">
-                    <td>{% verbatim %} {{ index + 1 }} {% endverbatim %}</td>
-                    <td v-text="contact.    name"></td>
-                    <td v-text="contact.lastName"></td>
-                    <td v-text="contact.phone"></td>
-                    <td>
-                        <button @click="setDeletableContact(contact)"
-                                class="btn delete-button btn-danger w-100"
-                                data-bs-toggle="modal"
-                                data-bs-target="#modal-dialog">
-                            Удалить
-                        </button>
-                    </td>
-                </tr>
+                    <tr v-for="(contact, index) in contacts" :key="contact.id">
+                        <td>{% verbatim %} {{ index + 1 }} {% endverbatim %}</td>
+                        <td v-text="contact.    name"></td>
+                        <td v-text="contact.lastName"></td>
+                        <td v-text="contact.phone"></td>
+                        <td>
+                            <button @click="setDeletableContact(contact)"
+                                    class="btn delete-button btn-danger w-100"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modal-dialog">
+                                Удалить
+                            </button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-
         <div class="modal fade bg-opacity-25" id="modal-dialog" tabindex="-1" aria-labelledby="modal-dialog-label"
              aria-hidden="true">
             <div class="modal-dialog">

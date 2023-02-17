@@ -1,9 +1,9 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function (req, res) {
-    res.render('index', {title: 'Phonebook'});
+router.get("/", function (req, res) {
+    res.render("index", {title: "Phonebook"});
 });
 
 var contacts = [
@@ -35,7 +35,8 @@ router.post("/api/deleteContact", function (req, res) {
 
     res.send({
         success: true,
-        message: null
+        message: null,
+        errorCode: 0
     });
 });
 
@@ -74,7 +75,8 @@ router.post("/api/addContact", function (req, res) {
     })) {
         res.send({
             success: false,
-            message: "Контакт с таким номером телефона уже существует"
+            message: "Контакт с таким номером телефона уже существует",
+            errorCode: 1
         });
 
         return;
