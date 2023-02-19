@@ -83,14 +83,17 @@ $(function () {
             deletableContact = deleteButton.parent().parent();
         });
 
-        modalDialog.find(".yes-button").click(function () {
+        modalDialog.find(".yes-button").click(function (e) {
             deletableContact.remove();
+            e.stopImmediatePropagation();
 
             $(".contacts-table tr").each(function (positionNumber) {
                 $(this).find("td:first").text(positionNumber);
             });
 
-            phoneNumbers.splice(phoneNumbers.indexOf(phoneNumber));
+            phoneNumbers = phoneNumbers.filter(function (existingPhoneNumber) {
+                return existingPhoneNumber !== phoneNumber;
+            });
         });
 
         nameInput.val("");
